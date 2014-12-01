@@ -1,0 +1,93 @@
+h1,h2,h3,h4,h5,h6,p,input {
+    font-family: Montserrat;
+    color: white;
+}
+/* Empty. Add your own CSS if you like */
+#attachmentImage{
+    max-height: 100%;
+    max-width: 100%;
+}
+.tabs-dark{
+    opacity: 1;
+}
+.bar-dark{
+    box-shadow: 1px 1px 1px white;
+    opacity: 1;
+}
+
+button.button .button-balanced{
+    color: #f8f8ff;
+}
+
+div.list > a.item, div.list > div.item, div > a.item {
+    background-color: #0C1D40;
+    color: #f8f8ff;
+}
+
+#body{
+    background-color: #102864;
+    font-family: copperplate;
+}
+
+#header{
+    background-color: #0C1D40;
+    font-family: copperplate;
+}
+
+#title {
+    font-family: copperplate;
+    color: #f8f8ff;
+}
+
+.item.item-avatar-right{
+    border-top-right-radius: 5px !important;
+    border-top-left-radius: 5px !important;
+    box-shadow: 0px 5px 5px grey;
+}
+
+.fa.pull-right{
+    position: relative;
+    right: -60px;
+}
+
+.tab-item {
+    position: relative;
+    width: 100%;
+}
+
+.header-left {
+    margin-left: 3%;
+}
+
+.header-right {
+    margin-right: 3%;
+}
+
+.button.button-dark.button-clear {
+    border-color: transparent;
+    background: none;
+    box-shadow: none;
+}
+
+.button.button-dark.button-clear.activated {
+    color: #000000;
+    text-decoration: none;
+}
+
+.bar.bar-header.item-input-inset.search {
+    background-color: darkgrey;
+}
+
+#top {
+    top: 1000px;
+}
+
+.button.button-block.button-balanced {
+    background-color: lightgreen;
+    color: #ffffff;
+    border: #ffffff;
+}
+
+.my-element.ng-hide-add, .my-element.ng-hide-remove {
+    transition:3.5s linear all;
+}

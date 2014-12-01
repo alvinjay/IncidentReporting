@@ -1,0 +1,65 @@
+<html ng-app="App">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+
+    <title>Tabs Example</title>
+
+    <!--Stylesheets imports -->
+    <link rel="stylesheet" href="css/style.css"/>
+    <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+    <!--ionic imports-->
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="lib/angular-route/angular-route.js"></script>
+    <script src="lib/ngCordova/dist/ng-cordova.js"></script>
+    <script src="cordova.js"></script>
+
+    <!--JS imports-->
+    <script src="lib/jquery/jquery.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/constants.js"></script>
+
+    <!--Controllers-->
+    <script src="js/controllers/AssignmentController.js"></script>
+    <script src="js/controllers/HomeController.js"></script>
+    <script src="js/controllers/MapController.js"></script>
+
+    <!--Firebase Imports-->
+    <script src="lib/rsvp/rsvp.js"></script>
+    <script src="lib/firebase/firebase.js"></script>
+    <script src="lib/geofire/dist/geofire.js"></script>
+    <script src="lib/angularfire/dist/angularfire.js"></script>
+
+    <!--Offline Firebase-->
+    <!--<script src="lib/twig.js/twig.js"></script>-->
+    <!--<script src="lib/offline-firebase/deps.js"></script>-->
+    <!--<script src="lib/offline-firebase/firebase-debug.js"></script>-->
+    <!--<script src="lib/offline-firebase/OfflineFirebase.js"></script>-->
+
+    <!--Services-->
+    <script src="js/services/IonicLoadingService.js"></script>
+    <script src="js/services/IonicPopupService.js"></script>
+    <script src="js/services/IonicModalService.js"></script>
+    <script src="js/services/FirebaseService.js"></script>
+
+    <!--Social Sharing-->
+    <script src="plugins/nl.x-services.plugins.socialsharing/www/SocialSharing.js"></script>
+</head>
+
+<body>
+
+<ion-nav-bar class="nav-title-slide-ios7 bar-dark">
+
+    <ion-nav-back-button id="title" class="button-icon ion-chevron-left">&nbsp;Back
+    </ion-nav-back-button>
+</ion-nav-bar>
+
+<ion-nav-view animation="slide-left-right"></ion-nav-view>
+
+
+<script id="tabs.html" type="text/ng-template" src="views/tabs.html"></script>
+
+</body>
+</html>

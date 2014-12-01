@@ -1,0 +1,12 @@
+<ion-view id="body" title="Choose a type">
+    <ion-content id="content" overflow-scroll="true">
+        <ion-scroll>
+            <div data-ng-repeat="type in types">
+                <a class="item item-icon-right" data-ng-click="registerType(type.name)" href="#/app/map">
+                    {{ type.name }}
+                    <img src="{{ type.icon }}" class="icon"></i>
+                </a>
+            </div>
+        </ion-scroll>
+    </ion-content>
+</ion-view>

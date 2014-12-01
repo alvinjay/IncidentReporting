@@ -1,0 +1,151 @@
+<ion-view id="body" title='&nbsp;Report a Crime'>
+    <!--<span class="fa-stack fa-lg">-->
+    <!--<i class="fa fa-square-o fa-stack-2x"></i>-->
+    <!--<i class="fa fa-bullhorn fa-stack-1x fa-inverse"></i>-->
+    <!--</span>-->
+    <!--Navbar Buttons-->
+    <!--<ion-nav-buttons side="left">-->
+    <!--<button class="button button-clear" ng-click="openModal()">-->
+    <!--<i class="fa fa-plus-circle"></i>-->
+    <!--</button>-->
+    <!--</ion-nav-buttons>-->
+    <ion-nav-buttons side="right">
+        <button class="button button-clear"
+                data-ng-click="submitReport()"
+                data-ng-disabled="(type.name == '(Select)' || input.sender.name == null || input.sender.contact == null ||
+                      input.location.latitude == null || input.location.longitude == null || !isConnected) ? true : false">
+            <i class="fa fa-send"></i>
+            &nbsp;
+        </button>
+    </ion-nav-buttons>
+
+    <!--Content-->
+    <ion-content id="content" start-y="50" overflow-scroll="true" >
+        <ion-scroll>
+            <!--<ion-refresher-->
+            <!--pulling-text="Pull to check connection..."-->
+            <!--on-refresh="checkConnection()">-->
+            <!--</ion-refresher>-->
+            <div id="firebase"></div>
+            <div id="geolocation"></div>
+            <div class="list list-inset">
+                <a class="item item-stable item-button-right" href="#/app/map/type">
+                    <b>Incident Type:</b>
+                    {{ type.name }}
+                    <button class="button button-clear"
+                            ng-class="{'button-balanced': input.type != null}">
+                        <i class="icon fa fa-chevron-right"></i>
+                    </button>
+                </a>
+                <!--<ion-item class="item item-stable item-button-right"-->
+                <!-->
+                <!--&lt;!&ndash;ng-click="toggleGroup('type')"&ndash;&gt;-->
+                <!--&lt;!&ndash;ng-class="{active: typeGroup}">&ndash;&gt;-->
+                <!--<button class="button button-clear"-->
+                <!--ng-class="{'button-balanced': input.type != null}">-->
+                <!--<i class="icon"-->
+                <!--ng-class="typeGroup ? 'fa fa-chevron-down' : 'fa fa-chevron-right'"></i>-->
+                <!--</button>-->
+                <!--</ion-item>-->
+                <!--<ion-item class="item-accordion"-->
+                <!--data-ng-repeat="item in type.items"-->
+                <!--data-ng-show="typeGroup"-->
+                <!--data-ng-click="selectType(item)">-->
+                <!--<i class="fa fa-caret-right"></i>&nbsp;{{ item }}-->
+                <!--</ion-item>-->
+                <a class="item item-stable item-button-right" href="#/app/map/type">
+                    <b>Incident Type:</b>
+                    {{ type.name }}
+                    <button class="button button-clear"
+                            ng-class="{'button-balanced': input.type != null}">
+                        <i class="icon fa fa-chevron-right"></i>
+                    </button>
+                </a>
+                <ion-item class="item item-stable item-button-right"
+                          ng-click="toggleGroup('info')"
+                          ng-class="{active: infoGroup}">
+                    <b>Personal Info</b>
+                    <button class="button button-clear"
+                            ng-class="{'button-balanced': (input.sender.name != null && input.sender.contact != null)}">
+                        <i class="icon"
+                           ng-class="infoGroup ? 'fa fa-chevron-down' : 'fa fa-chevron-right'"></i>
+                    </button>
+                </ion-item>
+                <ion-item class="item-accordion"
+                          data-ng-show="infoGroup">
+                    <label class="item item-input">
+                        <input type="text" data-ng-model="input.sender.name" placeholder="Name of Sender">
+                    </label>
+                    <label class="item item-input">
+                        <input type="text" data-ng-model="input.sender.contact" placeholder="Contact #">
+                    </label>
+                </ion-item>
+
+                <div class="item item-stable item-button-right">
+                    <b>Location:</b>&nbsp;
+                    {{ (input.location.latitude != null && input.location.longitude != null)
+                    ? 'Ready' : 'Retrieving...'}}
+                    <button class="icon button button-clear"
+                            ng-class="{'button-balanced': (input.location.latitude != null && input.location.longitude != null),
+                                            'button-assertive': (input.location.latitude == null || input.location.longitude == null)}">
+                        <i class="{{ (input.location.latitude != null && input.location.longitude != null)
+                                            ? 'fa fa-check-circle' : 'fa fa-spinner fa-spin' }}"></i>
+                    </button>
+                </div>
+
+                <!--<ion-item class="item item-stable item-button-right">-->
+                <!--<b>Location:</b>&nbsp;-->
+                <!--{{ (input.location.latitude != null && input.location.longitude != null)-->
+                <!--? 'Ready' : 'Retrieving...'}}-->
+                <!--<button class="button button-clear"-->
+                <!--ng-class="{'button-balanced': (input.location.latitude != null && input.location.longitude != null),-->
+                <!--'button-assertive': (input.location.latitude == null || input.location.longitude == null)}">-->
+                <!--<i class="{{ (input.location.latitude != null && input.location.longitude != null)-->
+                <!--? 'fa fa-check-circle' : 'fa fa-spinner fa-spin' }}"></i>-->
+                <!--</button>-->
+                <!--</ion-item>-->
+
+                <div class="item item-stable item-button-right">
+                    <b>Internet:</b>&nbsp;
+                    {{ isOnline ? 'Connected' : 'No Connection '}}
+                    <button class="button button-clear"
+                            ng-class="{'button-balanced': isOnline, 'button-assertive': !isOnline}">
+                        <i class="{{ isOnline ? 'ion-wifi' : 'fa fa-times-circle' }}"></i>
+                    </button>
+                </div>
+
+                <div class="item item-stable item-button-right">
+                    <b>Server:</b>&nbsp;
+                    {{ isConnected ? 'Ready to receive' : 'Not connected '}}
+                    <button class="button button-clear"
+                            ng-class="{'button-balanced': isConnected, 'button-positive': !isConnected}"
+                            data-ng-click="refreshUI()">
+                        <i class="{{ isConnected ? 'fa fa-thumbs-up' : 'fa fa-refresh' }}"></i>
+                    </button>
+                </div>
+
+
+                <div class="item item-stable item-button-right">
+                    <b>Attachment:</b> {{ input.attachments.img == null ? "(None)" : "Ready" }}&nbsp;
+                    <button class="button button-clear"
+                            ng-class="{'button-balanced': input.attachments.img != null}"
+                            data-ng-click="takePicture()">
+                        <i class="fa fa-camera"></i>
+                    </button>
+                </div>
+                <div class="item item-stable"
+                     data-ng-show="input.attachments.img != null">
+                    <img id="attachmentImage" src=""/>
+                </div>
+            </div>
+            <!--<a class="button button-balanced button-block"-->
+            <!-->
+            <!--Submit&nbsp;-->
+            <!--<i class="fa fa-send"></i>-->
+            <!--</a>-->
+        </ion-scroll>
+    </ion-content>
+
+</ion-view>
+
+

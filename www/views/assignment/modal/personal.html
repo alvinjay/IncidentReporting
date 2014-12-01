@@ -1,0 +1,31 @@
+<ion-modal-view id="body">
+    <ion-header-bar id="header">
+        <button id="title"
+                class="button button-clear item-button-left button-dark header-left"
+                data-ng-click="closePersonalInfoModal()">
+            <i class="button-icon ion-chevron-left"></i>&nbsp;Settings
+        </button>
+        <h1 id="title" class="title">Info</h1>
+        <button id="title"
+                class="button button-clear item-button-right button-dark header-right"
+                data-ng-click="setPersonalInfo()"
+                data-ng-disabled="(info.name == '' || info.contact == '')">
+            Save&nbsp;
+        </button>
+    </ion-header-bar>
+
+    <ion-content id="content" overflow-scroll="true">
+        <ion-scroll>
+           <input type="button" hidden/>
+           <div class="list list-inset">
+               <label class="item item-input item-stacked-label">
+                   <i class="icon fa fa-user"></i>&nbsp;
+                   <span class="input-label">Full Name</span>
+                   <div class="col-offset-5">
+                       <input type="text" data-ng-model="info.name" >
+                   </div>
+               </label>
+           </div>
+        </ion-scroll>
+    </ion-content>
+</ion-modal-view>
