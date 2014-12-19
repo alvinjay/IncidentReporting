@@ -1,7 +1,13 @@
-/* global Firebase */
 (function(angular){
+    'use strict';
+
     angular.module('App')
-        .controller('HomeController', function($scope, IonicPopupService, IonicLoadingService, IonicModalService, FirebaseService, $cordovaDialogs, $cordovaGeolocation, $cordovaCamera, $cordovaSplashscreen, $stateParams){
+        .controller('HomeController', HomeController);
+    HomeController.$inject = ['$scope', 'IonicPopupService', 'IonicLoadingService', 'IonicModalService',
+                              'FirebaseService', '$cordovaDialogs', '$cordovaGeolocation', '$cordovaCamera',
+                              '$cordovaSplashscreen', '$stateParams'];
+    function HomeController($scope, IonicPopupService, IonicLoadingService, IonicModalService, FirebaseService,
+                            $cordovaDialogs, $cordovaGeolocation, $cordovaCamera, $cordovaSplashscreen, $stateParams){
 
             $scope.assignment = {
                 id: 1
@@ -15,6 +21,7 @@
                     id: 2
                 }
             ];
+           $scope.location = {};
 
             $scope.$on('$viewContentLoaded', function(){
                 $('#settings').html("Name: " + window.localStorage.getItem("name") +
@@ -191,5 +198,5 @@
               IonicModalService.closeModal($scope);
             };
 
-        });
+        };
 })(window.angular);
