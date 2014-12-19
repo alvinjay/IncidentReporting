@@ -12,9 +12,9 @@
         <div class="list list-inset" data-ng-show="incidents.length == 0">No Incident Reports</div>
         <div class="list list-inset"  data-ng-show="incidents.length != 0">
             <a class="item item-icon-left item-button-right" data-ng-repeat="incident in incidents"
-               data-ng-click="openIncidentModal(incident.id)">
+               data-ng-click="openIncidentModal(incident.$id)">
                 <i class="icon fa fa-info-circle"></i>
-                <b>Incident ID</b>: {{ incident.id }}
+                <b>Incident ID</b>: {{ incident.$id }}
                 <button class="button button-clear button-light">
                     <i class="icon fa fa-chevron-right"></i>
                 </button>

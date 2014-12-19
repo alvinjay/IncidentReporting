@@ -6,36 +6,44 @@
             <i class="button-icon ion-chevron-left"></i>&nbsp;Back
         </button>
         <h1 id="title" class="title">Incident Details</h1>
-        <a id="title" href="/#/app/map/1"
+        <button id="title" data-ng-click="openIncidentMapModal()"
             class="button button-clear item-button-right button-dark header-right">
             <i class="fa fa-map-marker fa-lg"></i>&nbsp;
-        </a>
+        </button>
     </ion-header-bar>
 
     <ion-content id="content" overflow-scroll="true">
         <ion-scroll>
             <div class="list card">
 
-                <div href="#" class="item item-icon-left">
-                    <!--<i class="icon ion-home"></i>-->
-                    Incident ID: {{ incident.id }}
+                <div class="item" data-ng-disabled="assignment != null">
+                    <button class="button button-block button-balanced">Submit Request</button>
                 </div>
 
                 <div href="#" class="item item-icon-left">
-                    <!--<i class="icon ion-ios7-telephone"></i>-->
-                    phone number
+                    <!--<i class="icon ion-home"></i>-->
+                    Incident Type: {{ incident.type }}
                 </div>
 
                 <div href="#" class="item item-icon-left">
                     <!--<i class="icon ion-wifi"></i>-->
-                    wireless password
+                    Sender Name: {{ incident.sender.name }}
+                </div>
+
+
+                <div href="#" class="item item-icon-left">
+                    <!--<i class="icon ion-ios7-telephone"></i>-->
+                    Contact number: {{ incident.sender.contact | checkIfNull}}
                 </div>
 
                 <div href="#" class="item item-icon-left">
-                    <!--<i class="icon ion-card"></i>-->
-                    card information
+                    <!--<i class="icon ion-wifi"></i>-->
+                    Submitted at: {{ incident.timestamp | convertToDateTime }}
                 </div>
+
+
             </div>
+
         </ion-scroll>
     </ion-content>
 </ion-modal-view>

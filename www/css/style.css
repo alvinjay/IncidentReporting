@@ -91,3 +91,7 @@ div.list > a.item, div.list > div.item, div > a.item {
 .my-element.ng-hide-add, .my-element.ng-hide-remove {
     transition:3.5s linear all;
 }
+
+.map {
+    -webkit-transform: rotate(90deg);
+}

@@ -7,200 +7,176 @@
 
     HomeController.$inject = ['$scope', 'IonicPopupService', 'IonicLoadingService', 'IonicModalService',
                               'FirebaseService', '$cordovaDialogs', '$cordovaGeolocation', '$cordovaCamera',
-                              '$cordovaSplashscreen', '$stateParams'];
+                              '$cordovaSplashscreen', '$stateParams', 'STATION_ID'];
 
     function HomeController($scope, IonicPopupService, IonicLoadingService, IonicModalService, FirebaseService,
-                            $cordovaDialogs, $cordovaGeolocation, $cordovaCamera, $cordovaSplashscreen, $stateParams){
+                            $cordovaDialogs, $cordovaGeolocation, $cordovaCamera, $cordovaSplashscreen, $stateParams,
+                            STATION_ID){
 
-            $scope.assignment = {
-                id: 1
-            };
+        $scope.defaults = {
+            minZoom: 13
+        }
 
-            $scope.incidents = [
-                {
-                    id: 1
-                },
-                {
-                    id: 2
-                }
-            ];
+        $scope.center = {
+            zoom: 16
+        }
 
-           $scope.location = {};
+        //DUMMY DATA
+        $scope.assignment = {
+            id: 1
+        };
 
-            $scope.$on('$viewContentLoaded', function(){
-                $('#settings').html("Name: " + window.localStorage.getItem("name") +
-                    "</br>Contact: " + window.localStorage.getItem("contact"));
-            });
+        $scope.incidents = [];
+        $scope.markers = [];
 
-            /* model Internet and Firebase Connection */
-            $scope.isOnline = false;
-            $scope.isConnected = false;
 
-            /* input groups shown status */
-            $scope.typeGroup = false;
-            $scope.infoGroup = false;
+        //DUMMY DATA END
 
-            /* ref for firebase connection */
+        $scope.location = {};
+
+        // model Internet and Firebase Connection
+        $scope.isOnline = false;
+        $scope.isConnected = false;
+
+        $scope.openIncidentModal = openIncidentModal;
+        $scope.closeIncidentModal = closeIncidentModal;
+        $scope.openIncidentMapModal = openIncidentMapModal;
+        $scope.closeIncidentMapModal = closeIncidentMapModal;
+
+        // watch for Internet Connection status changes
+        $scope.$watch('online', changeInternetStatus);
+
+        // begin watching geolocation
+        var watch = $cordovaGeolocation.watchPosition({ enableHighAccuracy: true });
+        watch.promise.then(null,geolocationError,geolocationSuccess);
+
+        function onDeviceReady() {
+            // Now safe to use device APIs
+            // access multiple numbers in a string like: '0612345678,0687654321'
+            $cordovaSplashscreen.show();
+        };
+
+        /*
+         * callback called when internet connection status has changed
+         */
+        function changeInternetStatus(newStatus){
+            //record new status
+            $scope.isOnline = newStatus;
+            // watch for changes in firebase connection value
             $scope.firebaseConnection = FirebaseService.checkConnection();
+            $scope.firebaseConnection.on('value', changeFirebaseStatus);
+            // Create a new GeoFire instance, pulling data from the public transit data
+            $scope.geoFire = new GeoFire(FirebaseService.getRef('/' + STATION_ID + '/new'));
+        };
 
-            /* watch for Internet Connection status changes */
-            $scope.$watch('online', function(newStatus) {
-                $scope.isOnline = newStatus;
-                $scope.firebaseConnection = FirebaseService.checkConnection();
-                $scope.root = FirebaseService.getRef('/');
-                // Create a new GeoFire instance, pulling data from the public transit data
-                $scope.geoFire = new GeoFire($scope.root.child('station1/new'));
+        /*
+         * callback called when connection to firebase server is established
+         */
+        function changeFirebaseStatus(snap) {
+            if (snap.val() === true) {
+                $scope.isConnected = true;
+                $('#firebase').html('Firebase: Connected');
+                console.log(
+                    'Internet:' + $scope.isOnline +
+                        '\nFirebase: ' + $scope.isConnected
+                );
+                //initialize incidents firebase ref
+                $scope.incidentsRef = FirebaseService.getRef('/' + STATION_ID + '/new');
+                //Get Array
+                $scope.incidentsFirebaseArray = FirebaseService.getArray($scope.incidentsRef);
+                $scope.incidentsFirebaseArray.$watch(watchIncidents);
+            }
+            else
+            {
+                $scope.isConnected = false;
+                $('#firebase').html('Firebase: Disconnected');
+            }
+        }
+
+        /*
+         * open incident modal
+         * Params: id int
+         */
+        function openIncidentModal(key){
+            //retrieve incident based on key
+            $scope.incident = $scope.incidentsFirebaseArray.$getRecord(key);
+
+            //open modal
+            IonicModalService.openIncidentModal($scope);
+        }
+        /*
+         * close incident modal
+         */
+        function closeIncidentModal(){
+            IonicModalService.closeModal($scope);
+        }
+
+        /*
+         * locate incident in a map modal
+         */
+        function openIncidentMapModal(){
+            //specify center of map based on incident location
+            $scope.center.lat = $scope.incident.l[0];
+            $scope.center.lng = $scope.incident.l[1];
+
+            //make a marker for incident chosen
+            $scope.markers.push({
+                lat: $scope.center.lat,
+                lng: $scope.center.lng,
+                draggable: false
             });
 
-            /* watch for changes in firebase connection value */
-            $scope.firebaseConnection.on('value', function(snap) {
-                if (snap.val() === true) {
-                    $scope.isConnected = true;
-                    $('#firebase').html('Firebase: Connected');
-                    console.log(
-                        'Internet:' + $scope.isOnline +
-                            '\nFirebase: ' + $scope.isConnected
-                    );
-                }
-                else
-                {
-                    $scope.isConnected = false;
-                    $('#firebase').html('Firebase: Disconnected');
-                }
-            });
+            IonicModalService.openIncidentMapModal($scope);
+        }
 
-            // begin watching
-            var watch = $cordovaGeolocation.watchPosition({ enableHighAccuracy: true });
-            watch.promise.then(function() { /* Not  used */ },
-                function(err) {
-                    // An error occurred.
-                    $('#geolocation').html('Error Code:' + err.code + '</br>Message:' + err.message);
-                },
-                function(position) {
-                    $scope.location.latitude =  position.coords.latitude;
-                    $scope.location.longitude =  position.coords.longitude;
-                    var str = 'Latitude: '  + $scope.location.latitude  + '<br/>' +
-                        ' Longitude: ' + $scope.location.longitude + '<br />';
-                    $('#geolocation').html(str);
-                });
+        /*
+         * close incident map modal
+         */
+        function closeIncidentMapModal(){
+            IonicModalService.closeModal($scope);
+        }
+
+        /*
+         * on gelocation watch error
+         */
+        function geolocationError(err) {
+            // An error occurred.
+            $('#geolocation').html('Error Code:' + err.code + '</br>Message:' + err.message);
+        }
+
+        /*
+         * on geolocation watch success
+         */
+        function geolocationSuccess(position) {
+            $scope.location.lat =  position.coords.latitude;
+            $scope.location.lng =  position.coords.longitude;
+
+            var str = 'Latitude: '  + $scope.location.latitude  + '<br/>' +
+                ' Longitude: ' + $scope.location.longitude + '<br />';
+            $('#geolocation').html(str);
 
             // clear watch
-//            $cordovaGeolocation.clearWatch(watch.watchID)
-
-            function onDeviceReady() {
-                // Now safe to use device APIs
-                // access multiple numbers in a string like: '0612345678,0687654321'
-                $cordovaSplashscreen.show();
-//                $cordovaDialogs.alert(isOnline);
-            };
-
-
-            /*
-             * toggle accordion group shown
-             */
-            $scope.toggleGroup = function(group) {
-                if (group == 'type') {
-                    $scope.typeGroup = !$scope.typeGroup;
-                } else {
-                    $scope.infoGroup = !$scope.infoGroup;
+            $cordovaGeolocation.clearWatch(watch.watchID);
+        }
+        /*
+         * callback whenever changes are made to incidentsFirebaseArray
+         */
+        function watchIncidents(data) {
+            console.log(data.event);
+            if (data.event == "child_added" && data.key != "count")
+            {
+                try {
+                    //TODO: error trap what if incident already exists in $scope.incidents
+                    var incident = $scope.incidentsFirebaseArray.$getRecord(data.key);
+                    $scope.incidents.push(incident);
+                    console.log(incident);
+                } catch(e) {
+                    console.log(e);
                 }
-            };
-
-            /* select incident type */
-            $scope.selectType = function(typeSelected){
-                $scope.type.name = $scope.input.type = typeSelected;
-                $scope.typeGroup = false;
-            };
-
-            /* refresh UI bug in angular JS */
-            $scope.refreshUI = function(){
-                $scope.typeGroup = !$scope.typeGroup;
-                $scope.typeGroup = !$scope.typeGroup;
-            };
-
-
-
-            /* process location before submitting report */
-            $scope.submitReport = function(){
-                IonicLoadingService.show('Submitting Report...');
-//                newIncident.set($scope.input);
-                //TO DO: add code to determine station number
-//                console.log(new Date().getTime());
-                $scope.input.timestamp = new Date().getTime();
-                //station(N)/new ref
-//                var station = $scope.root.child('station1/new');
-
-                var temp = $scope.geoFire.ref().push();
-                var key = temp.key();
-                var obj = {}
-                obj[key] = {
-                    "location": [$scope.location.latitude,$scope.location.longitude],
-                    "data": $scope.input
-                };
-//                console.log(obj);
-                $scope.geoFire.set(obj).then(function() {
-//                    $scope.geoFire.ref().child(key).update($scope.input);
-                    console.log('inserted');
-                }, function(error) {
-                    console.log("Error: " + error);
-                });
-
-                var countRef = $scope.geoFire.ref().child('count');
-//                var countRef = station.child('count');
-                countRef.once('value', function(snapshot){
-                    //get initial count;
-                    var count = parseInt(snapshot.val());
-                    //push new object to firebase
-//                    station.push($scope.input);
-                    //update count in firebase
-                    $scope.geoFire.ref().update({ count: ++count + ''}, function(snapshot){
-//                        console.log('new count:' + snapshot.val());
-                    });
-                    IonicLoadingService.hide();
-                    IonicPopupService.showSuccess("Please wait for a text message/call from the police");
-                });
+                console.log('added');
             }
+        }
 
-            $scope.takePicture = function() {
-                var options = {
-                    quality : 50,
-                    destinationType : Camera.DestinationType.DATA_URL,
-                    sourceType : Camera.PictureSourceType.CAMERA,
-                    allowEdit : true,
-                    encodingType: Camera.EncodingType.JPEG,
-                    targetWidth: 600,
-//                    targetWidth: 2048,
-                    targetHeight: 480,
-//                    targetHeight: 1536,
-                    correctOrientation: true,
-                    popoverOptions: CameraPopoverOptions,
-                    saveToPhotoAlbum: false
-                };
 
-                $cordovaCamera.getPicture(options).then(function(imageData) {
-                    // Success! Image data is here
-                    var image = document.getElementById('attachmentImage');
-                    image.src = "data:image/jpeg;base64," + imageData;
-                    $scope.input.attachments.img = imageData;
-                }, function(err) {
-                    $('#firebase').html(err);
-                    // An error occured. Show a message to the user
-                });
-            }
-
-            $scope.openIncidentModal = function(id){
-              var index = $scope.incidents.findIndex(function(element,index,array){
-                     if (element.id == id)
-                        return true;
-              });
-              //supposed to be $scope.incident.$getRecord(id);
-              $scope.incident = $scope.incidents[index];
-              IonicModalService.openIncidentModal($scope);
-            };
-
-            $scope.closeIncidentModal = function(){
-              IonicModalService.closeModal($scope);
-            };
-
-        };
+    };
 })(window.angular);
