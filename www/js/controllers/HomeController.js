@@ -1,11 +1,14 @@
 (function(angular){
     'use strict';
 
-    angular.module('App')
+    angular
+        .module('App')
         .controller('HomeController', HomeController);
+
     HomeController.$inject = ['$scope', 'IonicPopupService', 'IonicLoadingService', 'IonicModalService',
                               'FirebaseService', '$cordovaDialogs', '$cordovaGeolocation', '$cordovaCamera',
                               '$cordovaSplashscreen', '$stateParams'];
+
     function HomeController($scope, IonicPopupService, IonicLoadingService, IonicModalService, FirebaseService,
                             $cordovaDialogs, $cordovaGeolocation, $cordovaCamera, $cordovaSplashscreen, $stateParams){
 
@@ -21,6 +24,7 @@
                     id: 2
                 }
             ];
+
            $scope.location = {};
 
             $scope.$on('$viewContentLoaded', function(){
