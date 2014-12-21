@@ -95,3 +95,34 @@ div.list > a.item, div.list > div.item, div > a.item {
 .map {
     -webkit-transform: rotate(90deg);
 }
+
+.button, .loading-container .loading, .popup{
+    font-family: copperplate !important;
+}
+
+.popup{
+    color: #f5f5f5 !important;
+    background-color: #0C1D40 !important;
+}
+
+/*.popup-head {*/
+    /*background-color: black !important;*/
+/*}*/
+
+.popup-title {
+    font-family: copperplate!important;
+    color: #f5f5f5 !important;
+}
+
+.popup-sub-title{
+    font-family: copperplate !important;
+    color: #f5f5f5 !important;
+}
+
+.popup-buttons .button{
+    font-family: copperplate !important;
+}
+
+.button .button-balanced {
+    background-color: red !important;
+}

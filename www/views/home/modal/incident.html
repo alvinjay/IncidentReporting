@@ -16,8 +16,10 @@
         <ion-scroll>
             <div class="list card">
 
-                <div class="item" data-ng-disabled="assignment != null">
-                    <button class="button button-block button-balanced">Submit Request</button>
+                <div class="item"
+                     data-ng-hide="officer.assignment != null || isElementInObject(incident, pendingRequests) ">
+                    <button class="button button-full button-balanced"
+                            data-ng-click="confirmPassword()">Request as Assignment</button>
                 </div>
 
                 <div href="#" class="item item-icon-left">

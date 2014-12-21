@@ -12,6 +12,22 @@
     function HomeController($scope, IonicPopupService, IonicLoadingService, IonicModalService, FirebaseService,
                             $cordovaDialogs, $cordovaGeolocation, $cordovaCamera, $cordovaSplashscreen, $stateParams,
                             STATION_ID){
+        //TODO: temporary
+//        window.localStorage.removeItem('pendingRequest');
+
+        //TODO retrieve id, name and password for
+        window.localStorage.setItem("id", '1234567890');
+        window.localStorage.setItem("name", 'Alvin Jay Cosare');
+        window.localStorage.setItem("password", 'walakokabalo');
+
+        $scope.officer = {
+            id: window.localStorage.getItem("id"),
+            name: window.localStorage.getItem("name"),
+            password: window.localStorage.getItem("password"),
+            confirmPassword: 'walakokabalo',
+            pendingRequests: ((window.localStorage.getItem('pendingRequest') === null) ? {} : JSON.parse(window.localStorage.getItem('pendingRequest'))),
+            assignment: null
+        };
 
         $scope.defaults = {
             minZoom: 13
@@ -26,9 +42,9 @@
             id: 1
         };
 
+        $scope.pendingRequests = [];
         $scope.incidents = [];
         $scope.markers = [];
-
 
         //DUMMY DATA END
 
@@ -42,6 +58,14 @@
         $scope.closeIncidentModal = closeIncidentModal;
         $scope.openIncidentMapModal = openIncidentMapModal;
         $scope.closeIncidentMapModal = closeIncidentMapModal;
+
+        $scope.confirmPassword = confirmPassword;
+        $scope.submitRequest = submitRequest;
+
+        //misc methods
+        $scope.hash = hash;
+        $scope.getObjectLength = getObjectLength;
+        $scope.isElementInObject = isElementInObject;
 
         // watch for Internet Connection status changes
         $scope.$watch('online', changeInternetStatus);
@@ -137,6 +161,47 @@
         }
 
         /*
+         * confirm password for security purposes
+         */
+        function confirmPassword(){
+            IonicPopupService.showConfirmPassword($scope)
+                .then(function(result){
+                    if (result)
+                    {
+                        //if passwords match then call this
+                        $scope.submitRequest();
+                    }
+                });
+        }
+
+        /*
+         * submit request for assignment
+         */
+        function submitRequest(){
+            //1.) Show Loading Modal (Submitting request...)
+            IonicLoadingService.show('Submitting request...');
+            //2.) Edit $scope.incident (add 'requests' node)
+            //Check if requests has not been defined YET
+            if (typeof $scope.incident.request === 'undefined')
+                $scope.incident.requests = {};
+            // Insert new request
+            $scope.incident.requests[$scope.officer.id] =  true;
+            //3.) Do $scope.incidents($scope.incident).$save
+            $scope.incidentsFirebaseArray.$save($scope.incident)
+                .then(function(ref){
+                    //4.) Save $scope.incident ID to window.localStorage and $scope.officer.pendingRequest
+                    $scope.officer.pendingRequests[ref.key()] = true;
+                    window.localStorage.setItem('pendingRequest', JSON.stringify($scope.officer.pendingRequests));
+                    //5.) Close Loading Modal
+                    IonicLoadingService.hide();
+                    //6.) Close incident modal
+                    IonicModalService.closeModal($scope);
+                    //7.) Show success Popup
+                    IonicPopupService.showSuccess('Request has been submitted');
+                });
+        }
+
+        /*
          * on gelocation watch error
          */
         function geolocationError(err) {
@@ -162,12 +227,22 @@
          * callback whenever changes are made to incidentsFirebaseArray
          */
         function watchIncidents(data) {
-            console.log(data.event);
-            if (data.event == "child_added" && data.key != "count")
+            console.log(data.event + ' ' + data.key);
+            var incident = $scope.incidentsFirebaseArray.$getRecord(data.key);
+            console.log($scope.incidents);
+            //check if the incident is a pending request for the officer
+            if (data.event === 'child_changed' || (Object.keys($scope.officer.pendingRequests).length !== 0 && $scope.officer.pendingRequests[data.key]))
+            {
+                console.log(data.key);
+                $scope.pendingRequests.push(incident);
+                try {
+                    if ($scope.isElementInObject(incident, $scope.incidents))
+                        removeObjectFromArray(incident, $scope.incidents);
+                } catch(e){}
+            }
+            else if (data.event == "child_added" && data.key != "count" && ! alreadyExists(data.key, $scope.incidents))
             {
                 try {
-                    //TODO: error trap what if incident already exists in $scope.incidents
-                    var incident = $scope.incidentsFirebaseArray.$getRecord(data.key);
                     $scope.incidents.push(incident);
                     console.log(incident);
                 } catch(e) {
@@ -175,8 +250,60 @@
                 }
                 console.log('added');
             }
+
+            function alreadyExists(key, list){
+                for (var i = 0; i < list.length; i++)
+                {
+                    if (list[i].$id === key)
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+            }
+
+            function removeObjectFromArray(obj, list) {
+                console.log('wa');
+                console.log(list);
+                list.splice(list.indexOf(obj), 1);
+            }
+        }
+        /**************************************************/
+                //TEMPORARY FUNCTIONS//
+        /*
+         * SHA-3 Encryption
+         */
+        function hash() {
+            var hash1 = CryptoJS.SHA3($scope.officer.name+'\n'+$scope.officer.password, { outputLength: 256 }).toString()
+            var hash2 = CryptoJS.SHA3($scope.officer.name+'\n'+$scope.officer.confirmPassword, { outputLength: 256 }).toString()
+            if (hash1 === hash2)
+            {
+                console.log('yes');
+            } else {
+                console.log('no');
+            }
+        }
+        
+        /*
+         * returns an object's length
+         * params: obj - Object
+         */
+        function getObjectLength(obj){
+            return Object.keys(obj).length;
         }
 
+        /*
+         *  returns true if the object is an element of the list
+         *  params: obj - Object, list - Array
+         */
+        function isElementInObject(obj, list){
+            for (var i = 0; i < list.length; i++) {
+                if (list[i] === obj) {
+                    return true;
+                }
+            }
+            return false;
+        }
 
     };
 })(window.angular);
