@@ -7,14 +7,14 @@
 
     HomeController.$inject = ['$scope', 'IonicPopupService', 'IonicLoadingService', 'IonicModalService',
                               'FirebaseService', '$cordovaDialogs', '$cordovaGeolocation', '$cordovaCamera',
-                              '$cordovaSplashscreen', '$stateParams', 'STATION_ID'];
+                              '$cordovaSplashscreen', '$cordovaDevice', '$stateParams', 'STATION_ID'];
 
     function HomeController($scope, IonicPopupService, IonicLoadingService, IonicModalService, FirebaseService,
-                            $cordovaDialogs, $cordovaGeolocation, $cordovaCamera, $cordovaSplashscreen, $stateParams,
+                            $cordovaDialogs, $cordovaGeolocation, $cordovaCamera, $cordovaSplashscreen, $cordovaDevice, $stateParams,
                             STATION_ID){
         //TODO: temporary
 //        window.localStorage.removeItem('pendingRequest');
-        console.log(CryptoJS.SHA3('walakokabalo', { outputLength: 256 }).toString());
+
         //TODO retrieve id, name and password for
 //        window.localStorage.setItem("id", '1234567890');
 //        window.localStorage.setItem("name", 'Alvin Jay Cosare');
@@ -35,6 +35,10 @@
 
         $scope.defaults = {
             minZoom: 13
+        }
+
+        $scope.tiles = {
+            url: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
         }
 
         $scope.center = {
@@ -79,6 +83,7 @@
         watch.promise.then(null,geolocationError,geolocationSuccess);
 
         function onDeviceReady() {
+            IonicPopupService.showAlert($cordovaDevice.getUUID());
             // Now safe to use device APIs
             // access multiple numbers in a string like: '0612345678,0687654321'
             $cordovaSplashscreen.show();
@@ -176,6 +181,7 @@
          */
         function closeIncidentMapModal(){
             IonicModalService.closeModal($scope);
+            $scope.markers.splice(0, 1);
         }
 
         /*
