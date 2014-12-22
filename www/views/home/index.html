@@ -12,7 +12,8 @@
         <div class="list list-inset" data-ng-show="getObjectLength(pendingRequests) == 0">
             No Pending Assignment Requests</div>
         <div class="list list-inset"  data-ng-show="getObjectLength(pendingRequests) != 0">
-            <a class="item item-icon-left item-button-right" data-ng-repeat="request in pendingRequests">
+            <a class="item item-icon-left item-button-right" data-ng-repeat="request in pendingRequests"
+               data-ng-click="openIncidentModal(request.$id)">
                 <i class="icon fa fa-info-circle"></i>
                 <b>Request ID</b>: {{ request.$id }}
                 <button class="button button-clear button-light">

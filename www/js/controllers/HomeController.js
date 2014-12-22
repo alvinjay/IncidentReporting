@@ -14,10 +14,14 @@
                             STATION_ID){
         //TODO: temporary
 //        window.localStorage.removeItem('pendingRequest');
-
+        console.log(CryptoJS.SHA3('walakokabalo', { outputLength: 256 }).toString());
         //TODO retrieve id, name and password for
-        window.localStorage.setItem("id", '1234567890');
-        window.localStorage.setItem("name", 'Alvin Jay Cosare');
+//        window.localStorage.setItem("id", '1234567890');
+//        window.localStorage.setItem("name", 'Alvin Jay Cosare');
+//        window.localStorage.setItem("password", 'walakokabalo');
+
+        window.localStorage.setItem("id", '0987654321');
+        window.localStorage.setItem("name", 'Marie Beth Venice');
         window.localStorage.setItem("password", 'walakokabalo');
 
         $scope.officer = {
@@ -104,11 +108,25 @@
                     'Internet:' + $scope.isOnline +
                         '\nFirebase: ' + $scope.isConnected
                 );
-                //initialize incidents firebase ref
-                $scope.incidentsRef = FirebaseService.getRef('/' + STATION_ID + '/new');
-                //Get Array
-                $scope.incidentsFirebaseArray = FirebaseService.getArray($scope.incidentsRef);
+                //initialize 'new' incidents
+                $scope.newIncidentsRef = FirebaseService.getRef('/' + STATION_ID + '/new');
+                //initialize 'ongoing' incidents for this officer only
+                $scope.ongoingIncidentsRef = FirebaseService.getRef('/' + STATION_ID + '/ongoing/' + $scope.officer.id);
+
+                //Get 'new' incidents array
+                $scope.incidentsFirebaseArray = FirebaseService.getArray($scope.newIncidentsRef);
                 $scope.incidentsFirebaseArray.$watch(watchIncidents);
+
+                //TODO check if request was denied or approved
+                //TODO retrieve officer assignment if any
+                $scope.assignmentFirebaseObject = FirebaseService.getObject($scope.ongoingIncidentsRef);
+                $scope.assignmentFirebaseObject.$bindTo($scope, "officer.assignment").then(function() {
+                    console.log($scope.officer.assignment);
+//                    $scope.officer.assignment.foo = 'bar';
+                });
+                $scope.assignmentFirebaseObject.$watch(function(){
+                    console.log('updated');
+                });
             }
             else
             {
@@ -182,7 +200,7 @@
             IonicLoadingService.show('Submitting request...');
             //2.) Edit $scope.incident (add 'requests' node)
             //Check if requests has not been defined YET
-            if (typeof $scope.incident.request === 'undefined')
+            if (typeof $scope.incident.requests === 'undefined')
                 $scope.incident.requests = {};
             // Insert new request
             $scope.incident.requests[$scope.officer.id] =  true;
@@ -223,53 +241,125 @@
             // clear watch
             $cordovaGeolocation.clearWatch(watch.watchID);
         }
-        /*
-         * callback whenever changes are made to incidentsFirebaseArray
+
+        /**
+         * Event watcher for incidentsFirebaseArray
+         * @param data
          */
         function watchIncidents(data) {
             console.log(data.event + ' ' + data.key);
             var incident = $scope.incidentsFirebaseArray.$getRecord(data.key);
             console.log($scope.incidents);
-            //check if the incident is a pending request for the officer
-            if (data.event === 'child_changed' || (Object.keys($scope.officer.pendingRequests).length !== 0 && $scope.officer.pendingRequests[data.key]))
-            {
-                console.log(data.key);
-                $scope.pendingRequests.push(incident);
-                try {
-                    if ($scope.isElementInObject(incident, $scope.incidents))
-                        removeObjectFromArray(incident, $scope.incidents);
-                } catch(e){}
-            }
-            else if (data.event == "child_added" && data.key != "count" && ! alreadyExists(data.key, $scope.incidents))
+
+            //case: new incident is added to the area of this officer
+            if (data.event == "child_added" && data.key != "count" && ! objectExistsInArray(data.key, $scope.incidents))
             {
                 try {
-                    $scope.incidents.push(incident);
+                    //check if the incident is a pending request for the officer
+                    if (checkIfPendingRequest(incident))
+                        $scope.pendingRequests.push(incident);
+                    else
+                        $scope.incidents.push(incident);
+
                     console.log(incident);
                 } catch(e) {
                     console.log(e);
                 }
                 console.log('added');
             }
+            //case: if officer has submitted a request for an incident
+            // OR other officers have submitted request for an incident
+            else if (data.event === 'child_changed')
+            {
+                if (checkIfPendingRequest(incident) && !objectExistsInArray(incident.$id, $scope.pendingRequests))
+                {
+                    $scope.pendingRequests.push(incident);
+                    try {
+                        if ($scope.isElementInObject(incident, $scope.incidents))
+                            removeObjectFromArray(incident, $scope.incidents);
+                    } catch(e){}
+                }
+            }
+            //case: if incident has been assigned to another officer
+            // OR is ignored
+            // OR is assigned to this officer
+            else if (data.event === 'child_removed') {
+                //check if the incident removed was a pending request for this officer
+                if (objectExistsInArray(data.key, $scope.pendingRequests))
+                {
+                    removeObjectFromArray(getObjectFromArray(data.key, $scope.pendingRequests), $scope.pendingRequests);
+                    console.log('request has been assigned to another officer');
+                }
+                else {
+                    removeObjectFromArray(getObjectFromArray(data.key, $scope.incidents), $scope.incidents);
+                }
+            }
 
-            function alreadyExists(key, list){
+            /**
+             * Checks if key corresponds to an object in the array
+             * @param key
+             * @param list
+             * @returns {boolean}
+             */
+            function objectExistsInArray(key, list){
                 for (var i = 0; i < list.length; i++)
                 {
                     if (list[i].$id === key)
                     {
                         return true;
                     }
-                    return false;
                 }
+                return false;
             }
 
+            /**
+             * Removes the object from the array
+             * @param obj
+             * @param list
+             */
             function removeObjectFromArray(obj, list) {
-                console.log('wa');
-                console.log(list);
+                console.log(obj);
                 list.splice(list.indexOf(obj), 1);
+            }
+
+            /**
+             * Retrieves object element from array based on key
+             * @param key - Object identifier
+             * @param list
+             * @returns {*} - Object element or null
+             */
+            function getObjectFromArray(key, list){
+                for (var i = 0; i < list.length; i++)
+                {
+                    if (list[i].$id === key)
+                    {
+                        return list[i];
+                    }
+                }
+                return null;
+            }
+
+            /**
+             * Checks if the officer submitted a request for the incident
+             * @param incident
+             * @returns {boolean}
+             */
+            function checkIfPendingRequest(incident){
+                //check if incident.requests exists
+                if (typeof incident.requests !== 'undefined')
+                {
+                    if (typeof incident.requests[$scope.officer.id] !== 'undefined')
+                        return true;
+                    return false;
+                }
+
+                return false;
             }
         }
         /**************************************************/
-                //TEMPORARY FUNCTIONS//
+                         //MISC METHODS//
+        /**************************************************/
+
         /*
          * SHA-3 Encryption
          */
@@ -285,7 +375,7 @@
         }
         
         /*
-         * returns an object's length
+         * Returns an object's length
          * params: obj - Object
          */
         function getObjectLength(obj){
@@ -293,8 +383,9 @@
         }
 
         /*
-         *  returns true if the object is an element of the list
-         *  params: obj - Object, list - Array
+         *  Returns true if the object is an element of the list
+         *  @params: obj - Object
+         *  @params: list - Array
          */
         function isElementInObject(obj, list){
             for (var i = 0; i < list.length; i++) {
