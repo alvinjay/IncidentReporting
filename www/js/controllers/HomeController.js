@@ -6,12 +6,11 @@
         .controller('HomeController', HomeController);
 
     HomeController.$inject = ['$scope', 'IonicPopupService', 'IonicLoadingService', 'IonicModalService',
-                              'FirebaseService', '$cordovaDialogs', '$cordovaGeolocation', '$cordovaCamera',
-                              '$cordovaSplashscreen', '$cordovaDevice', '$stateParams', 'STATION_ID'];
+                              'FirebaseService', '$cordovaGeolocation','$cordovaSplashscreen', '$cordovaDevice',
+                              'STATION_ID'];
 
     function HomeController($scope, IonicPopupService, IonicLoadingService, IonicModalService, FirebaseService,
-                            $cordovaDialogs, $cordovaGeolocation, $cordovaCamera, $cordovaSplashscreen, $cordovaDevice, $stateParams,
-                            STATION_ID){
+                            $cordovaGeolocation, $cordovaSplashscreen, $cordovaDevice, STATION_ID){
         //TODO: temporary
 //        window.localStorage.removeItem('pendingRequest');
 
@@ -26,29 +25,24 @@
 
         $scope.officer = {
             id: window.localStorage.getItem("id"),
+            areaCode: STATION_ID, //TODO TEMPORARY (REGISTRATION)
             name: window.localStorage.getItem("name"),
             password: window.localStorage.getItem("password"),
             confirmPassword: 'walakokabalo',
-            pendingRequests: ((window.localStorage.getItem('pendingRequest') === null) ? {} : JSON.parse(window.localStorage.getItem('pendingRequest'))),
             assignment: null
         };
 
-        $scope.defaults = {
-            minZoom: 13
+        $scope.map = {
+            defaults: {
+                minZoom: 13
+            },
+            tiles: {
+                url: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+            },
+            center: {
+                zoom: 16
+            }
         }
-
-        $scope.tiles = {
-            url: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-        }
-
-        $scope.center = {
-            zoom: 16
-        }
-
-        //DUMMY DATA
-        $scope.assignment = {
-            id: 1
-        };
 
         $scope.pendingRequests = [];
         $scope.incidents = [];
@@ -73,7 +67,7 @@
         //misc methods
         $scope.hash = hash;
         $scope.getObjectLength = getObjectLength;
-        $scope.isElementInObject = isElementInObject;
+        $scope.isObjectInArray = isObjectInArray;
 
         // watch for Internet Connection status changes
         $scope.$watch('online', changeInternetStatus);
@@ -281,7 +275,7 @@
                 {
                     $scope.pendingRequests.push(incident);
                     try {
-                        if ($scope.isElementInObject(incident, $scope.incidents))
+                        if ($scope.isObjectInArray(incident, $scope.incidents))
                             removeObjectFromArray(incident, $scope.incidents);
                     } catch(e){}
                 }
@@ -319,33 +313,6 @@
             }
 
             /**
-             * Removes the object from the array
-             * @param obj
-             * @param list
-             */
-            function removeObjectFromArray(obj, list) {
-                console.log(obj);
-                list.splice(list.indexOf(obj), 1);
-            }
-
-            /**
-             * Retrieves object element from array based on key
-             * @param key - Object identifier
-             * @param list
-             * @returns {*} - Object element or null
-             */
-            function getObjectFromArray(key, list){
-                for (var i = 0; i < list.length; i++)
-                {
-                    if (list[i].$id === key)
-                    {
-                        return list[i];
-                    }
-                }
-                return null;
-            }
-
-            /**
              * Checks if the officer submitted a request for the incident
              * @param incident
              * @returns {boolean}
@@ -362,45 +329,5 @@
                 return false;
             }
         }
-        /**************************************************/
-                         //MISC METHODS//
-        /**************************************************/
-
-        /*
-         * SHA-3 Encryption
-         */
-        function hash() {
-            var hash1 = CryptoJS.SHA3($scope.officer.name+'\n'+$scope.officer.password, { outputLength: 256 }).toString()
-            var hash2 = CryptoJS.SHA3($scope.officer.name+'\n'+$scope.officer.confirmPassword, { outputLength: 256 }).toString()
-            if (hash1 === hash2)
-            {
-                console.log('yes');
-            } else {
-                console.log('no');
-            }
-        }
-        
-        /*
-         * Returns an object's length
-         * params: obj - Object
-         */
-        function getObjectLength(obj){
-            return Object.keys(obj).length;
-        }
-
-        /*
-         *  Returns true if the object is an element of the list
-         *  @params: obj - Object
-         *  @params: list - Array
-         */
-        function isElementInObject(obj, list){
-            for (var i = 0; i < list.length; i++) {
-                if (list[i] === obj) {
-                    return true;
-                }
-            }
-            return false;
-        }
-
     };
 })(window.angular);
