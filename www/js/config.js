@@ -4,6 +4,8 @@
     angular
         .module('App')
         .config(function($stateProvider, $urlRouterProvider, $ionicTabsConfig) {
+
+
             /* Android tabs color fix */
             $ionicTabsConfig.type = '';
 
@@ -18,7 +20,21 @@
                     views: {
                         'home-tab': {
                             templateUrl: "views/home/index.html",
-                            controller: "HomeController"
+                            controller: "HomeController",
+                            resolve: {
+                                officer: function(OfficerService){
+                                    return OfficerService.officer;
+                                },
+                                map: function(MapService){
+                                    return MapService.map;
+                                },
+                                incidents: function(IncidentsService){
+                                    return IncidentsService.incidents;
+                                },
+                                requests: function(IncidentsService){
+                                    return IncidentsService.requests;
+                                }
+                            }
                         }
                     }
                 })

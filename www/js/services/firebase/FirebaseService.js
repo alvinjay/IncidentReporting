@@ -1,7 +1,7 @@
 /* global Firebase */
 (function(angular){
     angular.module('App')
-        .service('FirebaseService', function($firebase, FIREBASE_URL){
+        .service('FirebaseService', function($firebase, FIREBASE_URL, OFFICERS_URL){
             var CONNECTION_URL = FIREBASE_URL + '/.info/connected';
             return{
                 getRef: function getRef(endpoint){
@@ -20,6 +20,9 @@
                 },
                 checkConnection: function checkConnection(){
                     return new Firebase(CONNECTION_URL);
+                },
+                getOfficerRef: function getOfficerRef(endpoint){
+                    return new Firebase(OFFICERS_URL + endpoint);
                 }
             }
         });

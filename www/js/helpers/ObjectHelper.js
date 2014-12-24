@@ -51,6 +51,22 @@
             removeObjectFromArray: function removeObjectFromArray(obj, list) {
                 console.log(obj);
                 list.splice(list.indexOf(obj), 1);
+            },
+            /**
+             * Checks if key corresponds to an object in the array
+             * @param key - Object identifier
+             * @param list
+             * @returns {boolean}
+             */
+            isKeyInArray: function isKeyInArray(key, list){
+                for (var i = 0; i < list.length; i++)
+                {
+                    if (list[i].$id === key)
+                    {
+                        return true;
+                    }
+                }
+                return false;
             }
         }
 

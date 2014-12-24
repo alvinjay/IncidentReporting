@@ -1,8 +1,14 @@
 /* global Firebase */
 (function(angular){
-    angular.module('App')
-        .service('IonicModalService', function($ionicModal){
+    angular
+        .module('App')
+        .service('IonicModalService', IonicModalService);
+
+    IonicModalService.$inject = ['$ionicModal'];
+
+    function IonicModalService($ionicModal){
             var double = null;
+
             return{
                 openIncidentModal: function openIncidentModal($scope) {
                     $ionicModal.fromTemplateUrl('views/home/modal/incident.html', {
@@ -43,5 +49,5 @@
 
                 }
          }
-    });
+    }
 })(window.angular);
