@@ -7,13 +7,16 @@
 
     HomeController.$inject = ['$scope', 'officer', 'map', 'incident', 'incidents', 'requests',
                               'ObjectHelper',
-                              'IonicPopupService', 'IonicLoadingService', 'IonicModalService','FirebaseService', 'IncidentsService',
+                              'IonicPopupService', 'IonicModalService','FirebaseService',
+                              'IncidentsService', 'OfficerService',
                               '$cordovaGeolocation','$cordovaSplashscreen', '$cordovaDevice'];
 
     function HomeController($scope, officer, map, incident, incidents, requests,
                             ObjectHelper,
-                            IonicPopupService, IonicLoadingService, IonicModalService, FirebaseService, IncidentsService,
+                            IonicPopupService, IonicModalService, FirebaseService,
+                            IncidentsService, OfficerService,
                             $cordovaGeolocation, $cordovaSplashscreen, $cordovaDevice){
+
         //TODO retrieve id, name and password for
         window.localStorage.setItem("id", '1234567890');
         window.localStorage.setItem("name", 'Alvin Jay Cosare');
@@ -42,7 +45,7 @@
 //        $scope.closeIncidentMapModal = IonicModalService.closeModal;
 
         $scope.confirmPassword = confirmPassword;
-        $scope.submitRequest = submitRequest;
+        $scope.submitRequest = OfficerService.submitRequest;
 
         //misc methods
         $scope.getObjectLength = ObjectHelper.getObjectLength;
@@ -92,6 +95,16 @@
                 console.log('Firebase: Disconnected');
             }
         }
+        /**
+         * Displays a popup for confirming officer's password
+         */
+        function confirmPassword(){
+            IonicPopupService.showConfirmPassword($scope)
+                .then(function(result){
+                    if (result) //if passwords match
+                        IncidentService.submitRequest();
+                });
+        }
 
         /**
          * Opens an incident modal
@@ -100,7 +113,6 @@
         function openIncidentModal(key){
             IonicModalService.openIncidentModal(key,$scope);
         }
-
         /*
          * on gelocation watch error
          */

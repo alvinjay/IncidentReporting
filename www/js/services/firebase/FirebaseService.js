@@ -1,4 +1,3 @@
-/* global Firebase */
 (function(angular){
     angular.module('App')
         .service('FirebaseService', function($firebase, FIREBASE_URL, OFFICERS_URL){

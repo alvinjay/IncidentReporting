@@ -5,9 +5,9 @@
         .module('App')
         .service('OfficerService', OfficerService);
 
-    OfficerService.$inject = ['IonicPopupService'];
+    OfficerService.$inject = ['IonicPopupService', 'IonicLoadingService'];
 
-    function OfficerService(IonicPopupService){
+    function OfficerService(IonicPopupService, IonicLoadingService){
         var vm = this;
 
         vm.officer = {
@@ -25,9 +25,7 @@
             getOfficerAreaCode: getOfficerAreaCode,
             getOfficerName: getOfficerName,
             getOfficerPassword: getOfficerPassword,
-            getOfficerAssignment: getOfficerAssignment,
-            confirmPassword: confirmPassword,
-            submitRequest: submitRequest
+            getOfficerAssignment: getOfficerAssignment
         }
         return services;
 
@@ -67,13 +65,7 @@
             return vm.officer.assignment;
         }
 
-        function confirmPassword(){
-            IonicPopupService.showConfirmPassword($scope)
-                .then(function(result){
-                    if (result) //if passwords match
-                        vm.submitRequest();
-                });
-        }
+
     }
 
 })(window.angular);

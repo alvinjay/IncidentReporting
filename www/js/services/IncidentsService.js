@@ -26,7 +26,8 @@
             retrieveOfficerAssignment: retrieveOfficerAssignment,
             getIncident: getIncident,
             setCurrentIncident: setCurrentIncident,
-            processIncident: processIncident
+            processIncident: processIncident,
+            submitRequest: submitRequest
         }
 
         return services;
@@ -159,6 +160,12 @@
             }
 
             return false;
+        }
+        /**
+         * Submits a assignment request for an incident
+         */
+        function submitRequest(){
+
         }
     }
 

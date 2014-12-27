@@ -8,7 +8,7 @@
                         template:  message||'Loading Data...',
                         animation: 'fade-in',
                         showBackdrop: true,
-                        maxWidth: 200,
+                        maxWidth: 200
                     });
                 },
                 hide: function hideLoading(){
