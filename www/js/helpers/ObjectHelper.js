@@ -67,6 +67,16 @@
                     }
                 }
                 return false;
+            },
+            /**
+             * Copies all properties of Object1 to Object2 and returns Object2
+             * @param obj1 - copy from
+             * @param obj2 - copy to
+             * @returns {*}
+             */
+            copyObjectProperties: function copyObjectProperties(obj1, obj2){
+                for(var k in obj1)
+                    obj2[k]=obj1[k];
             }
         }
 

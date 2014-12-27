@@ -1,53 +1,65 @@
-/* global Firebase */
 (function(angular){
     angular
         .module('App')
         .service('IonicModalService', IonicModalService);
 
-    IonicModalService.$inject = ['$ionicModal'];
+    IonicModalService.$inject = ['$ionicModal', 'IncidentsService', 'MapService'];
 
-    function IonicModalService($ionicModal){
-            var double = null;
+    function IonicModalService($ionicModal, IncidentsService, MapService){
 
-            return{
-                openIncidentModal: function openIncidentModal($scope) {
-                    $ionicModal.fromTemplateUrl('views/home/modal/incident.html', {
-                        scope: $scope,
-                        animation: 'slide-in-right'
-                    }).then(function(modal) {
-                        $scope.modal = double = modal;
-                        $scope.modal.show();
-                    });
-                },
-                openIncidentMapModal: function openIncidentMapModal($scope) {
-                    $ionicModal.fromTemplateUrl('views/home/modal/incidentMap.html', {
-                        scope: $scope,
-                        animation: 'slide-in-right'
-                    }).then(function(modal) {
-                        $scope.modal = modal;
-                        $scope.modal.show();
-                    });
-                },
-                openPersonalInfoModal: function openPersonalInfoModal($scope) {
-                    $ionicModal.fromTemplateUrl('views/settings/modal/personal.html', {
-                        scope: $scope,
-                        animation: 'slide-in-right'
-                    }).then(function(modal) {
-                        $scope.modal = modal;
-                        $scope.modal.show();
-                    });
-                },
-                closeModal: function closeTypeModal($scope){
-                    if(double !== null) {
-                        $scope.modal.hide();
-                        $scope.modal = double;
-                        double = null;
-                    } else {
-                        $scope.modal.hide();
-                        $scope.modal.remove();
-                    }
+        var vm = this;
+        vm.double = null;
+        vm.scope = null;
 
-                }
-         }
+        var services = {
+            openIncidentModal: openIncidentModal,
+            openIncidentMapModal: openIncidentMapModal,
+            closeModal: closeModal
+        };
+        
+        return services;
+
+        /**
+         * Opens a modal view for the incident selected displaying its details
+         * @param key
+         * @param $scope
+         */
+        function openIncidentModal(key, $scope) {
+            vm.scope = $scope;
+            IncidentsService.setCurrentIncident(key);
+            $ionicModal.fromTemplateUrl('views/home/modal/incident.html', {
+                animation: 'slide-in-right',
+                scope: vm.scope
+            }).then(function(modal) {
+                vm.modal = vm.double = modal;
+                vm.modal.show();
+            });
+        }
+        /**
+         * Opens a modal view for the incident selected displaying its location on a map
+         */
+        function openIncidentMapModal() {
+            MapService.registerMarker(IncidentsService.incident);
+            $ionicModal.fromTemplateUrl('views/home/modal/incidentMap.html', {
+                animation: 'slide-in-right',
+                scope: vm.scope
+            }).then(function(modal) {
+                vm.modal = modal;
+                vm.modal.show();
+            });
+        }
+        /**
+         * Closes active modals
+         */
+        function closeModal(){
+            if(vm.double !== null) {
+                vm.modal.hide();
+                vm.modal = vm.double;
+                vm.double = null;
+            } else {
+                vm.modal.hide();
+                vm.modal.remove();
+            }
+        }
     }
 })(window.angular);

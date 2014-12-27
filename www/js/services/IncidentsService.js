@@ -10,18 +10,22 @@
     function IncidentsService($q, ObjectHelper, FirebaseService, OfficerService){
 
         var vm = this;
-        
+
+        vm.incident = {};
+
         vm.incidents = [];
         vm.requests = [];
 
         vm.checkIfPendingRequest = checkIfPendingRequest;
 
         var services = {
+            incident: vm.incident,
             incidents: vm.incidents,
             requests: vm.requests,
             retrieveNewIncidents: retrieveNewIncidents,
             retrieveOfficerAssignment: retrieveOfficerAssignment,
             getIncident: getIncident,
+            setCurrentIncident: setCurrentIncident,
             processIncident: processIncident
         }
 
@@ -76,6 +80,19 @@
             return vm.incidentsFirebaseArray.$getRecord(key);
         }
         /**
+         * sets vm.incident to current incident focused
+         * @param key
+         */
+        function setCurrentIncident(key){
+            var q = $q.defer();
+
+            var incident = vm.incidentsFirebaseArray.$getRecord(key);
+            ObjectHelper.copyObjectProperties(incident, vm.incident);
+
+            q.resolve(true);
+            return q.promise;
+        }
+        /**
          * decides whether to put an incident in the 'incidents' or 'requests'
          * @param data
          * @param incident
@@ -127,7 +144,6 @@
                 }
             }
         }
-
         /**
          * Checks if the officer submitted a request for the incident
          * @param incident

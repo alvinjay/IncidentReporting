@@ -23,9 +23,27 @@
         };
 
         var services = {
-            map: vm.map
+            map: vm.map,
+            registerMarker: registerMarker
         }
         return services;
+
+        /**
+         * Registers a marker of the incident focused
+         * @param incident
+         */
+        function registerMarker(incident){
+            //specify center of map based on incident location
+            vm.map.center.lat = incident.l[0];
+            vm.map.center.lng = incident.l[1];
+
+            //make a marker for incident chosen
+            vm.map.markers.push({
+                lat: vm.map.center.lat,
+                lng: vm.map.center.lng,
+                draggable: false
+            });
+        }
     }
 
 })(window.angular);

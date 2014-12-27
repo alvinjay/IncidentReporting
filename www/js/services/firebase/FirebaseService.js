@@ -23,6 +23,9 @@
                 },
                 getOfficerRef: function getOfficerRef(endpoint){
                     return new Firebase(OFFICERS_URL + endpoint);
+                },
+                saveFirebaseArray: function saveFirebaseArray(array, record){
+                    return array.$save(record);
                 }
             }
         });

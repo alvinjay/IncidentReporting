@@ -28,6 +28,9 @@
                                 map: function(MapService){
                                     return MapService.map;
                                 },
+                                incident: function(IncidentsService){
+                                    return IncidentsService.incident;
+                                },
                                 incidents: function(IncidentsService){
                                     return IncidentsService.incidents;
                                 },

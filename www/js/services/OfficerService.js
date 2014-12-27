@@ -5,9 +5,9 @@
         .module('App')
         .service('OfficerService', OfficerService);
 
-    OfficerService.$inject = [];
+    OfficerService.$inject = ['IonicPopupService'];
 
-    function OfficerService(){
+    function OfficerService(IonicPopupService){
         var vm = this;
 
         vm.officer = {
@@ -21,23 +21,59 @@
 
         var services = {
             officer: vm.officer,
-            getOfficerId: function getOfficerId(){
-                return vm.officer.id;
-            },
-            getOfficerAreaCode: function getOfficerAreaCode(){
-                return vm.officer.areaCode;
-            },
-            getOfficerName: function getOfficerName(){
-                return vm.officer.name;
-            },
-            getOfficerPassword: function getOfficerPassword(){ //TODO To be hashed
-                return vm.officer.password;
-            },
-            getOfficerAssignment: function getOfficerAssignment(){
-                return vm.officer.assignment;
-            }
+            getOfficerId: getOfficerId,
+            getOfficerAreaCode: getOfficerAreaCode,
+            getOfficerName: getOfficerName,
+            getOfficerPassword: getOfficerPassword,
+            getOfficerAssignment: getOfficerAssignment,
+            confirmPassword: confirmPassword,
+            submitRequest: submitRequest
         }
         return services;
+
+        /**
+         * Returns officer id
+         * @returns {*}
+         */
+        function getOfficerId(){
+            return vm.officer.id;
+        }
+        /**
+         * Returns officer area code
+         * @returns {*}
+         */
+        function getOfficerAreaCode(){
+            return vm.officer.areaCode;
+        }
+        /**
+         * Returns officer full name
+         * @returns {*}
+         */
+        function getOfficerName(){
+            return vm.officer.name;
+        }
+        /**
+         * Returns officer's hashed password
+         * @returns {*}
+         */
+        function getOfficerPassword(){ //TODO To be hashed
+            return vm.officer.password;
+        }
+        /**
+         * Returns officer's assignment if any
+         * @returns {null}
+         */
+        function getOfficerAssignment(){
+            return vm.officer.assignment;
+        }
+
+        function confirmPassword(){
+            IonicPopupService.showConfirmPassword($scope)
+                .then(function(result){
+                    if (result) //if passwords match
+                        vm.submitRequest();
+                });
+        }
     }
 
 })(window.angular);

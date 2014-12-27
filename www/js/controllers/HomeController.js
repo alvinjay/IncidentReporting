@@ -5,27 +5,28 @@
         .module('App')
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['$scope', 'officer', 'map', 'incidents', 'requests',
+    HomeController.$inject = ['$scope', 'officer', 'map', 'incident', 'incidents', 'requests',
                               'ObjectHelper',
                               'IonicPopupService', 'IonicLoadingService', 'IonicModalService','FirebaseService', 'IncidentsService',
                               '$cordovaGeolocation','$cordovaSplashscreen', '$cordovaDevice'];
 
-    function HomeController($scope, officer, map, incidents, requests,
+    function HomeController($scope, officer, map, incident, incidents, requests,
                             ObjectHelper,
                             IonicPopupService, IonicLoadingService, IonicModalService, FirebaseService, IncidentsService,
                             $cordovaGeolocation, $cordovaSplashscreen, $cordovaDevice){
         //TODO retrieve id, name and password for
-//        window.localStorage.setItem("id", '1234567890');
-//        window.localStorage.setItem("name", 'Alvin Jay Cosare');
-//        window.localStorage.setItem("password", 'walakokabalo');
-
-        window.localStorage.setItem("id", '0987654321');
-        window.localStorage.setItem("areaCode", '04');
-        window.localStorage.setItem("name", 'Marie Beth Venice');
+        window.localStorage.setItem("id", '1234567890');
+        window.localStorage.setItem("name", 'Alvin Jay Cosare');
         window.localStorage.setItem("password", 'walakokabalo');
+
+//        window.localStorage.setItem("id", '0987654321');
+//        window.localStorage.setItem("areaCode", '04');
+//        window.localStorage.setItem("name", 'Marie Beth Venice');
+//        window.localStorage.setItem("password", 'walakokabalo');
 
         $scope.officer = officer;
         $scope.map = map;
+        $scope.incident = incident;
         $scope.incidents = incidents;
         $scope.requests = requests;
 
@@ -36,9 +37,9 @@
         $scope.isConnected = false;
 
         $scope.openIncidentModal = openIncidentModal;
-        $scope.closeIncidentModal = closeIncidentModal;
-        $scope.openIncidentMapModal = openIncidentMapModal;
-        $scope.closeIncidentMapModal = closeIncidentMapModal;
+        $scope.closeIncidentModal = $scope.closeIncidentMapModal = IonicModalService.closeModal;
+        $scope.openIncidentMapModal = IonicModalService.openIncidentMapModal;
+//        $scope.closeIncidentMapModal = IonicModalService.closeModal;
 
         $scope.confirmPassword = confirmPassword;
         $scope.submitRequest = submitRequest;
@@ -91,81 +92,15 @@
                 console.log('Firebase: Disconnected');
             }
         }
-        /*
-         * open incident modal
-         * Params: id int
+
+        /**
+         * Opens an incident modal
+         * @param key
          */
         function openIncidentModal(key){
-            //retrieve incident based on key
-            $scope.incident = IncidentsService.getIncident(key);
-            //open modal
-            IonicModalService.openIncidentModal($scope);
+            IonicModalService.openIncidentModal(key,$scope);
         }
-        /*
-         * close incident modal
-         */
-        function closeIncidentModal(){
-            IonicModalService.closeModal($scope);
-        }
-        /*
-         * locate incident in a map modal
-         */
-        function openIncidentMapModal(){
-            //specify center of map based on incident location
-            $scope.map.center.lat = $scope.incident.l[0];
-            $scope.map.center.lng = $scope.incident.l[1];
 
-            //make a marker for incident chosen
-            $scope.map.markers.push({
-                lat: $scope.map.center.lat,
-                lng: $scope.map.center.lng,
-                draggable: false
-            });
-            IonicModalService.openIncidentMapModal($scope);
-        }
-        /*
-         * close incident map modal
-         */
-        function closeIncidentMapModal(){
-            IonicModalService.closeModal($scope);
-            $scope.map.markers.splice(0, 1);
-        }
-        /*
-         * confirm password for security purposes
-         */
-        function confirmPassword(){
-            IonicPopupService.showConfirmPassword($scope)
-                .then(function(result){
-                    if (result)
-                    {
-                        //if passwords match then call this
-                        $scope.submitRequest();
-                    }
-                });
-        }
-        /*
-         * submit request for assignment
-         */
-        function submitRequest(){
-            //1.) Show Loading Modal (Submitting request...)
-            IonicLoadingService.show('Submitting request...');
-            //2.) Edit $scope.incident (add 'requests' node)
-            //Check if requests has not been defined YET
-            if (typeof $scope.incident.requests === 'undefined')
-                $scope.incident.requests = {};
-            // Insert new request
-            $scope.incident.requests[$scope.officer.id] =  true;
-            //3.) Do $scope.incidents($scope.incident).$save
-            $scope.incidentsFirebaseArray.$save($scope.incident)
-                .then(function(ref){
-                    //4.) Close Loading Modal
-                    IonicLoadingService.hide();
-                    //5.) Close incident modal
-                    IonicModalService.closeModal($scope);
-                    //6.) Show success Popup
-                    IonicPopupService.showSuccess('Request has been submitted');
-                });
-        }
         /*
          * on gelocation watch error
          */
