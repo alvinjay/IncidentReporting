@@ -55,10 +55,6 @@
         // watch for Internet Connection status changes
         $scope.$watch('online', changeInternetStatus);
 
-        // begin watching geolocation
-        var watch = $cordovaGeolocation.watchPosition({ enableHighAccuracy: true });
-        watch.promise.then(null,geolocationError,geolocationSuccess);
-
         function onDeviceReady() {
             IonicPopupService.showAlert($cordovaDevice.getUUID());
             // Now safe to use device APIs
@@ -72,6 +68,7 @@
         function changeInternetStatus(newStatus){
             //record new status
             $scope.isOnline = newStatus;
+            console.log($scope.isOnline);
             if (typeof $scope.firebaseConnection === 'undefined' && newStatus)
             {
                 console.log('waaaaaa');
@@ -79,7 +76,7 @@
                 $scope.firebaseConnection = FirebaseService.checkConnection();
                 $scope.firebaseConnection.on('value', changeFirebaseStatus);
             }
-        };
+        }
         /**
          * watcher: Firebase connection
          * @param snap
@@ -126,28 +123,11 @@
         /*
          * on gelocation watch error
          */
-        function geolocationError(err) {
-            // An error occurred.
-            $('#geolocation').html('Error Code:' + err.code + '</br>Message:' + err.message);
-        }
-        /*
-         * on geolocation watch success
-         */
-        function geolocationSuccess(position) {
-            $scope.location.lat =  position.coords.latitude;
-            $scope.location.lng =  position.coords.longitude;
-
-            var str = 'Latitude: '  + $scope.location.latitude  + '<br/>' +
-                ' Longitude: ' + $scope.location.longitude + '<br />';
-            $('#geolocation').html(str);
-
-            // clear watch
-            $cordovaGeolocation.clearWatch(watch.watchID);
-        }
         /**
          * retrieve assignment and incidents from Firebase
          */
         function retrieveFromFirebase(){
+            IonicLoadingService.show();
             //Retrieve assignmentFirebaseObject
             IncidentsService.retrieveOfficerAssignment($scope.officer.id)
                 .then(function(assignment){
@@ -159,6 +139,7 @@
                         })
                         .then(function(incidents) {
                             $scope.incidentsFirebaseArray = incidents;
+                            IonicLoadingService.hide();
                         });
                 });
         }

@@ -1,5 +1,11 @@
 <ion-view id="body" title="home" >
     <ion-content id="content" overflow-scroll="true" >
+        <div id="status" class="button button-full button-assertive animated slideInDown"
+             ng-class="{'button-balanced': isOnline && isConnected,
+                        'button-energized': isOnline && !isConnected}">
+            {{ (!isOnline) ? 'Disconnected' : (!isConnected ? 'Connecting...' : 'Connected')  }}
+        </div>
+
         <div class="list list-inset" data-ng-hide="officer.assignment.$value == null" >
             <a class="item item-button-right" data-ng-click="print()">
                 <!--<i class="icon fa fa-exclamation"></i>-->

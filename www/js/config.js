@@ -55,16 +55,15 @@
                     views: {
                         'map-tab': {
                             templateUrl: "views/map/index.html",
-                            controller: "MapController"
-                        }
-                    }
-                })
-                .state('app.map-incident', {
-                    url: "/map/:id",
-                    views: {
-                        'map-tab': {
-                            templateUrl: "views/map/index.html",
-                            controller: "MapController"
+                            controller: "MapController",
+                            resolve: {
+                                map: function(MapService){
+                                    return MapService.map;
+                                },
+                                location: function(GeolocationService){
+                                    return GeolocationService.location;
+                                }
+                            }
                         }
                     }
                 });

@@ -1,32 +1,22 @@
-/* global Firebase */
 (function(angular){
-    angular.module('App')
-        .controller('MapController', function($scope, IonicModalService){
-            $('input').blur();
+    'use strict';
 
-            $scope.info = {
-                name: window.localStorage.getItem("name"),
-                contact: window.localStorage.getItem("contact")
-            }
+    angular
+        .module('App')
+        .controller('MapController', MapController);
 
-            $scope.openPersonalInfoModal = function(){
-                IonicModalService.openPersonalInfoModal($scope);
-            }
+    MapController.$inject = ['$scope', 'map', 'location', 'GeolocationService'];
 
-            $scope.closePersonalInfoModal = function(){
-                IonicModalService.closeModal($scope);
-            }
+    function MapController($scope, map, location, GeolocationService){
+        $scope.map = map;
+        $scope.location = location;
+        console.log(location);
 
-            $scope.setPersonalInfo = function(){
-                try{
-                    window.localStorage.setItem("name", $scope.info.name);
-                    window.localStorage.setItem("contact", $scope.info.contact);
-                    console.log('yey');
-                    IonicModalService.closeModal($scope);
+        // begin watching geolocation
+        if (typeof location.lat === 'undefined')
+            GeolocationService.watchStatus();
 
-                } catch(e) {
-                    console.log('error');
-                }
-            }
-        });
+
+    };
+
 })(window.angular);

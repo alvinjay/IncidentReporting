@@ -11,7 +11,7 @@ h1,h2,h3,h4,h5,h6,p,input {
     opacity: 1;
 }
 .bar-dark{
-    box-shadow: 1px 1px 1px white;
+    /*box-shadow: 1px 1px 1px white;*/
     opacity: 1;
 }
 
@@ -126,3 +126,13 @@ div.list > a.item, div.list > div.item, div > a.item {
 .button .button-balanced {
     background-color: red !important;
 }
+
+#status {
+    margin-top: -10px;
+    padding-top: 5px;
+}
+
+.button.button-full.button-energized {
+    background-color: #FF7733;
+}
+

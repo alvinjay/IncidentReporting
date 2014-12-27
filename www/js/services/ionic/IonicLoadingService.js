@@ -1,14 +1,16 @@
-/* global Firebase */
 (function(angular){
-    angular.module('App')
+    'use strict';
+
+    angular
+        .module('App')
         .service('IonicLoadingService', function($ionicLoading){
+            var template = 'Loading Data';
+
             return{
                 show: function showLoading(message){
                     $ionicLoading.show({
-                        template:  message||'Loading Data...',
-                        animation: 'fade-in',
-                        showBackdrop: true,
-                        maxWidth: 200
+                        template:  (message || template) + '&nbsp;<i class="fa fa-spinner fa fa-spin"></i>',
+                        delay: 180
                     });
                 },
                 hide: function hideLoading(){
