@@ -5,9 +5,11 @@
         .module('App')
         .service('IncidentsService', IncidentsService);
 
-    IncidentsService.$inject = ['$q', 'ObjectHelper', 'FirebaseService', 'OfficerService'];
+    IncidentsService.$inject = ['$q', 'ObjectHelper', 'FirebaseService', 'OfficerService',
+                                'IonicLoadingService'];
 
-    function IncidentsService($q, ObjectHelper, FirebaseService, OfficerService){
+    function IncidentsService($q, ObjectHelper, FirebaseService, OfficerService,
+                              IonicLoadingService){
 
         var vm = this;
 
@@ -165,7 +167,20 @@
          * Submits a assignment request for an incident
          */
         function submitRequest(){
-
+            var officer = OfficerService.officer;
+            //retrieve new record of the incident from the array because vm.incident is not an exact copy from the array
+            var incident = vm.incidentsFirebaseArray.$getRecord(vm.incident.$id);
+            //1.) Show Loading Modal (Submitting request...)
+            IonicLoadingService.show('Submitting request...');
+            //2.) Edit $scope.incident (add 'requests' node)
+            //Check if requests has not been defined YET
+            if (typeof incident.requests === 'undefined')
+                incident.requests = {};
+            // Insert new request
+            incident.requests[officer.id] =  true;
+            //3.) Do $scope.incidents($scope.incident).$save
+            console.log('fin');
+            return FirebaseService.saveFirebaseArray(vm.incidentsFirebaseArray,incident);
         }
     }
 

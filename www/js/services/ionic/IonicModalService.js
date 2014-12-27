@@ -3,9 +3,9 @@
         .module('App')
         .service('IonicModalService', IonicModalService);
 
-    IonicModalService.$inject = ['$ionicModal', 'IncidentsService', 'MapService'];
+    IonicModalService.$inject = ['$ionicModal', 'IncidentsService', 'MapService', 'ObjectHelper'];
 
-    function IonicModalService($ionicModal, IncidentsService, MapService){
+    function IonicModalService($ionicModal, IncidentsService, MapService, ObjectHelper){
 
         var vm = this;
         vm.double = null;
@@ -26,14 +26,16 @@
          */
         function openIncidentModal(key, $scope) {
             vm.scope = $scope;
-            IncidentsService.setCurrentIncident(key);
-            $ionicModal.fromTemplateUrl('views/home/modal/incident.html', {
-                animation: 'slide-in-right',
-                scope: vm.scope
-            }).then(function(modal) {
-                vm.modal = vm.double = modal;
-                vm.modal.show();
-            });
+            IncidentsService.setCurrentIncident(key)
+                .then(function(){
+                    $ionicModal.fromTemplateUrl('views/home/modal/incident.html', {
+                        animation: 'slide-in-right',
+                        scope: vm.scope
+                    }).then(function(modal) {
+                        vm.modal = vm.double = modal;
+                        vm.modal.show();
+                    });
+                });
         }
         /**
          * Opens a modal view for the incident selected displaying its location on a map

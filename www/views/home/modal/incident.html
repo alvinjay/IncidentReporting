@@ -17,7 +17,7 @@
             <div class="list card">
 
                 <div class="item"
-                     data-ng-hide="officer.assignment.$value != null || isObjectInArray(incident, requests) ">
+                     data-ng-hide="officer.assignment.$value != null || isKeyInArray(incident.$id, requests) ">
                     <button class="button button-full button-balanced"
                             data-ng-click="confirmPassword()">Request as Assignment</button>
                 </div>

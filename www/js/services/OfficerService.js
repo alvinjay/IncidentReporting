@@ -5,9 +5,9 @@
         .module('App')
         .service('OfficerService', OfficerService);
 
-    OfficerService.$inject = ['IonicPopupService', 'IonicLoadingService'];
+    OfficerService.$inject = [];
 
-    function OfficerService(IonicPopupService, IonicLoadingService){
+    function OfficerService(){
         var vm = this;
 
         vm.officer = {
