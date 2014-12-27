@@ -18,14 +18,14 @@
                             $cordovaGeolocation, $cordovaSplashscreen, $cordovaDevice){
 
         //TODO retrieve id, name and password for
-        window.localStorage.setItem("id", '1234567890');
-        window.localStorage.setItem("name", 'Alvin Jay Cosare');
-        window.localStorage.setItem("password", 'walakokabalo');
-
-//        window.localStorage.setItem("id", '0987654321');
-//        window.localStorage.setItem("areaCode", '04');
-//        window.localStorage.setItem("name", 'Marie Beth Venice');
+//        window.localStorage.setItem("id", '1234567890');
+//        window.localStorage.setItem("name", 'Alvin Jay Cosare');
 //        window.localStorage.setItem("password", 'walakokabalo');
+
+        window.localStorage.setItem("id", '0987654321');
+        window.localStorage.setItem("areaCode", '04');
+        window.localStorage.setItem("name", 'Marie Beth Venice');
+        window.localStorage.setItem("password", 'walakokabalo');
 
         $scope.officer = officer;
         $scope.map = map;

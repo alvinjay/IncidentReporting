@@ -101,16 +101,16 @@
          * @param incident
          */
         function processIncident(data, incident){
-            var id = OfficerService.getOfficerId();
+            var officer = OfficerService.officer;
 
             //case: new incident is added to the area of this officer
             if (data.event == "child_added" && data.key != "count" && ! ObjectHelper.isKeyInArray(data.key, vm.incidents))
             {
                 try {
                     //check if the incident is a pending request for the officer
-                    if (vm.checkIfPendingRequest(incident, id))
+                    if (vm.checkIfPendingRequest(incident, officer.id))
                         vm.requests.push(incident);
-                    else
+                    else if (officer.assignment.$value != incident.$id)
                         vm.incidents.push(incident);
 
                     console.log(incident);
@@ -123,7 +123,7 @@
             // OR other officers have submitted request for an incident
             else if (data.event === 'child_changed')
             {
-                if (vm.checkIfPendingRequest(incident, id) && !ObjectHelper.isKeyInArray(incident.$id, vm.requests))
+                if (vm.checkIfPendingRequest(incident, officer.id) && !ObjectHelper.isKeyInArray(incident.$id, vm.requests))
                 {
                     vm.requests.push(incident);
                     try {
