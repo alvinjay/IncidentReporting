@@ -36,6 +36,9 @@
                                 },
                                 requests: function(IncidentsService){
                                     return IncidentsService.requests;
+                                },
+                                connection: function(InternetService){
+                                    return InternetService.connection;
                                 }
                             }
                         }

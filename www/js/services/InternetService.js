@@ -5,43 +5,54 @@
         .module('App')
         .service('InternetService', InternetService);
 
-    InternetService.$inject = ['FirebaseService'];
+    InternetService.$inject = ['$rootScope', 'FirebaseService', 'IncidentsService'];
 
-    function InternetService(FirebaseService){
+    function InternetService($rootScope, FirebaseService, IncidentsService){
         var vm = this;
 
-        vm.isOnline = false;
-        vm.isConnected = false;
+        vm.connection = {
+            isOnline: $rootScope.online,
+            isConnected: false
+        }
 
-        return {
-            watchStatus: function watchStatus($scope){
-                /* ref for firebase connection */
-                $scope.firebaseConnection = FirebaseService.checkConnection();
+        var services = {
+            connection: vm.connection,
+            changeInternetStatus: changeInternetStatus,
+            changeFirebaseStatus: changeFirebaseStatus
+        };
 
-                /* watch for Internet Connection status changes */
-                $scope.$watch('online', function(newStatus) {
-                    $scope.isOnline = newStatus;
-                    $scope.firebaseConnection = FirebaseService.checkConnection();
-                    $scope.root = FirebaseService.getRef('/');
-                });
-            },
-            onFirebaseConnection: function onFirebaseConnection($scope){
-                /* watch for changes in firebase connection value */
-                $scope.firebaseConnection.on('value', function(snap) {
-                    if (snap.val() === true) {
-                        $scope.isConnected = true;
-                        $('#firebase').html('Firebase: Connected');
-                        console.log(
-                            'Internet:' + $scope.isOnline +
-                                '\nFirebase: ' + $scope.isConnected
-                        );
-                    }
-                    else
-                    {
-                        $scope.isConnected = false;
-                        $('#firebase').html('Firebase: Disconnected');
-                    }
-                });
+        return services;
+
+        /**
+         * watcher: Internet connection
+         * @param newStatus - 'online' | 'offline'
+         */
+        function changeInternetStatus(newStatus){
+            var firebaseConnection = FirebaseService.firebaseConnection;
+            //record new status
+            vm.connection.isOnline = newStatus;
+            if (typeof firebaseConnection === 'undefined' && newStatus)
+            {
+                console.log('waaaaaa');
+                // watch for changes in firebase connection value
+                firebaseConnection = FirebaseService.checkConnection();
+                firebaseConnection.on('value', changeFirebaseStatus);
+            }
+        }
+        /**
+         * watcher: Firebase connection
+         * @param snap
+         */
+        function changeFirebaseStatus(snapshot) {
+            if (snapshot.val()) {
+                vm.connection.isConnected = true;
+                console.log('Firebase: Connected');
+                IncidentsService.retrieveFromFirebase();
+            }
+            else
+            {
+                vm.connection.isConnected = false;
+                console.log('Firebase: Disconnected');
             }
         }
     };

@@ -5,16 +5,16 @@
         .module('App')
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['$scope', 'officer', 'map', 'incident', 'incidents', 'requests',
+    HomeController.$inject = ['$scope', 'officer', 'map', 'incident', 'incidents', 'requests', 'connection',
                               'ObjectHelper',
                               'IonicPopupService', 'IonicModalService','IonicLoadingService',
-                              'FirebaseService', 'IncidentsService', 'OfficerService',
+                              'FirebaseService', 'IncidentsService', 'OfficerService', 'InternetService',
                               '$cordovaGeolocation','$cordovaSplashscreen', '$cordovaDevice'];
 
-    function HomeController($scope, officer, map, incident, incidents, requests,
+    function HomeController($scope, officer, map, incident, incidents, requests, connection,
                             ObjectHelper,
                             IonicPopupService, IonicModalService, IonicLoadingService,
-                            FirebaseService, IncidentsService, OfficerService,
+                            FirebaseService, IncidentsService, OfficerService, InternetService,
                             $cordovaGeolocation, $cordovaSplashscreen, $cordovaDevice){
 
         //TODO retrieve id, name and password for
@@ -36,8 +36,10 @@
         $scope.location = {};
 
         // model Internet and Firebase Connection
-        $scope.isOnline = false;
-        $scope.isConnected = false;
+        $scope.connection = {
+            isOnline: connection.isOnline,
+            isConnected: connection.isConnected
+        }
 
         $scope.openIncidentModal = openIncidentModal;
         $scope.closeIncidentModal = $scope.closeIncidentMapModal = IonicModalService.closeModal;
@@ -53,7 +55,7 @@
         $scope.isKeyInArray = ObjectHelper.isKeyInArray;
 
         // watch for Internet Connection status changes
-        $scope.$watch('online', changeInternetStatus);
+        $scope.$watch('online', InternetService.changeInternetStatus);
 
         function onDeviceReady() {
             IonicPopupService.showAlert($cordovaDevice.getUUID());
@@ -61,38 +63,6 @@
             // access multiple numbers in a string like: '0612345678,0687654321'
             $cordovaSplashscreen.show();
         };
-        /**
-         * watcher: Internet connection
-         * @param newStatus - 'online' | 'offline'
-         */
-        function changeInternetStatus(newStatus){
-            //record new status
-            $scope.isOnline = newStatus;
-            console.log($scope.isOnline);
-            if (typeof $scope.firebaseConnection === 'undefined' && newStatus)
-            {
-                console.log('waaaaaa');
-                // watch for changes in firebase connection value
-                $scope.firebaseConnection = FirebaseService.checkConnection();
-                $scope.firebaseConnection.on('value', changeFirebaseStatus);
-            }
-        }
-        /**
-         * watcher: Firebase connection
-         * @param snap
-         */
-        function changeFirebaseStatus(snapshot) {
-            if (snapshot.val()) {
-                $scope.isConnected = true;
-                console.log('Firebase: Connected');
-                retrieveFromFirebase();
-            }
-            else
-            {
-                $scope.isConnected = false;
-                console.log('Firebase: Disconnected');
-            }
-        }
         /**
          * Displays a popup for confirming officer's password
          */
@@ -120,38 +90,7 @@
         function openIncidentModal(key){
             IonicModalService.openIncidentModal(key,$scope);
         }
-        /*
-         * on gelocation watch error
-         */
-        /**
-         * retrieve assignment and incidents from Firebase
-         */
-        function retrieveFromFirebase(){
-            IonicLoadingService.show();
-            //Retrieve assignmentFirebaseObject
-            IncidentsService.retrieveOfficerAssignment($scope.officer.id)
-                .then(function(assignment){
-                    $scope.assignmentFirebaseObject = assignment;
-                    $scope.assignmentFirebaseObject.$bindTo($scope, "officer.assignment")
-                        .then(function(){
-                            //Retrieve incidentsFirebaseArray
-                            return IncidentsService.retrieveNewIncidents(watchIncidents, $scope.officer.areaCode);
-                        })
-                        .then(function(incidents) {
-                            $scope.incidentsFirebaseArray = incidents;
-                            IonicLoadingService.hide();
-                        });
-                });
-        }
-        /**
-         * watcher: incidentsFirebaseArray
-         * @param data
-         */
-        function watchIncidents(data) {
-            console.log(data.event + ' ' + data.key);
-            var incident = IncidentsService.getIncident(data.key);
-            IncidentsService.processIncident(data,incident);
-        }
+
 
     }
 })(window.angular);

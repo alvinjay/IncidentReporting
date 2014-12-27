@@ -25,7 +25,8 @@
             getOfficerAreaCode: getOfficerAreaCode,
             getOfficerName: getOfficerName,
             getOfficerPassword: getOfficerPassword,
-            getOfficerAssignment: getOfficerAssignment
+            getOfficerAssignment: getOfficerAssignment,
+            setOfficerAssignment: setOfficerAssignment
         }
         return services;
 
@@ -64,7 +65,13 @@
         function getOfficerAssignment(){
             return vm.officer.assignment;
         }
-
+        /**
+         * Sets the value of officer.assignment
+         * @param assignment
+         */
+        function setOfficerAssignment(assignment){
+            vm.officer.assignment = assignment;
+        }
 
     }
 

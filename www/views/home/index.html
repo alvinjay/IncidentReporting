@@ -1,9 +1,10 @@
 <ion-view id="body" title="home" >
     <ion-content id="content" overflow-scroll="true" >
         <div id="status" class="button button-full button-assertive animated slideInDown"
-             ng-class="{'button-balanced': isOnline && isConnected,
-                        'button-energized': isOnline && !isConnected}">
-            {{ (!isOnline) ? 'Disconnected' : (!isConnected ? 'Connecting...' : 'Connected')  }}
+             ng-class="{'button-balanced': connection.isOnline && connection.isConnected,
+                        'button-energized': connection.isOnline && !connection.isConnected}">
+            <!--{{ (!connection.isOnline) ? 'Disconnected' : (!connection.isConnected ? 'Connecting...' : 'Connected')  }}-->
+            {{ connection.isConnected }}
         </div>
 
         <div class="list list-inset" data-ng-hide="officer.assignment.$value == null" >
@@ -15,7 +16,7 @@
                 </button>
             </a>
         </div>
-        <div class="list list-inset" data-ng-hide="requests.length != 0 || !isConnected">
+        <div class="list list-inset" data-ng-hide="requests.length != 0 || !connection.isConnected">
             No Pending Assignment Requests
         </div>
         <div class="list list-inset"  data-ng-hide="requests.length == 0">
@@ -29,7 +30,7 @@
             </a>
         </div>
 
-        <div class="list list-inset" data-ng-hide="incidents.length != 0 || !isConnected">
+        <div class="list list-inset" data-ng-hide="incidents.length != 0 || !connection.isConnected">
             No Available Incident Reports
         </div>
         <div class="list list-inset"  data-ng-hide="incidents.length == 0">

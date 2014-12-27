@@ -13,10 +13,14 @@
 
         var vm = this;
 
-        vm.incident = {};
+        vm.scope = null;
 
+        vm.incident = {};
         vm.incidents = [];
         vm.requests = [];
+
+        vm.incidentsFirebaseArray = null;
+        vm.assignmentFirebaseObject = null;
 
         vm.checkIfPendingRequest = checkIfPendingRequest;
 
@@ -24,6 +28,9 @@
             incident: vm.incident,
             incidents: vm.incidents,
             requests: vm.requests,
+            incidentsFirebaseArray: vm.incidentsFirebaseArray,
+            assignmentFirebaseObject: vm.assignmentFirebaseObject,
+            retrieveFromFirebase: retrieveFromFirebase,
             retrieveNewIncidents: retrieveNewIncidents,
             retrieveOfficerAssignment: retrieveOfficerAssignment,
             getIncident: getIncident,
@@ -35,17 +42,40 @@
         return services;
 
         /**
+         * Retrieve assignment and incidents from Firebase
+         */
+        function retrieveFromFirebase(){
+            var officer = OfficerService.officer;
+            IonicLoadingService.show();
+            //Retrieve assignmentFirebaseObject
+            retrieveOfficerAssignment(officer.id)
+                .then(function(assignment){
+                    vm.assignmentFirebaseObject = assignment;
+                    vm.assignmentFirebaseObject.$watch(watchAssignment);
+                    vm.assignmentFirebaseObject.$loaded(function(data){
+                        //Retrieve incidentsFirebaseArray
+                        retrieveNewIncidents(officer.areaCode)
+                            .then(function(incidents) {
+                                vm.incidentsFirebaseArray = incidents;
+                                vm.incidentsFirebaseArray.$watch(watchIncidents);
+                                IonicLoadingService.hide();
+                        });
+                    })
+
+                })
+
+        }
+        /**
          * retrieve available incidents from firebase
          * @param fn
          * @returns {.watchHeading.promise|*|.watchPosition.promise|.watchAcceleration.promise|e.promise|promise}
          */
-        function retrieveNewIncidents(fn, areaCode){
+        function retrieveNewIncidents(areaCode){
             var q = $q.defer();
             //initialize 'new' incidents
             var ref = FirebaseService.getRef('/' + areaCode + '/new');
             //Get 'new' incidents array
             vm.incidentsFirebaseArray = FirebaseService.getArray(ref);
-            vm.incidentsFirebaseArray.$watch(fn);
 
             q.resolve(vm.incidentsFirebaseArray);
 
@@ -63,13 +93,6 @@
             var ref = FirebaseService.getOfficerRef('/' + id + '/assignment');
             //Get 'new' incidents array
             vm.assignmentFirebaseObject = FirebaseService.getObject(ref);
-            vm.assignmentFirebaseObject.$watch(function(){
-                if (vm.assignmentFirebaseObject.$value === null)
-                    console.log('no assignment');
-                else
-                    console.log('you have an assignment');
-            });
-
             q.resolve(vm.assignmentFirebaseObject);
 
             return q.promise;
@@ -106,17 +129,20 @@
             //case: new incident is added to the area of this officer
             if (data.event == "child_added" && data.key != "count" && ! ObjectHelper.isKeyInArray(data.key, vm.incidents))
             {
-                try {
+                console.log(typeof officer.assignment);
+//                try {
                     //check if the incident is a pending request for the officer
                     if (vm.checkIfPendingRequest(incident, officer.id))
                         vm.requests.push(incident);
-                    else if (officer.assignment.$value != incident.$id)
-                        vm.incidents.push(incident);
+                    else if (typeof officer.assignment !== 'undefined') {
+                        if (officer.assignment.$value != incident.$id)
+                            vm.incidents.push(incident);
+                    }
 
                     console.log(incident);
-                } catch(e) {
-                    console.log(e);
-                }
+//                } catch(e) {
+//                    console.log(e);
+//                }
                 console.log('added');
             }
             //case: if officer has submitted a request for an incident
@@ -182,6 +208,30 @@
             console.log('fin');
             return FirebaseService.saveFirebaseArray(vm.incidentsFirebaseArray,incident);
         }
+
+        /**
+         * Watcher: incidentsFirebaseArray
+         * @param data
+         */
+        function watchIncidents(data) {
+            console.log(data.event + ' ' + data.key);
+            var incident = getIncident(data.key);
+            processIncident(data, incident);
+        }
+
+        /**
+         * Watcher: assignementFirebaseObject
+         * @param data
+         */
+        function watchAssignment() {
+            if (vm.assignmentFirebaseObject.$value !== null)
+               console.log("You have an assignment");
+            else
+               console.log("No assignment");
+
+            OfficerService.setOfficerAssignment(vm.assignmentFirebaseObject);
+        }
+
     }
 
 })(window.angular);
