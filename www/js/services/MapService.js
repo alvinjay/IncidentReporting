@@ -50,7 +50,7 @@
             vm.map.center.lat = incident.l[0];
             vm.map.center.lng = incident.l[1];
 
-            addMarker([vm.map.center]);
+            addMarker(vm.map.center);
         }
 
         /**

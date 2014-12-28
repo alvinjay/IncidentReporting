@@ -130,6 +130,7 @@ div.list > a.item, div.list > div.item, div > a.item {
 #status {
     margin-top: -10px;
     padding-top: 5px;
+    position: relative;
 }
 
 .button.button-full.button-energized {

@@ -65,6 +65,9 @@
                                 },
                                 location: function(GeolocationService){
                                     return GeolocationService.location;
+                                },
+                                connection: function(InternetService){
+                                    return InternetService.connection;
                                 }
                             }
                         }

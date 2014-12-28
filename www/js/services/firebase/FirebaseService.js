@@ -13,7 +13,7 @@
         var CONNECTION_URL = FIREBASE_URL + '/.info/connected';
 
         var services = {
-            firebaseConnection: vm.fireBaseConnection,
+            firebaseConnection: vm.firebaseConnection,
             getRef: getRef,
             getObject: getObject,
             getArray: getArray,

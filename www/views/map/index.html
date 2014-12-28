@@ -2,8 +2,8 @@
     <!--Content-->
     <ion-content id="content" overflow-scroll="true" >
         <div id="status" class="button button-full button-assertive animated slideInDown"
-             data-ng-show="!isOnline">
-            {{ !isOnline ? 'Disconnected' : '' }}
+             data-ng-show="!connection.isOnline">
+            {{ !connection.isOnline ? 'Disconnected' : '' }}
         </div>
         <leaflet width="100%" height="100%" center="map.center" defaults="map.defaults"
                  markers="map.markers" tiles="map.tiles"></leaflet>

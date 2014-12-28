@@ -31,13 +31,13 @@
             var firebaseConnection = FirebaseService.firebaseConnection;
             //record new status
             vm.connection.isOnline = newStatus;
-            if (typeof firebaseConnection === 'undefined' && newStatus)
-            {
+//            if (typeof firebaseConnection === 'undefined' && newStatus)
+//            {
                 console.log('waaaaaa');
                 // watch for changes in firebase connection value
                 firebaseConnection = FirebaseService.checkConnection();
                 firebaseConnection.on('value', changeFirebaseStatus);
-            }
+//            }
         }
         /**
          * watcher: Firebase connection

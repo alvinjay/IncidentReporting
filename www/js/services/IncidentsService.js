@@ -88,7 +88,6 @@
          */
         function retrieveOfficerAssignment(id){
             var q = $q.defer();
-
             //initialize 'new' incidents
             var ref = FirebaseService.getOfficerRef('/' + id + '/assignment');
             //Get 'new' incidents array
