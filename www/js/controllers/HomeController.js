@@ -36,10 +36,7 @@
         $scope.location = {};
 
         // model Internet and Firebase Connection
-        $scope.connection = {
-            isOnline: connection.isOnline,
-            isConnected: connection.isConnected
-        }
+        $scope.connection = connection;
 
         $scope.openIncidentModal = openIncidentModal;
         $scope.closeIncidentModal = $scope.closeIncidentMapModal = IonicModalService.closeModal;

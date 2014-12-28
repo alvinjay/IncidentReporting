@@ -3,8 +3,7 @@
         <div id="status" class="button button-full button-assertive animated slideInDown"
              ng-class="{'button-balanced': connection.isOnline && connection.isConnected,
                         'button-energized': connection.isOnline && !connection.isConnected}">
-            <!--{{ (!connection.isOnline) ? 'Disconnected' : (!connection.isConnected ? 'Connecting...' : 'Connected')  }}-->
-            {{ connection.isConnected }}
+            {{ (!connection.isOnline) ? 'Disconnected' : (!connection.isConnected ? 'Connecting...' : 'Connected')  }}
         </div>
 
         <div class="list list-inset" data-ng-hide="officer.assignment.$value == null" >
