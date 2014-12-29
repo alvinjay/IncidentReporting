@@ -6,41 +6,38 @@
             {{ (!connection.isOnline) ? 'Disconnected' : (!connection.isConnected ? 'Connecting...' : 'Connected')  }}
         </div>
 
-        <div class="list list-inset" data-ng-hide="officer.assignment.$value == null" >
-            <a class="item item-button-right" data-ng-click="print()">
-                <!--<i class="icon fa fa-exclamation"></i>-->
-                <b>New Assignment: </b>{{ officer.assignment.$value }}
-                <button class="button button-clear button-light">
-                    <i class="icon fa fa-chevron-right"></i>
-                </button>
-            </a>
-        </div>
-        <div class="list list-inset" data-ng-hide="requests.length != 0 || !connection.isConnected">
-            No Pending Assignment Requests
-        </div>
-        <div class="list list-inset"  data-ng-hide="requests.length == 0">
-            <a class="item item-button-right" data-ng-repeat="request in requests"
-               data-ng-click="openIncidentModal(request.$id)">
-                <!--<i class="icon fa fa-info-circle"></i>-->
-                <b>Request ID</b>: {{ request.$id }}
-                <button class="button button-clear button-light">
-                    <i class="icon fa fa-chevron-right"></i>
-                </button>
-            </a>
-        </div>
-
-        <div class="list list-inset" data-ng-hide="incidents.length != 0 || !connection.isConnected">
-            No Available Incident Reports
-        </div>
-        <div class="list list-inset"  data-ng-hide="incidents.length == 0">
-            <a class="item item-button-right" data-ng-repeat="incident in incidents"
-               data-ng-click="openIncidentModal(incident.$id)">
-                <!--<i class="icon fa fa-info-circle"></i>-->
-                <b>Incident ID</b>: {{ incident.$id }}
-                <button class="button button-clear button-light">
-                    <i class="icon fa fa-chevron-right"></i>
-                </button>
-            </a>
+        <div id="body" class="first-item">
+            <div class="list list-inset " data-ng-hide="officer.assignment.$value == null" >
+                <a class="item item-button-right" data-ng-click="print()">
+                    <!--<i class="icon fa fa-exclamation"></i>-->
+                    <b>New Assignment: </b>{{ officer.assignment.$value }}
+                    <button class="button button-clear button-light">
+                        <i class="icon fa fa-chevron-right"></i>
+                    </button>
+                </a>
+            </div>
+            <div class="list list-inset"  data-ng-hide="requests.length == 0">
+                <div class="item center"><b>Assignment Requests</b></div>
+                <a class="item item-button-right" data-ng-repeat="request in requests"
+                   data-ng-click="openIncidentModal(request.$id)">
+                    <!--<i class="icon fa fa-info-circle"></i>-->
+                    <b>Request ID</b>: {{ request.$id }}
+                    <button class="button button-clear button-light">
+                        <i class="icon fa fa-chevron-right"></i>
+                    </button>
+                </a>
+            </div>
+            <div class="list list-inset"  data-ng-hide="incidents.length == 0">
+                <div class="item center"><b>Incident Reports</b></div>
+                <a class="item item-button-right" data-ng-repeat="incident in incidents"
+                   data-ng-click="openIncidentModal(incident.$id)">
+                    <!--<i class="icon fa fa-info-circle"></i>-->
+                    <b>Incident ID</b>: {{ incident.$id }}
+                    <button class="button button-clear button-light">
+                        <i class="icon fa fa-chevron-right"></i>
+                    </button>
+                </a>
+            </div>
         </div>
     </ion-content>
 </ion-view>

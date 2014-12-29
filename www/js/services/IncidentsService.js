@@ -5,10 +5,10 @@
         .module('App')
         .service('IncidentsService', IncidentsService);
 
-    IncidentsService.$inject = ['$q', 'ObjectHelper', 'FirebaseService', 'OfficerService',
+    IncidentsService.$inject = ['$q', 'ObjectHelper', 'FirebaseService', 'OfficerService', 'MapService',
                                 'IonicLoadingService'];
 
-    function IncidentsService($q, ObjectHelper, FirebaseService, OfficerService,
+    function IncidentsService($q, ObjectHelper, FirebaseService, OfficerService, MapService,
                               IonicLoadingService){
 
         var vm = this;
@@ -46,7 +46,7 @@
          */
         function retrieveFromFirebase(){
             var officer = OfficerService.officer;
-            IonicLoadingService.show();
+            IonicLoadingService.show('Retrieving data from server');
             //Retrieve assignmentFirebaseObject
             retrieveOfficerAssignment(officer.id)
                 .then(function(assignment){
@@ -58,7 +58,9 @@
                             .then(function(incidents) {
                                 vm.incidentsFirebaseArray = incidents;
                                 vm.incidentsFirebaseArray.$watch(watchIncidents);
-                                IonicLoadingService.hide();
+                                vm.assignmentFirebaseObject.$loaded(function(data){
+                                    IonicLoadingService.hide();
+                                });
                         });
                     })
 
@@ -126,22 +128,27 @@
             var officer = OfficerService.officer;
 
             //case: new incident is added to the area of this officer
-            if (data.event == "child_added" && data.key != "count" && ! ObjectHelper.isKeyInArray(data.key, vm.incidents))
+            if (data.event == "child_added" && data.key != "count" && !ObjectHelper.isKeyInArray(data.key, vm.incidents))
             {
-                console.log(typeof officer.assignment);
-//                try {
-                    //check if the incident is a pending request for the officer
-                    if (vm.checkIfPendingRequest(incident, officer.id))
-                        vm.requests.push(incident);
-                    else if (typeof officer.assignment !== 'undefined') {
-                        if (officer.assignment.$value != incident.$id)
-                            vm.incidents.push(incident);
-                    }
+                var marker = {
+                    lat: incident.l[0],
+                    lng: incident.l[1],
+                    message: incident.$id
+                };
 
-                    console.log(incident);
-//                } catch(e) {
-//                    console.log(e);
-//                }
+                //check if the incident is a pending request for the officer
+                if (vm.checkIfPendingRequest(incident, officer.id) && !ObjectHelper.isKeyInArray(data.key, vm.requests))
+                    vm.requests.push(incident);
+                else if (typeof officer.assignment !== 'undefined') //check if assignment is undefined
+                {
+                    if (officer.assignment.$value != incident.$id && !ObjectHelper.isKeyInArray(data.key, vm.requests)) //check if incident is the assignment of the officer
+                        vm.incidents.push(incident);
+//                    else if(officer.assignment.$value == incident.$id) //TODO change marker icon for assignment
+//                        marker.message = 'assignment';
+                }
+                //include incident to map.markers
+                MapService.addMarker(marker);
+                //console.log(incident);
                 console.log('added');
             }
             //case: if officer has submitted a request for an incident
@@ -160,15 +167,24 @@
             //case: if incident has been assigned to another officer
             // OR is ignored
             // OR is assigned to this officer
-            else if (data.event === 'child_removed') {
+            else if (data.event === 'child_removed')
+            {
+                console.log('deleted');
+
+                MapService.removeMarker(data.key);
+
                 //check if the incident removed was a pending request for vm officer
                 if (ObjectHelper.isKeyInArray(data.key, vm.requests))
                 {
                     ObjectHelper.removeObjectFromArray(ObjectHelper.getObjectFromArray(data.key, vm.requests), vm.requests);
                     console.log('request has been assigned to another officer');
                 }
-                else {
-                    ObjectHelper.removeObjectFromArray(ObjectHelper.getObjectFromArray(data.key, vm.incidents), vm.incidents);
+                else
+                {
+                    if (ObjectHelper.isKeyInArray(data.key, vm.incidents))
+                    {
+                        ObjectHelper.removeObjectFromArray(ObjectHelper.getObjectFromArray(data.key, vm.incidents), vm.incidents);
+                    }
                 }
             }
         }
@@ -230,6 +246,7 @@
 
             OfficerService.setOfficerAssignment(vm.assignmentFirebaseObject);
         }
+
 
     }
 

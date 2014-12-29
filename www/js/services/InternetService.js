@@ -5,9 +5,11 @@
         .module('App')
         .service('InternetService', InternetService);
 
-    InternetService.$inject = ['$rootScope', 'FirebaseService', 'IncidentsService'];
+    InternetService.$inject = ['$rootScope', '$state',
+                               'FirebaseService', 'IncidentsService', 'GeolocationService'];
 
-    function InternetService($rootScope, FirebaseService, IncidentsService){
+    function InternetService($rootScope, $state,
+                             FirebaseService, IncidentsService, GeolocationService){
         var vm = this;
 
         vm.connection = {
@@ -28,6 +30,9 @@
          * @param newStatus - 'online' | 'offline'
          */
         function changeInternetStatus(newStatus){
+            // begin watching geolocation
+            GeolocationService.watchStatus();
+
             var firebaseConnection = FirebaseService.firebaseConnection;
             //record new status
             vm.connection.isOnline = newStatus;

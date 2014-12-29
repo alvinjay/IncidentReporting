@@ -61,6 +61,7 @@
             } else {
                 vm.modal.hide();
                 vm.modal.remove();
+                MapService.resetMarker();
             }
         }
     }

@@ -128,12 +128,32 @@ div.list > a.item, div.list > div.item, div > a.item {
 }
 
 #status {
+    width: 100%;
     margin-top: -10px;
-    padding-top: 5px;
-    position: relative;
+    padding-top: 3px;
+    margin-bottom: 0px;
+    position: absolute;
+    z-index: 2;
+}
+
+#map, #body {
+    width: 100%;
+    position: absolute;
+    z-index: 1;
 }
 
 .button.button-full.button-energized {
     background-color: #FF7733;
 }
 
+.center {
+    text-align: center;
+}
+
+.first-item {
+    margin-top: 25px;
+}
+
+#body {
+    margin-bottom: 10px;
+}

@@ -5,10 +5,10 @@
         .module('App')
         .service('GeolocationService', GeolocationService);
 
-    GeolocationService.$inject = ['$cordovaGeolocation', 'MapService',
+    GeolocationService.$inject = ['$q', '$cordovaGeolocation', 'MapService',
                                   'IonicLoadingService', 'IonicPopupService'];
 
-    function GeolocationService($cordovaGeolocation, MapService,
+    function GeolocationService($q, $cordovaGeolocation, MapService,
                                 IonicLoadingService, IonicPopupService){
         var vm = this;
 
@@ -18,7 +18,6 @@
         return {
             location: vm.location,
             watchStatus: function watchStatus(){
-                IonicLoadingService.show('Preparing Map');
                 vm.watch.promise.then(null,geolocationError,geolocationSuccess);
             }
         };
@@ -40,14 +39,15 @@
         function geolocationSuccess(position) {
             vm.location.lat = position.coords.latitude;
             vm.location.lng = position.coords.longitude;
+            vm.location.type = 'location';
+            vm.location.zoom = 15;
 
             MapService.setCenter(vm.location);
             //make a marker for incident chosen
             MapService.addMarker(vm.location);
 
-            // clear watch
-//            $cordovaGeolocation.clearWatch(watch.watchID);
             IonicLoadingService.hide();
+            $cordovaGeolocation.clearWatch(vm.watch);
         }
     }
 })(window.angular);

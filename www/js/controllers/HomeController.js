@@ -5,28 +5,29 @@
         .module('App')
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['$scope', 'officer', 'map', 'incident', 'incidents', 'requests', 'connection',
+    HomeController.$inject = ['$scope', 'officer', 'map', 'incident', 'incidents', 'requests', 'connection', 'location',
                               'ObjectHelper',
                               'IonicPopupService', 'IonicModalService','IonicLoadingService',
-                              'FirebaseService', 'IncidentsService', 'OfficerService', 'InternetService',
-                              '$cordovaGeolocation','$cordovaSplashscreen', '$cordovaDevice'];
+                              'IncidentsService', 'OfficerService', 'InternetService', 'GeolocationService',
+                              '$cordovaSplashscreen', '$cordovaDevice'];
 
-    function HomeController($scope, officer, map, incident, incidents, requests, connection,
+    function HomeController($scope, officer, map, incident, incidents, requests, connection, location,
                             ObjectHelper,
                             IonicPopupService, IonicModalService, IonicLoadingService,
-                            FirebaseService, IncidentsService, OfficerService, InternetService,
-                            $cordovaGeolocation, $cordovaSplashscreen, $cordovaDevice){
+                            IncidentsService, OfficerService, InternetService, GeolocationService,
+                            $cordovaSplashscreen, $cordovaDevice){
 
         //TODO retrieve id, name and password for
+        window.localStorage.setItem("areaCode", '04');
 //        window.localStorage.setItem("id", '1234567890');
 //        window.localStorage.setItem("name", 'Alvin Jay Cosare');
 //        window.localStorage.setItem("password", 'walakokabalo');
         window.localStorage.setItem("id", '0987654321');
-        window.localStorage.setItem("areaCode", '04');
         window.localStorage.setItem("name", 'Marie Beth Venice');
         window.localStorage.setItem("password", 'walakokabalo');
 
         $scope.officer = officer;
+        $scope.location = location;
         $scope.map = map;
         $scope.incident = incident;
         $scope.incidents = incidents;

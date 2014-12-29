@@ -5,7 +5,6 @@
         .module('App')
         .config(function($stateProvider, $urlRouterProvider, $ionicTabsConfig) {
 
-
             /* Android tabs color fix */
             $ionicTabsConfig.type = '';
 
@@ -39,6 +38,9 @@
                                 },
                                 connection: function(InternetService){
                                     return InternetService.connection;
+                                },
+                                location: function(GeolocationService){
+                                    return GeolocationService.location;
                                 }
                             }
                         }

@@ -5,9 +5,9 @@
         .module('App')
         .service('MapService', MapService);
 
-    MapService.$inject = [];
+    MapService.$inject = ['$q'];
 
-    function MapService(){
+    function MapService($q){
         var vm = this;
         vm.map = {
             center: {
@@ -21,14 +21,19 @@
             tiles: {
                 url: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
             },
+            marker: [],
             markers: []
+
         };
 
         var services = {
             map: vm.map,
             setCenter: setCenter,
+            setZoom: setZoom,
             registerMarker: registerMarker,
-            addMarker: addMarker
+            addMarker: addMarker,
+            resetMarker: resetMarker,
+            removeMarker: removeMarker
         }
         return services;
 
@@ -39,6 +44,15 @@
         function setCenter(location){
             vm.map.center.lat = location.lat;
             vm.map.center.lng = location.lng;
+            vm.map.center.zoom = location.zoom || vm.map.center.zoom;
+        }
+
+        /**
+         * Sets the zoom level of the map
+         * @param value
+         */
+        function setZoom(value){
+            vm.map.center.zoom = value;
         }
 
         /**
@@ -46,11 +60,21 @@
          * @param incident
          */
         function registerMarker(incident){
-            //specify center of map based on incident location
-            vm.map.center.lat = incident.l[0];
-            vm.map.center.lng = incident.l[1];
+            var marker = {
+                lat: incident.l[0],
+                lng: incident.l[1],
+                draggable: false
+            }
 
-            addMarker(vm.map.center);
+            var center = {
+                lat: marker.lat,
+                lng: marker.lng,
+                zoom: 16
+            }
+            //specify center of map based on incident location
+            setCenter(center);
+
+            vm.map.marker.push(marker);
         }
 
         /**
@@ -58,12 +82,57 @@
          * @param location - {lat,lng}
          */
         function addMarker(location){
-            //make a marker for incident chosen
-            vm.map.markers.push({
+            var marker = {
                 lat: location.lat,
                 lng: location.lng,
+                message: location.message,
                 draggable: false
-            });
+            };
+
+            if (location.type === "location"){
+                marker.focus = true;
+                marker.message = "You are here";
+            }
+
+            if (!markerAlreadyExists(marker)) //make a marker for incident chosen
+                vm.map.markers.push(marker);
+
+        }
+
+        /**
+         * Resets the marker focused
+         */
+        function resetMarker(){
+            vm.map.marker = [];
+        }
+
+        /**
+         * Returns true if the marker already exists in the markers array
+         * @param marker
+         * @returns {boolean}
+         */
+        function markerAlreadyExists(marker){
+            for (var i in vm.map.markers){
+                if(vm.map.markers[i].message === marker.message)
+                    return true;
+            }
+            return false;
+        }
+
+        /**
+         * Removes a marker from map.markers
+         * @param key
+         */
+        function removeMarker(key){
+            var markers = vm.map.markers;
+            for(var i in markers){
+                if (markers[i].message === key){
+                    markers.splice(i, 1);
+                    break;
+                }
+            }
+            console.log('markers');
+            console.log(markers);
         }
     }
 
