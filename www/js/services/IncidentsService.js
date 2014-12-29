@@ -25,8 +25,6 @@
         vm.assignment = null;
         vm.assignmentFirebaseObject = null;
 
-        vm.checkIfPendingRequest = checkIfPendingRequest;
-
         var services = {
             incident: vm.incident,
             incidents: vm.incidents,
@@ -152,14 +150,19 @@
                 };
 
                 //check if the incident is a pending request for the officer
-                if (vm.checkIfPendingRequest(incident, officer.id) && !ObjectHelper.isKeyInArray(data.key, vm.requests))
+                if (checkIfPendingRequest(incident, officer.id) && !ObjectHelper.isKeyInArray(data.key, vm.requests))
                     vm.requests.push(incident);
-                else if (typeof officer.assignment !== 'undefined') //check if assignment is undefined
+                else if (officer.assignment === null) //check if assignment is undefined
                 {
-                    if (officer.assignment.$value != incident.$id && !ObjectHelper.isKeyInArray(data.key, vm.requests)) //check if incident is the assignment of the officer
+                    vm.incidents.push(incident);
+                }
+                else {
+                    if (officer.assignment.$id !== incident.$id && !ObjectHelper.isKeyInArray(data.key, vm.requests)) //check if incident is the assignment of the officer
+                    {
                         vm.incidents.push(incident);
-//                    else if(officer.assignment.$value == incident.$id) //TODO change marker icon for assignment
+//                        else if(officer.assignment.$value == incident.$id) //TODO change marker icon for assignment
 //                        marker.message = 'assignment';
+                    }
                 }
                 //include incident to map.markers
                 MapService.addMarker(marker);
@@ -170,7 +173,7 @@
             // OR other officers have submitted request for an incident
             else if (data.event === 'child_changed')
             {
-                if (vm.checkIfPendingRequest(incident, officer.id) && !ObjectHelper.isKeyInArray(incident.$id, vm.requests))
+                if (checkIfPendingRequest(incident, officer.id) && !ObjectHelper.isKeyInArray(incident.$id, vm.requests))
                 {
                     vm.requests.push(incident);
                     try {
