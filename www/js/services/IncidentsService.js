@@ -117,7 +117,9 @@
          * @returns {*|Object|null}
          */
         function getIncident(key){
-            return vm.incidentsFirebaseArray.$getRecord(key);
+            var q = $q.defer();
+            q.resolve(vm.incidentsFirebaseArray.$getRecord(key));
+            return q.promise;
         }
         /**
          * sets vm.incident to current incident focused
@@ -139,7 +141,6 @@
          */
         function processIncident(data, incident){
             var officer = OfficerService.officer;
-
             //case: new incident is added to the area of this officer
             if (data.event == "child_added" && data.key != "count" && !ObjectHelper.isKeyInArray(data.key, vm.incidents))
             {
@@ -248,8 +249,10 @@
          */
         function watchIncidents(data) {
             console.log(data.event + ' ' + data.key);
-            var incident = getIncident(data.key);
-            processIncident(data, incident);
+            getIncident(data.key)
+                .then(function(incident){
+                    processIncident(data, incident);
+                });
         }
 
         /**
