@@ -26,16 +26,18 @@
       <file leaf-file-name="HomeController.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/js/controllers/HomeController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="20" selection-start="1285" selection-end="1412" vertical-scroll-proportion="0.0" vertical-offset="158" max-vertical-offset="2604">
-              <folding />
+            <state line="36" column="0" selection-start="1703" selection-end="1703" vertical-scroll-proportion="0.0" vertical-offset="746" max-vertical-offset="2100">
+              <folding>
+                <element signature="e#2916#3698#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/views/home/index.html">
+      <file leaf-file-name="incident.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/views/home/modal/incident.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="18" selection-start="538" selection-end="538" vertical-scroll-proportion="-7.84" vertical-offset="0" max-vertical-offset="1484">
+            <state line="18" column="22" selection-start="823" selection-end="823" vertical-scroll-proportion="-7.84" vertical-offset="308" max-vertical-offset="1652">
               <folding />
             </state>
           </provider>
@@ -44,77 +46,45 @@
       <file leaf-file-name="IncidentsService.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/www/js/services/IncidentsService.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="121" column="29" selection-start="4706" selection-end="4706" vertical-scroll-proportion="0.502447" vertical-offset="1288" max-vertical-offset="3556">
+            <state line="274" column="75" selection-start="11511" selection-end="11511" vertical-scroll-proportion="0.6882453" vertical-offset="2956" max-vertical-offset="4396">
               <folding>
                 <element signature="e#162#290#0" expanded="false" />
-                <element signature="e#1626#2528#0" expanded="false" />
-                <element signature="e#1887#2516#0" expanded="false" />
-                <element signature="e#2004#2496#0" expanded="false" />
-                <element signature="e#2181#2472#0" expanded="false" />
-                <element signature="e#2345#2444#0" expanded="false" />
-                <element signature="e#2789#3136#0" expanded="false" />
-                <element signature="e#3397#3803#0" expanded="false" />
-                <element signature="e#4062#4394#0" expanded="false" />
-                <element signature="e#4859#5103#0" expanded="false" />
-                <element signature="e#6838#6896#0" expanded="false" />
-                <element signature="e#7174#7470#0" expanded="false" />
-                <element signature="e#7248#7441#0" expanded="false" />
-                <element signature="e#7497#7553#0" expanded="false" />
-                <element signature="e#7694#8506#0" expanded="false" />
-                <element signature="e#7960#8185#0" expanded="false" />
-                <element signature="e#8223#8492#0" expanded="false" />
-                <element signature="e#8320#8474#0" expanded="false" />
-                <element signature="e#8720#9021#0" expanded="false" />
-                <element signature="e#8840#8984#0" expanded="false" />
-                <element signature="e#9134#10006#0" expanded="false" />
-                <element signature="e#9525#9573#0" expanded="false" />
-                <element signature="e#10480#11213#0" expanded="false" />
-                <element signature="e#10555#11074#0" expanded="false" />
-                <element signature="e#10723#10812#0" expanded="false" />
-                <element signature="e#10850#11058#0" expanded="false" />
+                <element signature="e#3538#3885#0" expanded="false" />
+                <element signature="e#5326#5465#0" expanded="false" />
+                <element signature="e#5657#5901#0" expanded="false" />
+                <element signature="e#6161#6333#0" expanded="false" />
+                <element signature="e#6535#9760#0" expanded="false" />
+                <element signature="e#6791#8069#0" expanded="false" />
+                <element signature="e#6822#6963#0" expanded="false" />
+                <element signature="e#7453#7880#0" expanded="false" />
+                <element signature="e#7683#7800#0" expanded="false" />
+                <element signature="e#8082#8140#0" expanded="false" />
+                <element signature="e#8278#8728#0" expanded="false" />
+                <element signature="e#8418#8714#0" expanded="false" />
+                <element signature="e#8492#8685#0" expanded="false" />
+                <element signature="e#8741#8797#0" expanded="false" />
+                <element signature="e#8938#9750#0" expanded="false" />
+                <element signature="e#9204#9429#0" expanded="false" />
+                <element signature="e#9467#9736#0" expanded="false" />
+                <element signature="e#9564#9718#0" expanded="false" />
+                <element signature="e#9964#10265#0" expanded="false" />
+                <element signature="e#10084#10228#0" expanded="false" />
+                <element signature="e#10378#11250#0" expanded="false" />
+                <element signature="e#10769#10817#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="OfficerService.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/js/services/OfficerService.js">
+      <file leaf-file-name="IonicModalService.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/js/services/ionic/IonicModalService.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="73" column="0" selection-start="2038" selection-end="2038" vertical-scroll-proportion="0.0" vertical-offset="1121" max-vertical-offset="1904">
+            <state line="37" column="43" selection-start="1415" selection-end="1415" vertical-scroll-proportion="0.0" vertical-offset="560" max-vertical-offset="2184">
               <folding>
-                <element signature="e#1846#1938#0" expanded="true" />
+                <element signature="e#652#858#0" expanded="false" />
+                <element signature="e#2695#2784#0" expanded="false" />
+                <element signature="e#2807#2926#0" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MapService.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/js/services/MapService.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="92" column="0" selection-start="2335" selection-end="2335" vertical-scroll-proportion="-30.153847" vertical-offset="420" max-vertical-offset="2184">
-              <folding>
-                <element signature="e#222#574#0" expanded="false" />
-                <element signature="e#244#338#0" expanded="false" />
-                <element signature="e#362#405#0" expanded="false" />
-                <element signature="e#426#514#0" expanded="false" />
-                <element signature="e#1041#1214#0" expanded="false" />
-                <element signature="e#1337#1388#0" expanded="false" />
-                <element signature="e#1536#1961#0" expanded="false" />
-                <element signature="e#1563#1683#0" expanded="false" />
-                <element signature="e#1710#1816#0" expanded="false" />
-                <element signature="e#2666#2709#0" expanded="false" />
-                <element signature="e#2908#3100#0" expanded="false" />
-                <element signature="e#2951#3064#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MapController.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/js/controllers/MapController.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="29" selection-start="601" selection-end="601" vertical-scroll-proportion="0.0" vertical-offset="168" max-vertical-offset="1120">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -144,25 +114,28 @@
         <option value="$PROJECT_DIR$/www/js/constants.js" />
         <option value="$PROJECT_DIR$/www/js/services/OfficersService.js" />
         <option value="$PROJECT_DIR$/www/js/services/ionic/IonicPopupService.js" />
-        <option value="$PROJECT_DIR$/www/views/home/modal/incident.html" />
         <option value="$PROJECT_DIR$/www/js/services/ionic/IonicLoadingService.js" />
         <option value="$PROJECT_DIR$/www/index.html" />
         <option value="$PROJECT_DIR$/www/js/services/firebase/FirebaseService.js" />
-        <option value="$PROJECT_DIR$/www/views/home/modal/incidentMap.html" />
-        <option value="$PROJECT_DIR$/www/js/services/ionic/IonicModalService.js" />
-        <option value="$PROJECT_DIR$/www/views/map/index.html" />
-        <option value="$PROJECT_DIR$/www/js/config.js" />
         <option value="$PROJECT_DIR$/www/js/run.js" />
-        <option value="$PROJECT_DIR$/www/js/controllers/MapController.js" />
         <option value="$PROJECT_DIR$/www/js/services/InternetService.js" />
         <option value="$PROJECT_DIR$/www/js/services/GeolocationService.js" />
-        <option value="$PROJECT_DIR$/www/css/style.css" />
         <option value="$PROJECT_DIR$/www/js/services/MapService.js" />
         <option value="$PROJECT_DIR$/www/css/animate.min.css" />
         <option value="$PROJECT_DIR$/www/js/helpers/ObjectHelper.js" />
+        <option value="$PROJECT_DIR$/www/js/controllers/MapController.js" />
+        <option value="$PROJECT_DIR$/www/js/config.js" />
+        <option value="$PROJECT_DIR$/www/views/assignment/index.html" />
+        <option value="$PROJECT_DIR$/www/views/home/modal/attachment.html" />
+        <option value="$PROJECT_DIR$/www/css/style.css" />
         <option value="$PROJECT_DIR$/www/js/services/OfficerService.js" />
-        <option value="$PROJECT_DIR$/www/js/controllers/HomeController.js" />
+        <option value="$PROJECT_DIR$/www/js/controllers/AssignmentController.js" />
         <option value="$PROJECT_DIR$/www/views/home/index.html" />
+        <option value="$PROJECT_DIR$/www/views/map/index.html" />
+        <option value="$PROJECT_DIR$/www/views/home/modal/incidentMap.html" />
+        <option value="$PROJECT_DIR$/www/js/controllers/HomeController.js" />
+        <option value="$PROJECT_DIR$/www/views/home/modal/incident.html" />
+        <option value="$PROJECT_DIR$/www/js/services/ionic/IonicModalService.js" />
         <option value="$PROJECT_DIR$/www/js/services/IncidentsService.js" />
       </list>
     </option>
@@ -221,7 +194,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -294,8 +266,53 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="icma-prototype" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="icma-prototype" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="services" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ionic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="icma-prototype" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="icma-prototype" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -310,6 +327,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/www/views/home/modal" />
       <recent name="$PROJECT_DIR$/www/js/services" />
       <recent name="$PROJECT_DIR$/www/css" />
       <recent name="$PROJECT_DIR$/www/lib/ionic/css" />
@@ -379,11 +397,11 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32874617" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32874617" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -401,9 +419,9 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23984376" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -425,21 +443,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/www/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="46" selection-start="729" selection-end="730" vertical-scroll-proportion="0.0" vertical-offset="532" max-vertical-offset="1960" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="46" selection-start="729" selection-end="730" vertical-scroll-proportion="0.0" vertical-offset="392" max-vertical-offset="1960" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="46" selection-start="729" selection-end="730" vertical-scroll-proportion="0.0" vertical-offset="392" max-vertical-offset="1960" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="19" column="46" selection-start="729" selection-end="730" vertical-scroll-proportion="0.0" vertical-offset="392" max-vertical-offset="1960" />
@@ -570,11 +573,6 @@
         <state line="10" column="28" selection-start="265" selection-end="265" vertical-scroll-proportion="0.48442906" vertical-offset="0" max-vertical-offset="588" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/views/home/modal/incident.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="0" selection-start="672" selection-end="672" vertical-scroll-proportion="0.69883525" vertical-offset="0" max-vertical-offset="1568" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/js/services/ionic/IonicLoadingService.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="40" selection-start="114" selection-end="114" vertical-scroll-proportion="0.23217247" vertical-offset="0" max-vertical-offset="728" />
@@ -600,67 +598,14 @@
         <state line="21" column="41" selection-start="688" selection-end="688" vertical-scroll-proportion="0.7893864" vertical-offset="112" max-vertical-offset="1540" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/services/ionic/IonicModalService.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="38" selection-start="2145" selection-end="2145" vertical-scroll-proportion="0.5974441" vertical-offset="1166" max-vertical-offset="1820">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/views/home/modal/incidentMap.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="17" selection-start="615" selection-end="632" vertical-scroll-proportion="0.6056572" vertical-offset="0" max-vertical-offset="601">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/views/map/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="24" selection-start="347" selection-end="347" vertical-scroll-proportion="0.32612312" vertical-offset="0" max-vertical-offset="601">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="0" selection-start="155" selection-end="155" vertical-scroll-proportion="0.17891374" vertical-offset="56" max-vertical-offset="2408">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="157" column="23" selection-start="2519" selection-end="2519" vertical-scroll-proportion="0.81426203" vertical-offset="3905" max-vertical-offset="4592">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/js/run.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="68" selection-start="142" selection-end="142" vertical-scroll-proportion="-0.65495205" vertical-offset="550" max-vertical-offset="1176">
-          <folding />
-        </state>
+        <state line="5" column="68" selection-start="142" selection-end="142" vertical-scroll-proportion="-0.65495205" vertical-offset="550" max-vertical-offset="1176" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/js/services/GeolocationService.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="34" selection-start="1400" selection-end="1400" vertical-scroll-proportion="0.28434506" vertical-offset="830" max-vertical-offset="1484">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/services/InternetService.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="23" selection-start="688" selection-end="688" vertical-scroll-proportion="0.10543131" vertical-offset="550" max-vertical-offset="1792">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/controllers/MapController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="29" selection-start="601" selection-end="601" vertical-scroll-proportion="0.0" vertical-offset="168" max-vertical-offset="1120">
-          <folding />
-        </state>
+        <state line="42" column="34" selection-start="1400" selection-end="1400" vertical-scroll-proportion="0.28434506" vertical-offset="830" max-vertical-offset="1484" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/css/animate.min.css">
@@ -670,102 +615,157 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/services/MapService.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="92" column="0" selection-start="2335" selection-end="2335" vertical-scroll-proportion="-30.153847" vertical-offset="420" max-vertical-offset="2184">
-          <folding>
-            <element signature="e#222#574#0" expanded="false" />
-            <element signature="e#244#338#0" expanded="false" />
-            <element signature="e#362#405#0" expanded="false" />
-            <element signature="e#426#514#0" expanded="false" />
-            <element signature="e#1041#1214#0" expanded="false" />
-            <element signature="e#1337#1388#0" expanded="false" />
-            <element signature="e#1536#1961#0" expanded="false" />
-            <element signature="e#1563#1683#0" expanded="false" />
-            <element signature="e#1710#1816#0" expanded="false" />
-            <element signature="e#2666#2709#0" expanded="false" />
-            <element signature="e#2908#3100#0" expanded="false" />
-            <element signature="e#2951#3064#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/js/helpers/ObjectHelper.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="88" column="0" selection-start="2921" selection-end="2921" vertical-scroll-proportion="0.76038337" vertical-offset="168" max-vertical-offset="952">
-          <folding>
-            <element signature="e#189#352#0" expanded="false" />
-            <element signature="e#417#638#0" expanded="false" />
-            <element signature="e#473#594#0" expanded="false" />
-            <element signature="e#516#576#0" expanded="false" />
-            <element signature="e#652#748#0" expanded="false" />
-            <element signature="e#807#870#0" expanded="false" />
-            <element signature="e#1164#1427#0" expanded="false" />
-            <element signature="e#1236#1384#0" expanded="false" />
-            <element signature="e#1303#1366#0" expanded="false" />
-            <element signature="e#1640#1740#0" expanded="false" />
-            <element signature="e#2006#2267#0" expanded="false" />
-            <element signature="e#2078#2223#0" expanded="false" />
-            <element signature="e#2145#2205#0" expanded="false" />
-            <element signature="e#2559#2646#0" expanded="false" />
-            <element signature="e#2851#2920#0" expanded="false" />
-          </folding>
+        <state line="88" column="0" selection-start="2921" selection-end="2921" vertical-scroll-proportion="0.76038337" vertical-offset="168" max-vertical-offset="952" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/services/MapService.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="92" column="0" selection-start="2335" selection-end="2335" vertical-scroll-proportion="-0.5367412" vertical-offset="2576" max-vertical-offset="3444">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/services/OfficerService.js">
+    <entry file="file://$PROJECT_DIR$/www/js/services/InternetService.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="73" column="0" selection-start="2038" selection-end="2038" vertical-scroll-proportion="0.0" vertical-offset="1121" max-vertical-offset="1904">
-          <folding>
-            <element signature="e#1846#1938#0" expanded="true" />
-          </folding>
+        <state line="33" column="35" selection-start="1000" selection-end="1000" vertical-scroll-proportion="1.341853" vertical-offset="0" max-vertical-offset="1792">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/controllers/HomeController.js">
+    <entry file="file://$PROJECT_DIR$/www/js/controllers/MapController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="20" selection-start="1285" selection-end="1412" vertical-scroll-proportion="0.0" vertical-offset="158" max-vertical-offset="2604">
+        <state line="16" column="29" selection-start="601" selection-end="601" vertical-scroll-proportion="0.44728434" vertical-offset="168" max-vertical-offset="1120">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="56" column="76" selection-start="2515" selection-end="2515" vertical-scroll-proportion="0.37147596" vertical-offset="1344" max-vertical-offset="2548">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/views/assignment/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="35" column="61" selection-start="1509" selection-end="1509" vertical-scroll-proportion="0.4825291" vertical-offset="690" max-vertical-offset="1316">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="168" column="16" selection-start="2666" selection-end="2666" vertical-scroll-proportion="0.91054314" vertical-offset="4134" max-vertical-offset="4900">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/views/home/modal/attachment.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="46" selection-start="218" selection-end="218" vertical-scroll-proportion="0.18635607" vertical-offset="0" max-vertical-offset="601">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/controllers/AssignmentController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="43" selection-start="401" selection-end="401" vertical-scroll-proportion="0.58146966" vertical-offset="0" max-vertical-offset="644">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/views/home/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="18" selection-start="538" selection-end="538" vertical-scroll-proportion="-7.84" vertical-offset="0" max-vertical-offset="1484">
+        <state line="26" column="24" selection-start="1611" selection-end="1611" vertical-scroll-proportion="0.93178034" vertical-offset="168" max-vertical-offset="1540">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/views/map/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="21" selection-start="554" selection-end="554" vertical-scroll-proportion="0.46589017" vertical-offset="0" max-vertical-offset="616">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/views/home/modal/incidentMap.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="20" selection-start="461" selection-end="461" vertical-scroll-proportion="0.46589017" vertical-offset="0" max-vertical-offset="601">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/controllers/HomeController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="0" selection-start="1703" selection-end="1703" vertical-scroll-proportion="0.0" vertical-offset="746" max-vertical-offset="2100">
+          <folding>
+            <element signature="e#2916#3698#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/services/OfficerService.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="74" selection-start="590" selection-end="590" vertical-scroll-proportion="0.8051118" vertical-offset="0" max-vertical-offset="1260">
+          <folding>
+            <element signature="e#626#969#0" expanded="false" />
+            <element signature="e#1105#1150#0" expanded="false" />
+            <element signature="e#1273#1324#0" expanded="false" />
+            <element signature="e#1443#1490#0" expanded="false" />
+            <element signature="e#1621#1692#0" expanded="false" />
+            <element signature="e#1830#1883#0" expanded="false" />
+            <element signature="e#2034#2093#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/services/ionic/IonicModalService.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="37" column="43" selection-start="1415" selection-end="1415" vertical-scroll-proportion="0.0" vertical-offset="560" max-vertical-offset="2184">
+          <folding>
+            <element signature="e#652#858#0" expanded="false" />
+            <element signature="e#2695#2784#0" expanded="false" />
+            <element signature="e#2807#2926#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/views/home/modal/incident.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="22" selection-start="823" selection-end="823" vertical-scroll-proportion="-7.84" vertical-offset="308" max-vertical-offset="1652">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/js/services/IncidentsService.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="121" column="29" selection-start="4706" selection-end="4706" vertical-scroll-proportion="0.502447" vertical-offset="1288" max-vertical-offset="3556">
+        <state line="274" column="75" selection-start="11511" selection-end="11511" vertical-scroll-proportion="0.6882453" vertical-offset="2956" max-vertical-offset="4396">
           <folding>
             <element signature="e#162#290#0" expanded="false" />
-            <element signature="e#1626#2528#0" expanded="false" />
-            <element signature="e#1887#2516#0" expanded="false" />
-            <element signature="e#2004#2496#0" expanded="false" />
-            <element signature="e#2181#2472#0" expanded="false" />
-            <element signature="e#2345#2444#0" expanded="false" />
-            <element signature="e#2789#3136#0" expanded="false" />
-            <element signature="e#3397#3803#0" expanded="false" />
-            <element signature="e#4062#4394#0" expanded="false" />
-            <element signature="e#4859#5103#0" expanded="false" />
-            <element signature="e#6838#6896#0" expanded="false" />
-            <element signature="e#7174#7470#0" expanded="false" />
-            <element signature="e#7248#7441#0" expanded="false" />
-            <element signature="e#7497#7553#0" expanded="false" />
-            <element signature="e#7694#8506#0" expanded="false" />
-            <element signature="e#7960#8185#0" expanded="false" />
-            <element signature="e#8223#8492#0" expanded="false" />
-            <element signature="e#8320#8474#0" expanded="false" />
-            <element signature="e#8720#9021#0" expanded="false" />
-            <element signature="e#8840#8984#0" expanded="false" />
-            <element signature="e#9134#10006#0" expanded="false" />
-            <element signature="e#9525#9573#0" expanded="false" />
-            <element signature="e#10480#11213#0" expanded="false" />
-            <element signature="e#10555#11074#0" expanded="false" />
-            <element signature="e#10723#10812#0" expanded="false" />
-            <element signature="e#10850#11058#0" expanded="false" />
+            <element signature="e#3538#3885#0" expanded="false" />
+            <element signature="e#5326#5465#0" expanded="false" />
+            <element signature="e#5657#5901#0" expanded="false" />
+            <element signature="e#6161#6333#0" expanded="false" />
+            <element signature="e#6535#9760#0" expanded="false" />
+            <element signature="e#6791#8069#0" expanded="false" />
+            <element signature="e#6822#6963#0" expanded="false" />
+            <element signature="e#7453#7880#0" expanded="false" />
+            <element signature="e#7683#7800#0" expanded="false" />
+            <element signature="e#8082#8140#0" expanded="false" />
+            <element signature="e#8278#8728#0" expanded="false" />
+            <element signature="e#8418#8714#0" expanded="false" />
+            <element signature="e#8492#8685#0" expanded="false" />
+            <element signature="e#8741#8797#0" expanded="false" />
+            <element signature="e#8938#9750#0" expanded="false" />
+            <element signature="e#9204#9429#0" expanded="false" />
+            <element signature="e#9467#9736#0" expanded="false" />
+            <element signature="e#9564#9718#0" expanded="false" />
+            <element signature="e#9964#10265#0" expanded="false" />
+            <element signature="e#10084#10228#0" expanded="false" />
+            <element signature="e#10378#11250#0" expanded="false" />
+            <element signature="e#10769#10817#0" expanded="false" />
           </folding>
         </state>
       </provider>

@@ -16,7 +16,7 @@
             name: window.localStorage.getItem("name"),
             password: window.localStorage.getItem("password"),
             confirmPassword: 'walakokabalo',
-            assignment: null
+            assignment:  window.localStorage.getItem('assignment') || null
         };
 
         var services = {

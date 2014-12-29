@@ -157,3 +157,14 @@ div.list > a.item, div.list > div.item, div > a.item {
 #body {
     margin-bottom: 10px;
 }
+
+.icon-inverse, .light{
+    color : #f8f8ff;
+}
+
+#attachmentImage{
+    max-height: 100%;
+    max-width: 100%;
+    height: 100%;
+    width: 100%;
+}

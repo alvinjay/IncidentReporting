@@ -37,6 +37,7 @@
             retrieveOngoingIncidents: retrieveOngoingIncidents,
             retrieveOfficerAssignment: retrieveOfficerAssignment,
             getIncident: getIncident,
+            setCurrentIncidentByKey: setCurrentIncidentByKey,
             setCurrentIncident: setCurrentIncident,
             processIncident: processIncident,
             submitRequest: submitRequest
@@ -53,8 +54,22 @@
             //Retrieve assignmentFirebaseObject
             retrieveOfficerAssignment(officer.id)
                 .then(function(assignment){
-                    vm.assignment.$watch(watchAssignment);
-                    vm.assignment.$loaded(function(data){
+                    if (officer.assignment === null)
+                    {
+                        vm.assignment.$watch(watchAssignment);
+                        vm.assignment.$loaded(function(data){
+                            //Retrieve incidentsFirebaseArray
+                            retrieveNewIncidents(officer.areaCode)
+                                .then(function(incidents) {
+                                    vm.incidentsFirebaseArray.$watch(watchIncidents);
+                                    vm.incidentsFirebaseArray.$loaded(function(data){
+                                        IonicLoadingService.hide();
+                                    });
+                                });
+                        });
+                    }
+                    else
+                    {
                         //Retrieve incidentsFirebaseArray
                         retrieveNewIncidents(officer.areaCode)
                             .then(function(incidents) {
@@ -62,8 +77,8 @@
                                 vm.incidentsFirebaseArray.$loaded(function(data){
                                     IonicLoadingService.hide();
                                 });
-                        });
-                    });
+                            });
+                    }
                 });
         }
         /**
@@ -122,15 +137,26 @@
             return q.promise;
         }
         /**
-         * sets vm.incident to current incident focused
+         * Retrieve incident associated to key provided then sets vm.incident to retrieved incident
          * @param key
          */
-        function setCurrentIncident(key){
+        function setCurrentIncidentByKey(key){
             var q = $q.defer();
 
             var incident = vm.incidentsFirebaseArray.$getRecord(key);
             ObjectHelper.copyObjectProperties(incident, vm.incident);
 
+            q.resolve(true);
+            return q.promise;
+        }
+        /**
+         * Sets vm.incident to incident provided
+         * @param incident
+         * @returns {.watchHeading.promise|*|.watchPosition.promise|.watchAcceleration.promise|e.promise|promise}
+         */
+        function setCurrentIncident(incident){
+            var q = $q.defer();
+            ObjectHelper.copyObjectProperties(incident, vm.incident);
             q.resolve(true);
             return q.promise;
         }
@@ -153,17 +179,14 @@
                 //check if the incident is a pending request for the officer
                 if (checkIfPendingRequest(incident, officer.id) && !ObjectHelper.isKeyInArray(data.key, vm.requests))
                     vm.requests.push(incident);
-                else if (officer.assignment === null) //check if assignment is undefined
-                {
+                else if (officer.assignment === null && !ObjectHelper.isKeyInArray(data.key, vm.requests)) //check if assignment is undefined
                     vm.incidents.push(incident);
-                }
-                else {
+                else if (officer.assignment !== null){
                     if (officer.assignment.$id !== incident.$id && !ObjectHelper.isKeyInArray(data.key, vm.requests)) //check if incident is the assignment of the officer
-                    {
                         vm.incidents.push(incident);
-//                        else if(officer.assignment.$value == incident.$id) //TODO change marker icon for assignment
-//                        marker.message = 'assignment';
-                    }
+    //                        else if(officer.assignment.$value == incident.$id) //TODO change marker icon for assignment
+    //                        marker.message = 'assignment';
+
                 }
                 //include incident to map.markers
                 MapService.addMarker(marker);
@@ -249,6 +272,7 @@
          */
         function watchIncidents(data) {
             console.log(data.event + ' ' + data.key);
+            //TODO implement refer to count before IonicLoadingService.hide
             getIncident(data.key)
                 .then(function(incident){
                     processIncident(data, incident);
@@ -269,7 +293,10 @@
                     })
                     .then(function(){
                         vm.assignmentFirebaseObject = vm.ongoingFirebaseArray.$getRecord(key);
+
                         OfficerService.setOfficerAssignment(vm.assignmentFirebaseObject);
+                        //save to localStorage for offline mode
+                        window.localStorage.setItem('assignment', JSON.stringify(vm.assignmentFirebaseObject));
                     });
             }
             else

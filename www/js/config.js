@@ -51,7 +51,12 @@
                     views: {
                         'assignment-tab': {
                             templateUrl: "views/assignment/index.html",
-                            controller: "AssignmentController"
+                            controller: "AssignmentController",
+                            resolve: {
+                                assignment: function(OfficerService){
+                                    return OfficerService.officer.assignment;
+                                }
+                            }
                         }
                     }
                 })

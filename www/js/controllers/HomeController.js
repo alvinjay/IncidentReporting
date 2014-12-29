@@ -18,6 +18,7 @@
                             $cordovaSplashscreen, $cordovaDevice){
 
         //TODO retrieve id, name and password for
+        window.localStorage.removeItem('assignment');
         window.localStorage.setItem("areaCode", '04');
         window.localStorage.setItem("id", '1234567890');
         window.localStorage.setItem("name", 'Alvin Jay Cosare');
@@ -27,6 +28,12 @@
 //        window.localStorage.setItem("password", 'walakokabalo');
 
         $scope.officer = officer;
+        try{
+            $scope.assignment = JSON.parse(officer.assignment.toString());
+        }catch(e){
+            $scope.assignment = null
+        }
+
         $scope.location = location;
         $scope.map = map;
         $scope.incident = incident;
@@ -38,10 +45,7 @@
         // model Internet and Firebase Connection
         $scope.connection = connection;
 
-        $scope.openIncidentModal = openIncidentModal;
-        $scope.closeIncidentModal = $scope.closeIncidentMapModal = IonicModalService.closeModal;
-        $scope.openIncidentMapModal = IonicModalService.openIncidentMapModal;
-//        $scope.closeIncidentMapModal = IonicModalService.closeModal;
+        $scope.openIncidentModal = IonicModalService.openIncidentModal;
 
         $scope.confirmPassword = confirmPassword;
         $scope.submitRequest = OfficerService.submitRequest;
@@ -80,14 +84,5 @@
                     }
                 });
         }
-        /**
-         * Opens an incident modal
-         * @param key
-         */
-        function openIncidentModal(key){
-            IonicModalService.openIncidentModal(key,$scope);
-        }
-
-
     }
 })(window.angular);

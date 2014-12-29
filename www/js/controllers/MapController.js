@@ -14,7 +14,7 @@
         $scope.location = location;
         $scope.connection = connection;
 
-        MapService.setZoom(13);
+        MapService.setZoom(14);
 
         // watch for Internet Connection status changes
         $scope.$watch('online', InternetService.changeInternetStatus);

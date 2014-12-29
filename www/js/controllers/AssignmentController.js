@@ -1,32 +1,18 @@
-/* global Firebase */
 (function(angular){
-    angular.module('App')
-        .controller('AssignmentController', function($scope, IonicModalService){
-            $('input').blur();
+    'use strict';
 
-            $scope.info = {
-                name: window.localStorage.getItem("name"),
-                contact: window.localStorage.getItem("contact")
-            }
+    angular
+        .module('App')
+        .controller('AssignmentController', AssignmentController);
 
-            $scope.openPersonalInfoModal = function(){
-                IonicModalService.openPersonalInfoModal($scope);
-            }
+    AssignmentController.$inject = ['$scope', 'assignment'];
 
-            $scope.closePersonalInfoModal = function(){
-                IonicModalService.closeModal($scope);
-            }
-
-            $scope.setPersonalInfo = function(){
-                try{
-                    window.localStorage.setItem("name", $scope.info.name);
-                    window.localStorage.setItem("contact", $scope.info.contact);
-                    console.log('yey');
-                    IonicModalService.closeModal($scope);
-
-                } catch(e) {
-                    console.log('error');
-                }
-            }
-        });
+    function AssignmentController($scope, assignment){
+        try{
+            $scope.assignment = JSON.parse(assignment.toString());
+        }catch(e){
+            $scope.assignment = assignment;
+        }
+//        console.log($scope.assignment.attachments.img);
+    }
 })(window.angular);

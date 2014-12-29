@@ -2,15 +2,12 @@
     <ion-header-bar id="header">
         <button id="title"
                 class="button button-clear item-button-left button-dark header-left"
-                data-ng-click="closeIncidentMapModal()">
+                data-ng-click="closeAttachmentModal()">
             <i class="button-icon ion-chevron-left"></i>&nbsp;Back
         </button>
-        <h1 id="title" class="title">Incident</h1>
+        <h1 id="title" class="title">Attachment Image</h1>
     </ion-header-bar>
     <ion-content id="content" overflow-scroll="true">
-        <ion-scroll>
-            <leaflet width="100%" height="100%" center="map.center" defaults="map.defaults"
-                     markers="map.marker" tiles="map.tiles"></leaflet>
-        </ion-scroll>
+        <img id="attachmentImage" src="data:image/jpeg;base64,{{ incident.attachments.img }}"/>
     </ion-content>
 </ion-modal-view>

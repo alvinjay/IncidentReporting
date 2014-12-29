@@ -1,30 +1,41 @@
-<ion-view id="body" title="Settings" >
-    <ion-content id="content" overflow-scroll="true" >
-        <div class="list list-inset">
-            <a class="item item-icon-left item-button-right" data-ng-click="print()">
-                <i class="icon fa fa-question-circle"></i>
-                <b>About</b>
-                <button class="button button-clear button-light">
-                    <i class="icon fa fa-chevron-right"></i>
-                </button>
-            </a>
-        </div>
+<ion-view id="body" title="Assignment" >
 
-        <div class="list list-inset">
-            <a class="item item-icon-left item-button-right" data-ng-click="openPersonalInfoModal()">
-                <i class="icon fa fa-info"></i>
-                <b>Personal Info</b>
-                <button class="button button-clear button-light">
-                    <i class="icon fa fa-chevron-right"></i>
-                </button>
-            </a>
-            <a class="item item-icon-left item-button-right" href="#">
-                <i class="icon fa fa-home"></i>
-                <b>Home Location</b>
-                <button class="button button-clear button-light">
-                    <i class="icon fa fa-chevron-right"></i>
-                </button>
-            </a>
-        </div>
+    <ion-content id="content" overflow-scroll="true" >
+        <ion-scroll>
+            <div class="list card" data-ng-hide="assignment === null">
+                <div class="item"
+                     data-ng-hide="officer.assignment.$value != null || isKeyInArray(incident.$id, requests) ">
+                    <button class="button button-full button-balanced"
+                            data-ng-click="">Confirm as valid</button>
+                </div>
+
+                <div class="item">
+                    <!--<i class="icon ion-home"></i>-->
+                    Incident Type: {{ assignment.type }}
+                </div>
+
+                <div class="item">
+                    <!--<i class="icon ion-wifi"></i>-->
+                    Sender Name: {{ assignment.sender.name }}
+                </div>
+
+
+                <div class="item">
+                    <!--<i class="icon ion-ios7-telephone"></i>-->
+                    Contact number: {{ assignment.sender.contact | checkIfNull}}
+                </div>
+
+                <div class="item">
+                    <!--<i class="icon ion-wifi"></i>-->
+                    Submitted at: {{ assignment.timestamp | convertToDateTime }}
+                </div>
+
+                <div class="item button-bar">
+                    <a class="button button-light icon ion-paperclip"></a>
+                    <a class="button button-light icon ion-map "></a>
+                    <a class="button button-light icon ion-clipboard "></a>
+                </div>
+            </div>
+        </ion-scroll>
     </ion-content>
 </ion-view>

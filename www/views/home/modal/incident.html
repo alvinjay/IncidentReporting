@@ -6,10 +6,6 @@
             <i class="button-icon ion-chevron-left"></i>&nbsp;Back
         </button>
         <h1 id="title" class="title">Incident Details</h1>
-        <button id="title" data-ng-click="openIncidentMapModal()"
-            class="button button-clear item-button-right button-dark header-right">
-            <i class="fa fa-map-marker fa-lg"></i>&nbsp;
-        </button>
     </ion-header-bar>
 
     <ion-content id="content" overflow-scroll="true">
@@ -17,7 +13,7 @@
             <div class="list card">
 
                 <div class="item"
-                     data-ng-hide="officer.assignment.$value != null || isKeyInArray(incident.$id, requests) ">
+                     data-ng-hide="assignment !== null || isKeyInArray(incident.$id, requests) ">
                     <button class="button button-full button-balanced"
                             data-ng-click="confirmPassword()">Request as Assignment</button>
                 </div>
@@ -32,7 +28,6 @@
                     Sender Name: {{ incident.sender.name }}
                 </div>
 
-
                 <div href="#" class="item">
                     <!--<i class="icon ion-ios7-telephone"></i>-->
                     Contact number: {{ incident.sender.contact | checkIfNull}}
@@ -41,6 +36,14 @@
                 <div href="#" class="item">
                     <!--<i class="icon ion-wifi"></i>-->
                     Submitted at: {{ incident.timestamp | convertToDateTime }}
+                </div>
+
+                <div class="item button-bar">
+                    <a class="button button-light icon ion-paperclip"
+                       data-ng-disabled="!hasAttachments"
+                       data-ng-click="openAttachmentModal(incident)"></a>
+                    <a class="button button-light icon ion-map"
+                       data-ng-click="openIncidentMapModal()"></a>
                 </div>
 
 
