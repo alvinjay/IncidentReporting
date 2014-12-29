@@ -23,19 +23,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="HomeController.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="HomeController.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/www/js/controllers/HomeController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="27" selection-start="1487" selection-end="1487" vertical-scroll-proportion="0.0" vertical-offset="364" max-vertical-offset="2604">
+            <state line="26" column="20" selection-start="1285" selection-end="1412" vertical-scroll-proportion="0.91054314" vertical-offset="158" max-vertical-offset="2604">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/views/home/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="0" selection-start="1691" selection-end="1691" vertical-scroll-proportion="0.5590682" vertical-offset="476" max-vertical-offset="1372">
+            <state line="10" column="29" selection-start="613" selection-end="613" vertical-scroll-proportion="-6.72" vertical-offset="112" max-vertical-offset="1428">
               <folding />
             </state>
           </provider>
@@ -44,31 +44,35 @@
       <file leaf-file-name="IncidentsService.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/js/services/IncidentsService.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="173" column="16" selection-start="6962" selection-end="6962" vertical-scroll-proportion="0.0" vertical-offset="1767" max-vertical-offset="3024">
+            <state line="272" column="9" selection-start="11037" selection-end="11037" vertical-scroll-proportion="0.0" vertical-offset="2803" max-vertical-offset="3444">
               <folding>
                 <element signature="e#162#290#0" expanded="false" />
-                <element signature="e#738#1341#0" expanded="false" />
-                <element signature="e#1491#2556#0" expanded="false" />
-                <element signature="e#1752#2544#0" expanded="false" />
-                <element signature="e#1959#2524#0" expanded="false" />
-                <element signature="e#2136#2500#0" expanded="false" />
-                <element signature="e#2373#2472#0" expanded="false" />
-                <element signature="e#2817#3165#0" expanded="false" />
-                <element signature="e#3424#3784#0" expanded="false" />
-                <element signature="e#3967#4040#0" expanded="false" />
-                <element signature="e#4183#4427#0" expanded="false" />
-                <element signature="e#4917#5058#0" expanded="false" />
-                <element signature="e#6044#6102#0" expanded="false" />
-                <element signature="e#6240#6693#0" expanded="false" />
-                <element signature="e#6383#6679#0" expanded="false" />
-                <element signature="e#6457#6650#0" expanded="false" />
-                <element signature="e#6706#6762#0" expanded="false" />
-                <element signature="e#7929#8230#0" expanded="false" />
-                <element signature="e#8049#8193#0" expanded="false" />
-                <element signature="e#8343#9215#0" expanded="false" />
-                <element signature="e#8734#8782#0" expanded="false" />
-                <element signature="e#9345#9505#0" expanded="false" />
-                <element signature="e#9635#9902#0" expanded="false" />
+                <element signature="e#2848#3195#0" expanded="false" />
+                <element signature="e#4121#4453#0" expanded="false" />
+                <element signature="e#4636#4709#0" expanded="false" />
+                <element signature="e#4852#5096#0" expanded="false" />
+                <element signature="e#5298#8394#0" expanded="false" />
+                <element signature="e#5586#5727#0" expanded="false" />
+                <element signature="e#6713#6771#0" expanded="false" />
+                <element signature="e#7052#7348#0" expanded="false" />
+                <element signature="e#7126#7319#0" expanded="false" />
+                <element signature="e#7375#7431#0" expanded="false" />
+                <element signature="e#8598#8899#0" expanded="false" />
+                <element signature="e#8718#8862#0" expanded="false" />
+                <element signature="e#9012#9884#0" expanded="false" />
+                <element signature="e#9403#9451#0" expanded="false" />
+                <element signature="e#10014#10174#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OfficerService.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/js/services/OfficerService.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="73" column="0" selection-start="2038" selection-end="2038" vertical-scroll-proportion="0.0" vertical-offset="1121" max-vertical-offset="1904">
+              <folding>
+                <element signature="e#1846#1938#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -128,13 +132,11 @@
         <option value="$PROJECT_DIR$/www/lib/ngCordova/dist/ng-cordova.js" />
         <option value="$PROJECT_DIR$/www/js/helpers/HashHelper.js" />
         <option value="$PROJECT_DIR$/www/js/constants.js" />
-        <option value="$PROJECT_DIR$/www/js/helpers/ObjectHelper.js" />
         <option value="$PROJECT_DIR$/www/js/services/OfficersService.js" />
         <option value="$PROJECT_DIR$/www/js/services/ionic/IonicPopupService.js" />
         <option value="$PROJECT_DIR$/www/views/home/modal/incident.html" />
         <option value="$PROJECT_DIR$/www/js/services/ionic/IonicLoadingService.js" />
         <option value="$PROJECT_DIR$/www/index.html" />
-        <option value="$PROJECT_DIR$/www/js/services/OfficerService.js" />
         <option value="$PROJECT_DIR$/www/js/services/firebase/FirebaseService.js" />
         <option value="$PROJECT_DIR$/www/views/home/modal/incidentMap.html" />
         <option value="$PROJECT_DIR$/www/js/services/ionic/IonicModalService.js" />
@@ -144,12 +146,14 @@
         <option value="$PROJECT_DIR$/www/js/controllers/MapController.js" />
         <option value="$PROJECT_DIR$/www/js/services/InternetService.js" />
         <option value="$PROJECT_DIR$/www/js/services/GeolocationService.js" />
-        <option value="$PROJECT_DIR$/www/js/controllers/HomeController.js" />
         <option value="$PROJECT_DIR$/www/css/style.css" />
-        <option value="$PROJECT_DIR$/www/js/services/IncidentsService.js" />
-        <option value="$PROJECT_DIR$/www/views/home/index.html" />
         <option value="$PROJECT_DIR$/www/js/services/MapService.js" />
         <option value="$PROJECT_DIR$/www/css/animate.min.css" />
+        <option value="$PROJECT_DIR$/www/js/helpers/ObjectHelper.js" />
+        <option value="$PROJECT_DIR$/www/js/services/OfficerService.js" />
+        <option value="$PROJECT_DIR$/www/js/services/IncidentsService.js" />
+        <option value="$PROJECT_DIR$/www/views/home/index.html" />
+        <option value="$PROJECT_DIR$/www/js/controllers/HomeController.js" />
       </list>
     </option>
   </component>
@@ -254,7 +258,29 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="icma-prototype" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="icma-prototype" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="services" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -529,11 +555,6 @@
         <state line="73" column="72" selection-start="3010" selection-end="3016" vertical-scroll-proportion="2.9690049" vertical-offset="224" max-vertical-offset="3136" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/helpers/ObjectHelper.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="54" selection-start="473" selection-end="473" vertical-scroll-proportion="0.4344942" vertical-offset="158" max-vertical-offset="1232" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bower.json">
       <provider selected="true" editor-type-id="text-editor">
         <state line="10" column="28" selection-start="265" selection-end="265" vertical-scroll-proportion="0.48442906" vertical-offset="0" max-vertical-offset="588" />
@@ -557,11 +578,6 @@
     <entry file="file://$PROJECT_DIR$/www/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="61" column="44" selection-start="2594" selection-end="2594" vertical-scroll-proportion="0.66089964" vertical-offset="1326" max-vertical-offset="2744" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/services/OfficerService.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="0" selection-start="1838" selection-end="1838" vertical-scroll-proportion="0.48922056" vertical-offset="1161" max-vertical-offset="1764" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/js/app.js">
@@ -630,47 +646,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/services/IncidentsService.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="173" column="16" selection-start="6962" selection-end="6962" vertical-scroll-proportion="0.0" vertical-offset="1767" max-vertical-offset="3024">
-          <folding>
-            <element signature="e#162#290#0" expanded="false" />
-            <element signature="e#738#1341#0" expanded="false" />
-            <element signature="e#1491#2556#0" expanded="false" />
-            <element signature="e#1752#2544#0" expanded="false" />
-            <element signature="e#1959#2524#0" expanded="false" />
-            <element signature="e#2136#2500#0" expanded="false" />
-            <element signature="e#2373#2472#0" expanded="false" />
-            <element signature="e#2817#3165#0" expanded="false" />
-            <element signature="e#3424#3784#0" expanded="false" />
-            <element signature="e#3967#4040#0" expanded="false" />
-            <element signature="e#4183#4427#0" expanded="false" />
-            <element signature="e#4917#5058#0" expanded="false" />
-            <element signature="e#6044#6102#0" expanded="false" />
-            <element signature="e#6240#6693#0" expanded="false" />
-            <element signature="e#6383#6679#0" expanded="false" />
-            <element signature="e#6457#6650#0" expanded="false" />
-            <element signature="e#6706#6762#0" expanded="false" />
-            <element signature="e#7929#8230#0" expanded="false" />
-            <element signature="e#8049#8193#0" expanded="false" />
-            <element signature="e#8343#9215#0" expanded="false" />
-            <element signature="e#8734#8782#0" expanded="false" />
-            <element signature="e#9345#9505#0" expanded="false" />
-            <element signature="e#9635#9902#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/js/controllers/MapController.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="16" column="29" selection-start="601" selection-end="601" vertical-scroll-proportion="0.0" vertical-offset="168" max-vertical-offset="1120">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/controllers/HomeController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="27" selection-start="1487" selection-end="1487" vertical-scroll-proportion="0.0" vertical-offset="364" max-vertical-offset="2604">
           <folding />
         </state>
       </provider>
@@ -702,9 +680,72 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/helpers/ObjectHelper.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="88" column="0" selection-start="2921" selection-end="2921" vertical-scroll-proportion="0.76038337" vertical-offset="168" max-vertical-offset="952">
+          <folding>
+            <element signature="e#189#352#0" expanded="false" />
+            <element signature="e#417#638#0" expanded="false" />
+            <element signature="e#473#594#0" expanded="false" />
+            <element signature="e#516#576#0" expanded="false" />
+            <element signature="e#652#748#0" expanded="false" />
+            <element signature="e#807#870#0" expanded="false" />
+            <element signature="e#1164#1427#0" expanded="false" />
+            <element signature="e#1236#1384#0" expanded="false" />
+            <element signature="e#1303#1366#0" expanded="false" />
+            <element signature="e#1640#1740#0" expanded="false" />
+            <element signature="e#2006#2267#0" expanded="false" />
+            <element signature="e#2078#2223#0" expanded="false" />
+            <element signature="e#2145#2205#0" expanded="false" />
+            <element signature="e#2559#2646#0" expanded="false" />
+            <element signature="e#2851#2920#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/services/OfficerService.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="73" column="0" selection-start="2038" selection-end="2038" vertical-scroll-proportion="0.0" vertical-offset="1121" max-vertical-offset="1904">
+          <folding>
+            <element signature="e#1846#1938#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/services/IncidentsService.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="272" column="9" selection-start="11037" selection-end="11037" vertical-scroll-proportion="0.0" vertical-offset="2803" max-vertical-offset="3444">
+          <folding>
+            <element signature="e#162#290#0" expanded="false" />
+            <element signature="e#2848#3195#0" expanded="false" />
+            <element signature="e#4121#4453#0" expanded="false" />
+            <element signature="e#4636#4709#0" expanded="false" />
+            <element signature="e#4852#5096#0" expanded="false" />
+            <element signature="e#5298#8394#0" expanded="false" />
+            <element signature="e#5586#5727#0" expanded="false" />
+            <element signature="e#6713#6771#0" expanded="false" />
+            <element signature="e#7052#7348#0" expanded="false" />
+            <element signature="e#7126#7319#0" expanded="false" />
+            <element signature="e#7375#7431#0" expanded="false" />
+            <element signature="e#8598#8899#0" expanded="false" />
+            <element signature="e#8718#8862#0" expanded="false" />
+            <element signature="e#9012#9884#0" expanded="false" />
+            <element signature="e#9403#9451#0" expanded="false" />
+            <element signature="e#10014#10174#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/www/views/home/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="0" selection-start="1691" selection-end="1691" vertical-scroll-proportion="0.5590682" vertical-offset="476" max-vertical-offset="1372">
+        <state line="10" column="29" selection-start="613" selection-end="613" vertical-scroll-proportion="-6.72" vertical-offset="112" max-vertical-offset="1428">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/controllers/HomeController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="20" selection-start="1285" selection-end="1412" vertical-scroll-proportion="0.91054314" vertical-offset="158" max-vertical-offset="2604">
           <folding />
         </state>
       </provider>

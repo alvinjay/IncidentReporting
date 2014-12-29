@@ -77,6 +77,14 @@
             copyObjectProperties: function copyObjectProperties(obj1, obj2){
                 for(var k in obj1)
                     obj2[k]=obj1[k];
+            },
+            /**
+             * Returns true if object is an empty object
+             * @param obj
+             * @returns {boolean}
+             */
+            isObjectEmpty: function isObjectEmpty(obj){
+                return Object.keys(obj).length === 0;
             }
         }
 

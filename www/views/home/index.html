@@ -7,10 +7,11 @@
         </div>
 
         <div id="body" class="first-item">
-            <div class="list list-inset " data-ng-hide="officer.assignment.$value == null" >
+            <div class="list list-inset "
+                 data-ng-hide="officer.assignment === null" >
                 <a class="item item-button-right" data-ng-click="print()">
                     <!--<i class="icon fa fa-exclamation"></i>-->
-                    <b>New Assignment: </b>{{ officer.assignment.$value }}
+                    <b>New Assignment: </b> {{ officer.assignment.$id }}
                     <button class="button button-clear button-light">
                         <i class="icon fa fa-chevron-right"></i>
                     </button>
@@ -27,6 +28,7 @@
                     </button>
                 </a>
             </div>
+
             <div class="list list-inset"  data-ng-hide="incidents.length == 0">
                 <div class="item center"><b>Incident Reports</b></div>
                 <a class="item item-button-right" data-ng-repeat="incident in incidents"

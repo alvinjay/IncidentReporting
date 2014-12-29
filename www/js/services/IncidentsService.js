@@ -20,6 +20,9 @@
         vm.requests = [];
 
         vm.incidentsFirebaseArray = null;
+        vm.ongoingFirebaseArray = null;
+
+        vm.assignment = null;
         vm.assignmentFirebaseObject = null;
 
         vm.checkIfPendingRequest = checkIfPendingRequest;
@@ -29,9 +32,11 @@
             incidents: vm.incidents,
             requests: vm.requests,
             incidentsFirebaseArray: vm.incidentsFirebaseArray,
+            ongoingFirebaseArray: vm.ongoingFirebaseArray,
             assignmentFirebaseObject: vm.assignmentFirebaseObject,
             retrieveFromFirebase: retrieveFromFirebase,
             retrieveNewIncidents: retrieveNewIncidents,
+            retrieveOngoingIncidents: retrieveOngoingIncidents,
             retrieveOfficerAssignment: retrieveOfficerAssignment,
             getIncident: getIncident,
             setCurrentIncident: setCurrentIncident,
@@ -50,25 +55,21 @@
             //Retrieve assignmentFirebaseObject
             retrieveOfficerAssignment(officer.id)
                 .then(function(assignment){
-                    vm.assignmentFirebaseObject = assignment;
-                    vm.assignmentFirebaseObject.$watch(watchAssignment);
-                    vm.assignmentFirebaseObject.$loaded(function(data){
+                    vm.assignment.$watch(watchAssignment);
+                    vm.assignment.$loaded(function(data){
                         //Retrieve incidentsFirebaseArray
                         retrieveNewIncidents(officer.areaCode)
                             .then(function(incidents) {
-                                vm.incidentsFirebaseArray = incidents;
                                 vm.incidentsFirebaseArray.$watch(watchIncidents);
-                                vm.assignmentFirebaseObject.$loaded(function(data){
+                                vm.incidentsFirebaseArray.$loaded(function(data){
                                     IonicLoadingService.hide();
                                 });
                         });
-                    })
-
-                })
-
+                    });
+                });
         }
         /**
-         * retrieve available incidents from firebase
+         * Retrieve available incidents from firebase
          * @param fn
          * @returns {.watchHeading.promise|*|.watchPosition.promise|.watchAcceleration.promise|e.promise|promise}
          */
@@ -80,7 +81,21 @@
             vm.incidentsFirebaseArray = FirebaseService.getArray(ref);
 
             q.resolve(vm.incidentsFirebaseArray);
-
+            return q.promise;
+        }
+        /**
+         * Retrieve ongoing incidents from firebase
+         * @param areaCode
+         * @returns {.watchHeading.promise|*|.watchPosition.promise|.watchAcceleration.promise|e.promise|promise}
+         */
+        function retrieveOngoingIncidents(){
+            var q = $q.defer();
+            var areaCode = OfficerService.officer.areaCode;
+            //initialize 'new' incidents
+            var ref = FirebaseService.getRef('/' + areaCode + '/ongoing');
+            //Get 'new' incidents array
+            vm.ongoingFirebaseArray = FirebaseService.getArray(ref);
+            q.resolve(vm.ongoingFirebaseArray);
             return q.promise;
         }
         /**
@@ -93,9 +108,9 @@
             //initialize 'new' incidents
             var ref = FirebaseService.getOfficerRef('/' + id + '/assignment');
             //Get 'new' incidents array
-            vm.assignmentFirebaseObject = FirebaseService.getObject(ref);
-            q.resolve(vm.assignmentFirebaseObject);
+            vm.assignment = FirebaseService.getObject(ref);
 
+            q.resolve(vm.assignment);
             return q.promise;
         }
         /**
@@ -239,15 +254,23 @@
          * @param data
          */
         function watchAssignment() {
-            if (vm.assignmentFirebaseObject.$value !== null)
-               console.log("You have an assignment");
+            var key = vm.assignment.$value;
+            if (key !== null){ //officer has assignment
+                console.log("You have an assignment");
+                retrieveOngoingIncidents()
+                    .then(function(ongoing){
+                        return vm.ongoingFirebaseArray.$loaded();
+                    })
+                    .then(function(){
+                        vm.assignmentFirebaseObject = vm.ongoingFirebaseArray.$getRecord(key);
+                        OfficerService.setOfficerAssignment(vm.assignmentFirebaseObject);
+                    });
+            }
             else
                console.log("No assignment");
 
-            OfficerService.setOfficerAssignment(vm.assignmentFirebaseObject);
+//            OfficerService.setOfficerAssignment(vm.assignment);
         }
-
-
     }
 
 })(window.angular);
