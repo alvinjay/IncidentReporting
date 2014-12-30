@@ -7,14 +7,14 @@
 
     HomeController.$inject = ['$scope', 'officer', 'map', 'incident', 'incidents', 'requests', 'connection', 'location',
                               'ObjectHelper',
-                              'IonicPopupService', 'IonicModalService','IonicLoadingService',
-                              'IncidentsService', 'OfficerService', 'InternetService', 'GeolocationService',
+                              'IonicPopupService', 'IonicModalService',
+                              'OfficerService', 'InternetService',
                               '$cordovaSplashscreen', '$cordovaDevice'];
 
     function HomeController($scope, officer, map, incident, incidents, requests, connection, location,
                             ObjectHelper,
-                            IonicPopupService, IonicModalService, IonicLoadingService,
-                            IncidentsService, OfficerService, InternetService, GeolocationService,
+                            IonicPopupService, IonicModalService,
+                            OfficerService, InternetService,
                             $cordovaSplashscreen, $cordovaDevice){
 
         //TODO retrieve id, name and password for
@@ -47,7 +47,6 @@
 
         $scope.openIncidentModal = IonicModalService.openIncidentModal;
 
-        $scope.confirmPassword = confirmPassword;
         $scope.submitRequest = OfficerService.submitRequest;
 
         //misc methods
@@ -63,26 +62,6 @@
             // Now safe to use device APIs
             // access multiple numbers in a string like: '0612345678,0687654321'
             $cordovaSplashscreen.show();
-        };
-        /**
-         * Displays a popup for confirming officer's password
-         */
-        function confirmPassword(){
-            IonicPopupService.showConfirmPassword($scope)
-                .then(function(result){
-                    if (result) { //if passwords match
-                        IncidentsService.submitRequest()
-                            .then(function(ref){
-                                console.log('wa');
-                                //4.) Close Loading Modal
-                                IonicLoadingService.hide();
-                                //5.) Close incident modal
-                                IonicModalService.closeModal();
-                                //6.) Show success Popup
-                                IonicPopupService.showSuccess('Request has been submitted');
-                        });
-                    }
-                });
         }
     }
 })(window.angular);

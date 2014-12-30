@@ -199,6 +199,7 @@
             {
                 if (checkIfPendingRequest(incident, officer.id) && !ObjectHelper.isKeyInArray(incident.$id, vm.requests))
                 {
+                    console.log('wa');
                     vm.requests.push(incident);
                     try {
                         if (ObjectHelper.isObjectInArray(incident, vm.incidents))

@@ -3,17 +3,22 @@
         .module('App')
         .service('IonicModalService', IonicModalService);
 
-    IonicModalService.$inject = ['$rootScope', '$ionicModal', 'IncidentsService', 'MapService', 'OfficerService'];
+    IonicModalService.$inject = ['$rootScope', '$ionicModal', 'IncidentsService', 'MapService',
+                                 'OfficerService', 'IonicPopupService', 'IonicLoadingService', 'ObjectHelper'];
 
-    function IonicModalService($rootScope, $ionicModal, IncidentsService, MapService, OfficerService){
+    function IonicModalService($rootScope, $ionicModal, IncidentsService, MapService,
+                               OfficerService, IonicPopupService, IonicLoadingService, ObjectHelper){
 
         var vm = this;
         vm.double = null;
         vm.scope = $rootScope.$new();
 
+        vm.scope.requests = IncidentsService.requests;
         vm.scope.closeIncidentModal = vm.scope.closeIncidentMapModal  = closeModal;
         vm.scope.openIncidentMapModal = openIncidentMapModal;
         vm.scope.openAttachmentModal = openAttachmentModal;
+        vm.scope.confirmPassword = confirmPassword;
+        vm.scope.isKeyInArray = ObjectHelper.isKeyInArray;
 
         var services = {
             openIncidentModal: openIncidentModal,
@@ -37,6 +42,7 @@
             } catch(e) {
                 vm.scope.assignment = null;
             }
+            IncidentsService.setCurrentIncident(incident);
 
             $ionicModal.fromTemplateUrl('views/home/modal/incident.html', {
                 animation: 'slide-in-right',
@@ -91,6 +97,26 @@
                 vm.modal.remove();
                 MapService.resetMarker();
             }
+        }
+
+        /**
+         * Displays a popup for confirming officer's password
+         */
+        function confirmPassword(){
+            IonicPopupService.showConfirmPassword()
+                .then(function(result){
+                    if (result) { //if passwords match
+                        IncidentsService.submitRequest()
+                            .then(function(ref){
+                                //4.) Close Loading Modal
+                                IonicLoadingService.hide();
+                                //5.) Close incident modal
+                                closeModal();
+                                //6.) Show success Popup
+                                IonicPopupService.showSuccess('Request has been submitted');
+                            });
+                    }
+                });
         }
     }
 })(window.angular);
