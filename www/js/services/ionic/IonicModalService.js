@@ -14,7 +14,7 @@
         vm.scope = $rootScope.$new();
 
         vm.scope.requests = IncidentsService.requests;
-        vm.scope.closeIncidentModal = vm.scope.closeIncidentMapModal  = closeModal;
+        vm.scope.closeIncidentModal = vm.scope.closeIncidentMapModal = vm.scope.closeNotesModal = closeModal;
         vm.scope.openIncidentMapModal = openIncidentMapModal;
         vm.scope.openAttachmentModal = openAttachmentModal;
         vm.scope.confirmPassword = confirmPassword;
@@ -25,9 +25,10 @@
             openIncidentModal: openIncidentModal,
             openIncidentMapModal: openIncidentMapModal,
             openAttachmentModal: openAttachmentModal,
+            openNotesModal: openNotesModal,
             closeModal: closeModal
         };
-        
+
         return services;
 
         /**
@@ -61,6 +62,28 @@
             MapService.registerMarker(vm.scope.incident);
             vm.scope.map = MapService.map;
             $ionicModal.fromTemplateUrl('views/modal/incidentMap.html', {
+                animation: 'slide-in-right',
+                scope: vm.scope
+            }).then(function(modal) {
+                vm.double = vm.modal;
+                vm.modal = modal;
+                vm.modal.show();
+            });
+        }
+        /**
+         * Opens a modal view for the officer's assignment displaying its notes
+         */
+        function openNotesModal(assignment) {
+            vm.scope.assignment = assignment;
+
+            vm.scope.notes = [];
+            vm.scope.note = "";
+
+            vm.scope.addNote = function addNote(note){
+                vm.scope.notes.push({text: note});
+            }
+
+            $ionicModal.fromTemplateUrl('views/assignment/modal/notes.html', {
                 animation: 'slide-in-right',
                 scope: vm.scope
             }).then(function(modal) {

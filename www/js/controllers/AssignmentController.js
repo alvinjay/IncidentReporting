@@ -18,6 +18,7 @@
 
         $scope.openIncidentMapModal = IonicModalService.openIncidentMapModal;
         $scope.openAttachmentModal = IonicModalService.openAttachmentModal;
+        $scope.openNotesModal = IonicModalService.openNotesModal;
 //        console.log($scope.assignment.attachments.img);
     }
 })(window.angular);

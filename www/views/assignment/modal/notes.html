@@ -2,15 +2,23 @@
     <ion-header-bar id="header">
         <button id="title"
                 class="button button-clear item-button-left button-dark header-left"
-                data-ng-click="closeIncidentMapModal()">
+                data-ng-click="closeNotesModal()">
             <i class="button-icon ion-chevron-left"></i>&nbsp;Back
         </button>
-        <h1 id="title" class="title">Incident</h1>
+        <h1 id="title" class="title">Notes</h1>
     </ion-header-bar>
     <ion-content id="content" overflow-scroll="true">
         <ion-scroll>
-            <leaflet width="100%" height="100%" center="map.center" defaults="map.defaults"
-                     markers="map.marker" tiles="map.tiles"></leaflet>
+           <ion-list>
+               <div class="item item-icon-right">
+                   <input type="text" data-ng-model="note"/>
+                        <i class="icon ion-plus-circled" data-ng-click="addNote(note)"></i>
+               </div>
+               <div class="item item-icon-left" data-ng-repeat="note in notes">
+                   <i class="icon ion-chevron-right"></i>
+                   {{ note.text }}
+               </div>
+           </ion-list>
         </ion-scroll>
     </ion-content>
 </ion-modal-view>
