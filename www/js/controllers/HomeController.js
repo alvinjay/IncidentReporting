@@ -18,20 +18,20 @@
                             $cordovaSplashscreen, $cordovaDevice){
 
         //TODO retrieve id, name and password for
-        window.localStorage.removeItem('assignment');
+//        window.localStorage.removeItem('assignment');
         window.localStorage.setItem("areaCode", '04');
-        window.localStorage.setItem("id", '1234567890');
-        window.localStorage.setItem("name", 'Alvin Jay Cosare');
-        window.localStorage.setItem("password", 'walakokabalo');
-//        window.localStorage.setItem("id", '0987654321');
-//        window.localStorage.setItem("name", 'Marie Beth Venice');
+//        window.localStorage.setItem("id", '1234567890');
+//        window.localStorage.setItem("name", 'Alvin Jay Cosare');
 //        window.localStorage.setItem("password", 'walakokabalo');
+        window.localStorage.setItem("id", '0987654321');
+        window.localStorage.setItem("name", 'Marie Beth Venice');
+        window.localStorage.setItem("password", 'walakokabalo');
 
         $scope.officer = officer;
         try{
             $scope.assignment = JSON.parse(officer.assignment.toString());
         }catch(e){
-            $scope.assignment = null
+            $scope.assignment = officer.assignment;
         }
 
         $scope.location = location;
@@ -53,6 +53,7 @@
         $scope.getObjectLength = ObjectHelper.getObjectLength;
         $scope.isObjectInArray = ObjectHelper.isObjectInArray;
         $scope.isKeyInArray = ObjectHelper.isKeyInArray;
+        $scope.isObjectEmpty = ObjectHelper.isObjectEmpty;
 
         // watch for Internet Connection status changes
         $scope.$watch('online', InternetService.changeInternetStatus);

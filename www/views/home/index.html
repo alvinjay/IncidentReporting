@@ -9,7 +9,7 @@
 
             <div id="body" class="first-item">
                 <div class="list list-inset "
-                     data-ng-hide="officer.assignment === null" >
+                     data-ng-hide="isObjectEmpty(assignment)" >
                     <a class="item item-button-right" data-ng-click="print()">
                         <!--<i class="icon fa fa-exclamation"></i>-->
                         <b>Incident Assignment: </b> {{ assignment.$id }}

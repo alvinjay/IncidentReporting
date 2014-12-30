@@ -5,9 +5,9 @@
         .module('App')
         .service('OfficerService', OfficerService);
 
-    OfficerService.$inject = [];
+    OfficerService.$inject = ['ObjectHelper'];
 
-    function OfficerService(){
+    function OfficerService(ObjectHelper){
         var vm = this;
 
         vm.officer = {
@@ -16,7 +16,7 @@
             name: window.localStorage.getItem("name"),
             password: window.localStorage.getItem("password"),
             confirmPassword: 'walakokabalo',
-            assignment:  window.localStorage.getItem('assignment') || null
+            assignment:  window.localStorage.getItem('assignment') || {}
         };
 
         var services = {
@@ -70,7 +70,8 @@
          * @param assignment
          */
         function setOfficerAssignment(assignment){
-            vm.officer.assignment = assignment;
+            ObjectHelper.copyObjectProperties(assignment, vm.officer.assignment);
+            console.log(vm.officer.assignment);
         }
 
     }

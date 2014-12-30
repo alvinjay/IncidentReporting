@@ -31,8 +31,11 @@
                 </div>
 
                 <div class="item button-bar">
-                    <a class="button button-light icon ion-paperclip"></a>
-                    <a class="button button-light icon ion-map "></a>
+                    <a class="button button-light icon ion-paperclip"
+                       data-ng-disabled="!hasAttachments"
+                       data-ng-click="openAttachmentModal(assignment)"></a>
+                    <a class="button button-light icon ion-map"
+                       data-ng-click="openIncidentMapModal(assignment)"></a>
                     <a class="button button-light icon ion-clipboard "></a>
                 </div>
             </div>

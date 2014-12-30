@@ -13,7 +13,7 @@
             <div class="list card">
 
                 <div class="item"
-                     data-ng-hide="assignment !== null || isKeyInArray(incident.$id, requests) ">
+                     data-ng-hide="!isObjectEmpty(assignment) || isKeyInArray(incident.$id, requests) ">
                     <button class="button button-full button-balanced"
                             data-ng-click="confirmPassword()">Request as Assignment</button>
                 </div>

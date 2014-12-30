@@ -54,7 +54,7 @@
             //Retrieve assignmentFirebaseObject
             retrieveOfficerAssignment(officer.id)
                 .then(function(assignment){
-                    if (officer.assignment === null)
+                    if (ObjectHelper.isObjectEmpty(officer.assignment))
                     {
                         vm.assignment.$watch(watchAssignment);
                         vm.assignment.$loaded(function(data){
@@ -122,7 +122,6 @@
             var ref = FirebaseService.getOfficerRef('/' + id + '/assignment');
             //Get 'new' incidents array
             vm.assignment = FirebaseService.getObject(ref);
-
             q.resolve(vm.assignment);
             return q.promise;
         }
@@ -294,7 +293,6 @@
                     })
                     .then(function(){
                         vm.assignmentFirebaseObject = vm.ongoingFirebaseArray.$getRecord(key);
-
                         OfficerService.setOfficerAssignment(vm.assignmentFirebaseObject);
                         //save to localStorage for offline mode
                         window.localStorage.setItem('assignment', JSON.stringify(vm.assignmentFirebaseObject));

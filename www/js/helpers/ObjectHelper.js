@@ -84,7 +84,12 @@
              * @returns {boolean}
              */
             isObjectEmpty: function isObjectEmpty(obj){
-                return Object.keys(obj).length === 0;
+                try{
+                    return Object.keys(obj).length === 0;
+                } catch(e){
+                    return false;
+                }
+
             }
         }
 

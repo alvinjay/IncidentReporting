@@ -19,6 +19,7 @@
         vm.scope.openAttachmentModal = openAttachmentModal;
         vm.scope.confirmPassword = confirmPassword;
         vm.scope.isKeyInArray = ObjectHelper.isKeyInArray;
+        vm.scope.isObjectEmpty = ObjectHelper.isObjectEmpty;
 
         var services = {
             openIncidentModal: openIncidentModal,
@@ -55,10 +56,11 @@
         /**
          * Opens a modal view for the incident selected displaying its location on a map
          */
-        function openIncidentMapModal() {
+        function openIncidentMapModal(incident) {
+            vm.scope.incident = incident || vm.scope.incident;
             MapService.registerMarker(vm.scope.incident);
             vm.scope.map = MapService.map;
-            $ionicModal.fromTemplateUrl('views/home/modal/incidentMap.html', {
+            $ionicModal.fromTemplateUrl('views/modal/incidentMap.html', {
                 animation: 'slide-in-right',
                 scope: vm.scope
             }).then(function(modal) {
@@ -75,7 +77,7 @@
             var scope = $rootScope.$new();
             scope.incident = incident;
             scope.closeAttachmentModal = closeModal;
-            $ionicModal.fromTemplateUrl('views/home/modal/attachment.html', {
+            $ionicModal.fromTemplateUrl('views/modal/attachment.html', {
                 animation: 'slide-in-right',
                 scope: scope
             }).then(function(modal) {
