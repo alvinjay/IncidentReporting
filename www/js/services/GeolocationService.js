@@ -5,10 +5,10 @@
         .module('App')
         .service('GeolocationService', GeolocationService);
 
-    GeolocationService.$inject = ['$q', '$cordovaGeolocation', 'MapService',
+    GeolocationService.$inject = ['$q', '$cordovaGeolocation', 'ObjectHelper', 'MapService',
                                   'IonicLoadingService', 'IonicPopupService'];
 
-    function GeolocationService($q, $cordovaGeolocation, MapService,
+    function GeolocationService($q, $cordovaGeolocation, ObjectHelper, MapService,
                                 IonicLoadingService, IonicPopupService){
         var vm = this;
 
@@ -45,18 +45,24 @@
          * @param position
          */
         function geolocationSuccess(position) {
-            vm.location.lat = position.coords.latitude;
-            vm.location.lng = position.coords.longitude;
-            vm.location.type = 'location';
-            vm.location.zoom = 15;
 
-            MapService.setCenter(vm.location);
-            //make a marker for incident chosen
-            MapService.addMarker(vm.location);
+            if(ObjectHelper.isObjectEmpty(vm.location))
+            {
+                vm.location.lat = position.coords.latitude;
+                vm.location.lng = position.coords.longitude;
+                vm.location.type = 'location';
+                vm.location.zoom = 15;
 
-            IonicLoadingService.hide();
+                MapService.setCenter(vm.location);
+                //make a marker for incident chosen
+                MapService.addMarker(vm.location);
+
+                IonicLoadingService.hide();
 //            vm.watch.clearWatch();
-            $cordovaGeolocation.clearWatch();
+                $cordovaGeolocation.clearWatch();
+            }
+
+
         }
     }
 })(window.angular);
