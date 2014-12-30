@@ -27,9 +27,17 @@
          * @param err
          */
         function geolocationError(err) {
+            var title = "LOCATION ERROR";
+            var message = "";
             IonicLoadingService.hide();
+            switch(err.code) {
+                case 1: message = "Please turn on Location Services(GPS) in your settings and try again";
+                        break;
+                case 2: message = "Please make sure that you have fast/reliable Internet Connection and try again";
+                        break;
+            }
             // An error occurred.
-//           IonicPopupService('Error Code:' + err.code + '</br>Message:' + err.message);
+           IonicPopupService.showAlert(title, message);
         }
 
         /**
@@ -47,7 +55,8 @@
             MapService.addMarker(vm.location);
 
             IonicLoadingService.hide();
-            $cordovaGeolocation.clearWatch(vm.watch);
+//            vm.watch.clearWatch();
+            $cordovaGeolocation.clearWatch();
         }
     }
 })(window.angular);

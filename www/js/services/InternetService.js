@@ -6,16 +6,21 @@
         .service('InternetService', InternetService);
 
     InternetService.$inject = ['$rootScope', '$state',
-                               'FirebaseService', 'IncidentsService', 'GeolocationService'];
+                               'FirebaseService', 'IncidentsService', 'GeolocationService',
+                                'IonicPopupService'];
 
     function InternetService($rootScope, $state,
-                             FirebaseService, IncidentsService, GeolocationService){
+                             FirebaseService, IncidentsService, GeolocationService,
+                             IonicPopupService){
         var vm = this;
 
         vm.connection = {
             isOnline: $rootScope.online,
             isConnected: false
-        }
+        };
+
+        var disconnectMessage = "Please check your network connection and try again";
+
 
         var services = {
             connection: vm.connection,
@@ -30,19 +35,20 @@
          * @param newStatus - 'online' | 'offline'
          */
         function changeInternetStatus(newStatus){
-            // begin watching geolocation
-            GeolocationService.watchStatus();
 
             var firebaseConnection = FirebaseService.firebaseConnection;
             //record new status
             vm.connection.isOnline = newStatus;
-//            if (typeof firebaseConnection === 'undefined' && newStatus)
-//            {
-                console.log('waaaaaa');
+            if (newStatus)
+            {
+                // begin watching geolocation
+                GeolocationService.watchStatus();
                 // watch for changes in firebase connection value
                 firebaseConnection = FirebaseService.checkConnection();
                 firebaseConnection.on('value', changeFirebaseStatus);
-//            }
+            }
+            else
+                IonicPopupService.showAlert("NO INTERNET CONNECTION", disconnectMessage);
         }
         /**
          * watcher: Firebase connection
