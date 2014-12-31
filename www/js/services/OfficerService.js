@@ -15,9 +15,14 @@
             areaCode: window.localStorage.getItem("areaCode"),
             name: window.localStorage.getItem("name"),
             password: window.localStorage.getItem("password"),
-            confirmPassword: 'walakokabalo',
-            assignment:  window.localStorage.getItem('assignment') || {}
+            confirmPassword: 'walakokabalo'
         };
+
+        try{
+            vm.officer.assignment =  JSON.parse(window.localStorage.getItem('assignment').toString())
+        } catch(e){
+            vm.officer.assignment = {};
+        }
 
         var services = {
             officer: vm.officer,
@@ -26,8 +31,10 @@
             getOfficerName: getOfficerName,
             getOfficerPassword: getOfficerPassword,
             getOfficerAssignment: getOfficerAssignment,
-            setOfficerAssignment: setOfficerAssignment
-        }
+            setOfficerAssignment: setOfficerAssignment,
+            addAssignmentNote: addAssignmentNote
+        };
+
         return services;
 
         /**
@@ -72,6 +79,17 @@
         function setOfficerAssignment(assignment){
             ObjectHelper.copyObjectProperties(assignment, vm.officer.assignment);
             console.log(vm.officer.assignment);
+        }
+
+        /**
+         * Adds a new assignment note to officer.assignment.notes
+         * @param note
+         */
+        function addAssignmentNote(note){
+           //update officer.assignment
+           vm.officer.assignment.notes.push({text: note});
+           //update local copy of assignment
+           window.localStorage.setItem('assignment', JSON.stringify(vm.officer.assignment));
         }
 
     }

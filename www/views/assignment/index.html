@@ -2,42 +2,46 @@
 
     <ion-content id="content" overflow-scroll="true" >
         <ion-scroll>
-            <div class="list card" data-ng-hide="assignment === null">
-                <div class="item"
-                     data-ng-hide="officer.assignment.$value != null || isKeyInArray(incident.$id, requests) ">
-                    <button class="button button-full button-balanced"
-                            data-ng-click="">Confirm as valid</button>
-                </div>
+            <div id="body">
+                <div class="list card" data-ng-hide="assignment === null">
 
-                <div class="item">
-                    <!--<i class="icon ion-home"></i>-->
-                    Incident Type: {{ assignment.type }}
-                </div>
+                    <div class="item">
+                        <!--<i class="icon ion-home"></i>-->
+                        Incident Type: {{ assignment.type }}
+                    </div>
 
-                <div class="item">
-                    <!--<i class="icon ion-wifi"></i>-->
-                    Sender Name: {{ assignment.sender.name }}
-                </div>
+                    <div class="item">
+                        <!--<i class="icon ion-wifi"></i>-->
+                        Sender Name: {{ assignment.sender.name }}
+                    </div>
 
 
-                <div class="item">
-                    <!--<i class="icon ion-ios7-telephone"></i>-->
-                    Contact number: {{ assignment.sender.contact | checkIfNull}}
-                </div>
+                    <div class="item">
+                        <!--<i class="icon ion-ios7-telephone"></i>-->
+                        Contact number: {{ assignment.sender.contact | checkIfNull}}
+                    </div>
 
-                <div class="item">
-                    <!--<i class="icon ion-wifi"></i>-->
-                    Submitted at: {{ assignment.timestamp | convertToDateTime }}
-                </div>
+                    <div class="item">
+                        <!--<i class="icon ion-wifi"></i>-->
+                        Submitted at: {{ assignment.timestamp | convertToDateTime }}
+                    </div>
 
-                <div class="item button-bar">
-                    <a class="button button-light icon ion-paperclip"
-                       data-ng-disabled="!hasAttachments"
-                       data-ng-click="openAttachmentModal(assignment)"></a>
-                    <a class="button button-light icon ion-map"
-                       data-ng-click="openIncidentMapModal(assignment)"></a>
-                    <a class="button button-light icon ion-clipboard "
-                       data-ng-click="openNotesModal(assignment)"></a>
+                    <div class="item button-bar">
+                        <a class="button button-light icon ion-paperclip"
+                           data-ng-disabled="!hasAttachments"
+                           data-ng-click="openAttachmentModal(assignment)"></a>
+                        <a class="button button-light icon ion-map"
+                           data-ng-click="openIncidentMapModal(assignment)"></a>
+                        <a class="button button-light icon ion-clipboard "
+                           data-ng-click="openNotesModal(assignment)"></a>
+                    </div>
+
+                    <div class="item"
+                         data-ng-hide="officer.assignment.$value != null || isKeyInArray(incident.$id, requests) ">
+                        <button class="button button-full button-balanced"
+                                data-ng-click="">Confirm as valid</button>
+                    </div>
+
                 </div>
             </div>
         </ion-scroll>

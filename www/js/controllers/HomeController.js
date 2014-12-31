@@ -28,11 +28,7 @@
         window.localStorage.setItem("password", 'walakokabalo');
 //        console.log(window.localStorage.getItem('assignment'));
         $scope.officer = officer;
-        try{
-            $scope.assignment = JSON.parse(officer.assignment.toString());
-        }catch(e){
-            $scope.assignment = officer.assignment;
-        }
+        $scope.assignment = officer.assignment;
 
         $scope.location = location;
         $scope.map = map;

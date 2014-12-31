@@ -74,14 +74,13 @@
          * Opens a modal view for the officer's assignment displaying its notes
          */
         function openNotesModal(assignment) {
-            vm.scope.assignment = assignment;
+            vm.scope.assignment = OfficerService.officer.assignment;
 
-            vm.scope.notes = [];
-            vm.scope.note = "";
+            //define assignment.notes in case it is not
+            if (typeof  vm.scope.assignment.notes === 'undefined')
+                vm.scope.assignment.notes = [];
 
-            vm.scope.addNote = function addNote(note){
-                vm.scope.notes.push({text: note});
-            }
+            vm.scope.addAssignmentNote = OfficerService.addAssignmentNote;
 
             $ionicModal.fromTemplateUrl('views/assignment/modal/notes.html', {
                 animation: 'slide-in-right',
@@ -123,7 +122,6 @@
                 MapService.resetMarker();
             }
         }
-
         /**
          * Displays a popup for confirming officer's password
          */
@@ -143,5 +141,6 @@
                     }
                 });
         }
+
     }
 })(window.angular);

@@ -5,10 +5,10 @@
         .module('App')
         .service('IncidentsService', IncidentsService);
 
-    IncidentsService.$inject = ['$q', 'ObjectHelper', 'FirebaseService', 'OfficerService', 'MapService',
+    IncidentsService.$inject = ['$q', '$state', 'ObjectHelper', 'FirebaseService', 'OfficerService', 'MapService',
                                 'IonicLoadingService'];
 
-    function IncidentsService($q, ObjectHelper, FirebaseService, OfficerService, MapService,
+    function IncidentsService($q, $state, ObjectHelper, FirebaseService, OfficerService, MapService,
                               IonicLoadingService){
 
         var vm = this;
@@ -50,7 +50,9 @@
          */
         function retrieveFromFirebase(){
             var officer = OfficerService.officer;
-            IonicLoadingService.show('Retrieving data from server');
+            //don't show loading if not in home tab
+            if ($state.current.name === 'app.home')
+                IonicLoadingService.show('Retrieving data from server');
             //Retrieve assignmentFirebaseObject
             retrieveOfficerAssignment(officer.id)
                 .then(function(assignment){
@@ -265,7 +267,6 @@
             console.log('fin');
             return FirebaseService.saveFirebaseArray(vm.incidentsFirebaseArray,incident);
         }
-
         /**
          * Watcher: incidentsFirebaseArray
          * @param data
@@ -278,7 +279,6 @@
                     processIncident(data, incident);
                 });
         }
-
         /**
          * Watcher: assignementFirebaseObject
          * @param data
@@ -295,7 +295,7 @@
                         vm.assignmentFirebaseObject = vm.ongoingFirebaseArray.$getRecord(key);
                         OfficerService.setOfficerAssignment(vm.assignmentFirebaseObject);
                         //save to localStorage for offline mode
-                        window.localStorage.setItem('assignment', JSON.stringify(vm.assignmentFirebaseObject));
+                        window.localStorage.setItem('assignment', JSON.stringify(OfficerService.officer.assignment));
                     });
             }
             else
