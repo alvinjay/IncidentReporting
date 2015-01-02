@@ -1,0 +1,34 @@
+<ion-modal-view id="body">
+    <ion-header-bar id="header">
+        <button id="title"
+                class="button button-clear item-button-left button-dark header-left"
+                data-ng-click="closeModal()">
+            <i class="button-icon ion-chevron-left"></i>&nbsp;Back
+        </button>
+        <h1 id="title" class="title">Documents</h1>
+        <button id="title"
+                class="button button-clear item-button-right button-dark header-right"
+                data-ng-click="addDocument()">
+          <i class="icon ion-camera"></i>&nbsp;
+        </button>
+    </ion-header-bar>
+    <ion-content id="content" overflow-scroll="true">
+        <div class="white">
+            <ion-slide-box on-slide-changed="slideHasChanged($index)"
+                           show-pager="true"
+                           data-ng-hide="assignment.documents.length === 0">
+                <ion-slide data-ng-repeat="document in assignment.documents">
+                    <div>
+                        <img id="doc{{$index}}"
+                             class="documentImage"
+                             src="data:image/jpeg;base64,{{ document }}"/>
+                    </div>
+                </ion-slide>
+            </ion-slide-box>
+
+            <div data-ng-show="assignment.documents.length === 0">
+                No Documents
+            </div>
+        </div>
+    </ion-content>
+</ion-modal-view>

@@ -26,7 +26,7 @@
         window.localStorage.setItem("id", '0987654321');
         window.localStorage.setItem("name", 'Marie Beth Venice');
         window.localStorage.setItem("password", 'walakokabalo');
-//        console.log(window.localStorage.getItem('assignment'));
+
         $scope.officer = officer;
         $scope.assignment = officer.assignment;
 

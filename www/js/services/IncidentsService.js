@@ -40,8 +40,9 @@
             setCurrentIncidentByKey: setCurrentIncidentByKey,
             setCurrentIncident: setCurrentIncident,
             processIncident: processIncident,
-            submitRequest: submitRequest
-        }
+            submitRequest: submitRequest,
+            confirmAssignment: confirmAssignment
+        };
 
         return services;
 
@@ -266,6 +267,9 @@
             //3.) Do $scope.incidents($scope.incident).$save
             console.log('fin');
             return FirebaseService.saveFirebaseArray(vm.incidentsFirebaseArray,incident);
+        }
+        function confirmAssignment(){
+            console.log('aw');
         }
         /**
          * Watcher: incidentsFirebaseArray

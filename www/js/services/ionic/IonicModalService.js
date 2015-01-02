@@ -3,18 +3,23 @@
         .module('App')
         .service('IonicModalService', IonicModalService);
 
-    IonicModalService.$inject = ['$rootScope', '$ionicModal', 'IncidentsService', 'MapService',
-                                 'OfficerService', 'IonicPopupService', 'IonicLoadingService', 'ObjectHelper'];
+    IonicModalService.$inject = ['$rootScope', '$state', '$ionicModal', 'IncidentsService', 'MapService',
+                                 'OfficerService', 'IonicPopupService', 'IonicLoadingService', 'ObjectHelper',
+                                 'CameraService', '$ionicSlideBoxDelegate'];
 
-    function IonicModalService($rootScope, $ionicModal, IncidentsService, MapService,
-                               OfficerService, IonicPopupService, IonicLoadingService, ObjectHelper){
+    function IonicModalService($rootScope, $state, $ionicModal, IncidentsService, MapService,
+                               OfficerService, IonicPopupService, IonicLoadingService, ObjectHelper,
+                               CameraService, $ionicSlideBoxDelegate){
 
         var vm = this;
         vm.double = null;
         vm.scope = $rootScope.$new();
 
+
         vm.scope.requests = IncidentsService.requests;
-        vm.scope.closeIncidentModal = vm.scope.closeIncidentMapModal = vm.scope.closeNotesModal = closeModal;
+        vm.scope.assignment = OfficerService.officer.assignment;
+
+        vm.scope.closeModal = closeModal;
         vm.scope.openIncidentMapModal = openIncidentMapModal;
         vm.scope.openAttachmentModal = openAttachmentModal;
         vm.scope.confirmPassword = confirmPassword;
@@ -26,7 +31,10 @@
             openIncidentMapModal: openIncidentMapModal,
             openAttachmentModal: openAttachmentModal,
             openNotesModal: openNotesModal,
-            closeModal: closeModal
+            openFinalizeModal: openFinalizeModal,
+            openDocumentsModal: openDocumentsModal,
+            closeModal: closeModal,
+            confirmPassword: confirmPassword
         };
 
         return services;
@@ -71,11 +79,25 @@
             });
         }
         /**
+         * Opens a modal view for the incident selected displaying its attachment if any
+         * @param incident
+         */
+        function openAttachmentModal(incident){
+            vm.scope.incident = incident || vm.scope.incident;
+
+            $ionicModal.fromTemplateUrl('views/modal/attachment.html', {
+                animation: 'slide-in-right',
+                scope: vm.scope
+            }).then(function(modal) {
+                vm.double = vm.modal
+                vm.modal = modal;
+                vm.modal.show();
+            });
+        }
+        /**
          * Opens a modal view for the officer's assignment displaying its notes
          */
         function openNotesModal(assignment) {
-            vm.scope.assignment = OfficerService.officer.assignment;
-
             //define assignment.notes in case it is not
             if (typeof  vm.scope.assignment.notes === 'undefined')
                 vm.scope.assignment.notes = [];
@@ -92,18 +114,48 @@
             });
         }
         /**
-         * Opens a modal view for the incident selected displaying its attachment if any
-         * @param incident
+         * Opens a modal view for the officer's assignment displaying its notes
          */
-        function openAttachmentModal(incident){
-            var scope = $rootScope.$new();
-            scope.incident = incident;
-            scope.closeAttachmentModal = closeModal;
-            $ionicModal.fromTemplateUrl('views/modal/attachment.html', {
+        function openFinalizeModal() {
+            vm.scope.edit = false;
+            $ionicModal.fromTemplateUrl('views/assignment/modal/finalize.html', {
                 animation: 'slide-in-right',
-                scope: scope
+                scope: vm.scope
             }).then(function(modal) {
-                vm.double = vm.modal
+                vm.double = vm.modal;
+                vm.modal = modal;
+                vm.modal.show();
+            });
+        }
+        function openDocumentsModal(){
+            vm.scope.addDocument = function(){
+                try{
+                    CameraService.takePicture(Camera)
+                        .then(function(imageData) {
+//                            IonicPopupService.showAlert("image", imageData);
+                            // Success! Image data is here
+    //                        var image = document.getElementById('document');
+    //                        image.src = "data:image/jpeg;base64," + imageData;
+                            vm.scope.assignment.documents.push(imageData);
+                            $ionicSlideBoxDelegate.update();
+                        }, function(err) {
+                            $('#firebase').html(err);
+                            // An error occured. Show a message to the user
+                        });
+                } catch(e){
+                    console.log(e);
+                }
+            };
+
+            //define assignment.notes in case it is not
+            if (typeof  vm.scope.assignment.documents === 'undefined')
+                vm.scope.assignment.documents = [];
+
+            $ionicModal.fromTemplateUrl('views/assignment/modal/documents.html', {
+                animation: 'slide-in-right',
+                scope: vm.scope
+            }).then(function(modal) {
+                vm.double = vm.modal;
                 vm.modal = modal;
                 vm.modal.show();
             });
@@ -129,15 +181,28 @@
             IonicPopupService.showConfirmPassword()
                 .then(function(result){
                     if (result) { //if passwords match
-                        IncidentsService.submitRequest()
-                            .then(function(ref){
-                                //4.) Close Loading Modal
-                                IonicLoadingService.hide();
-                                //5.) Close incident modal
-                                closeModal();
-                                //6.) Show success Popup
-                                IonicPopupService.showSuccess('Request has been submitted');
-                            });
+                        if ($state.current.name === 'app.home'){
+                            IncidentsService.submitRequest()
+                                .then(function(ref){
+                                    //4.) Close Loading Modal
+                                    IonicLoadingService.hide();
+                                    //5.) Close incident modal
+                                    closeModal();
+                                    //6.) Show success Popup
+                                    IonicPopupService.showSuccess('Request has been submitted');
+                                });
+                        } else {
+                            IncidentsService.confirmAssignment();
+//                                .then(function(ref){
+//                                    //4.) Close Loading Modal
+//                                    IonicLoadingService.hide();
+//                                    //5.) Close incident modal
+//                                    closeModal();
+//                                    //6.) Show success Popup
+//                                    IonicPopupService.showSuccess('Request has been submitted');
+//                                });
+                        }
+
                     }
                 });
         }

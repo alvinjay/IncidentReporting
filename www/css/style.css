@@ -168,3 +168,14 @@ div.list > a.item, div.list > div.item, div > a.item {
     height: 100%;
     width: 100%;
 }
+
+.documentImage{
+    max-height: 85%;
+    max-width: 100%;
+    height: 100%;
+    width: 100%;
+}
+
+.white {
+    background-color: #f8f8ff;
+}
