@@ -6,10 +6,10 @@
         .controller('MapController', MapController);
 
     MapController.$inject = ['$scope', 'map', 'location', 'connection',
-                             'GeolocationService', 'IonicLoadingService', 'MapService', 'InternetService'];
+                             'MapService', 'InternetService'];
 
     function MapController($scope, map, location, connection,
-                           GeolocationService, IonicLoadingService, MapService, InternetService){
+                           MapService, InternetService){
         $scope.map = map;
         $scope.location = location;
         $scope.connection = connection;

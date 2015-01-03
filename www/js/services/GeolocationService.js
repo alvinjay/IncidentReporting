@@ -5,23 +5,30 @@
         .module('App')
         .service('GeolocationService', GeolocationService);
 
-    GeolocationService.$inject = ['$q', '$cordovaGeolocation', 'ObjectHelper', 'MapService',
+    GeolocationService.$inject = ['$cordovaGeolocation',
+                                  'ObjectHelper', 'MapService',
                                   'IonicLoadingService', 'IonicPopupService'];
 
-    function GeolocationService($q, $cordovaGeolocation, ObjectHelper, MapService,
+    function GeolocationService($cordovaGeolocation, ObjectHelper, MapService,
                                 IonicLoadingService, IonicPopupService){
         var vm = this;
 
         vm.watch = $cordovaGeolocation.watchPosition({ enableHighAccuracy: true });
         vm.location = {};
 
-        return {
+        var services = {
             location: vm.location,
-            watchStatus: function watchStatus(){
-                vm.watch.promise.then(null,geolocationError,geolocationSuccess);
-            }
+            watchStatus: watchStatus
         };
 
+        return services;
+
+        /**
+         * Watcher: geolocation watcher for any changes
+         */
+        function watchStatus(){
+            vm.watch.promise.then(null,geolocationError,geolocationSuccess);
+        }
         /**
          * on geolocation error
          * @param err
@@ -39,7 +46,6 @@
             // An error occurred.
            IonicPopupService.showAlert(title, message);
         }
-
         /**
          * on geolocation watch success
          * @param position

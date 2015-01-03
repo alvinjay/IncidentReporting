@@ -21,7 +21,6 @@
 
         var disconnectMessage = "Please check your network connection and try again";
 
-
         var services = {
             connection: vm.connection,
             changeInternetStatus: changeInternetStatus,

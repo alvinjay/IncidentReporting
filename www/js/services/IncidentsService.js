@@ -5,10 +5,14 @@
         .module('App')
         .service('IncidentsService', IncidentsService);
 
-    IncidentsService.$inject = ['$q', '$state', 'ObjectHelper', 'FirebaseService', 'OfficerService', 'MapService',
+    IncidentsService.$inject = ['$q', '$state',
+                                'ObjectHelper',
+                                'FirebaseService', 'OfficerService', 'MapService',
                                 'IonicLoadingService'];
 
-    function IncidentsService($q, $state, ObjectHelper, FirebaseService, OfficerService, MapService,
+    function IncidentsService($q, $state,
+                              ObjectHelper,
+                              FirebaseService, OfficerService, MapService,
                               IonicLoadingService){
 
         var vm = this;

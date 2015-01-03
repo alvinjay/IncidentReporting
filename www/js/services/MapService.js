@@ -5,9 +5,9 @@
         .module('App')
         .service('MapService', MapService);
 
-    MapService.$inject = ['$q'];
+    MapService.$inject = [];
 
-    function MapService($q){
+    function MapService(){
         var vm = this;
         vm.map = {
             center: {
@@ -34,7 +34,8 @@
             addMarker: addMarker,
             resetMarker: resetMarker,
             removeMarker: removeMarker
-        }
+        };
+
         return services;
 
         /**
@@ -64,13 +65,13 @@
                 lat: incident.l[0],
                 lng: incident.l[1],
                 draggable: false
-            }
+            };
 
             var center = {
                 lat: marker.lat,
                 lng: marker.lng,
                 zoom: 16
-            }
+            };
             //specify center of map based on incident location
             setCenter(center);
 
