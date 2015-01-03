@@ -7,11 +7,11 @@
 
     InternetService.$inject = ['$rootScope', '$state',
                                'FirebaseService', 'IncidentsService', 'GeolocationService',
-                                'IonicPopupService'];
+                                'IonicPopupService', 'IonicLoadingService'];
 
     function InternetService($rootScope, $state,
                              FirebaseService, IncidentsService, GeolocationService,
-                             IonicPopupService){
+                             IonicPopupService, IonicLoadingService){
         var vm = this;
 
         vm.connection = {
@@ -31,7 +31,7 @@
         return services;
 
         /**
-         * watcher: Internet connection
+         * Watcher: Internet connection
          * @param newStatus - 'online' | 'offline'
          */
         function changeInternetStatus(newStatus){
@@ -40,6 +40,9 @@
             vm.connection.isOnline = newStatus;
             if (newStatus)
             {
+                if ($state.current.name === 'app.map')
+                    IonicLoadingService.show('Retrieving your location');
+
                 // begin watching geolocation
                 GeolocationService.watchStatus();
                 // watch for changes in firebase connection value
@@ -65,5 +68,5 @@
                 console.log('Firebase: Disconnected');
             }
         }
-    };
+    }
 })(window.angular);

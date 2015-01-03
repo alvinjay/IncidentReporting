@@ -18,18 +18,6 @@
 
         // watch for Internet Connection status changes
         $scope.$watch('online', InternetService.changeInternetStatus);
-
-        // begin watching geolocation
-        if (typeof location.lat === 'undefined'){
-            IonicLoadingService.show('Retrieving your location');
-            GeolocationService.watchStatus();
-        }
-
-
-
-
-
-
     };
 
 })(window.angular);

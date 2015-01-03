@@ -33,73 +33,34 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="IonicModalService.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/www/js/services/ionic/IonicModalService.js">
+      <file leaf-file-name="InternetService.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/www/js/services/InternetService.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5737977" vertical-offset="2538" max-vertical-offset="3304">
-              <caret line="208" column="55" selection-start-line="208" selection-start-column="55" selection-end-line="208" selection-end-column="55" />
-              <folding>
-                <element signature="e#146#406#0" expanded="false" />
-                <element signature="e#1246#1644#0" expanded="false" />
-                <element signature="e#1868#2551#0" expanded="false" />
-                <element signature="e#2027#2138#0" expanded="false" />
-                <element signature="e#2148#2207#0" expanded="false" />
-                <element signature="e#2342#2434#0" expanded="false" />
-                <element signature="e#2457#2539#0" expanded="false" />
-                <element signature="e#2713#3198#0" expanded="false" />
-                <element signature="e#2951#3043#0" expanded="false" />
-                <element signature="e#3066#3186#0" expanded="false" />
-                <element signature="e#3385#3768#0" expanded="false" />
-                <element signature="e#3522#3614#0" expanded="false" />
-                <element signature="e#3637#3756#0" expanded="false" />
-                <element signature="e#3917#4491#0" expanded="false" />
-                <element signature="e#4244#4336#0" expanded="false" />
-                <element signature="e#4359#4479#0" expanded="false" />
-                <element signature="e#4633#4997#0" expanded="false" />
-                <element signature="e#4750#4842#0" expanded="false" />
-                <element signature="e#4865#4985#0" expanded="false" />
-                <element signature="e#6662#6960#0" expanded="false" />
-                <element signature="e#6699#6819#0" expanded="false" />
-                <element signature="e#6825#6950#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/js/app.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="420">
-              <caret line="4" column="74" selection-start-line="4" selection-start-column="74" selection-end-line="4" selection-end-column="74" />
+            <state vertical-scroll-proportion="2.28115" vertical-offset="0" max-vertical-offset="2016">
+              <caret line="57" column="11" selection-start-line="57" selection-start-column="11" selection-end-line="57" selection-end-column="11" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="OfficerService.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/js/services/OfficerService.js">
+      <file leaf-file-name="GeolocationService.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/js/services/GeolocationService.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="662" max-vertical-offset="1792">
-              <caret line="96" column="0" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="214" max-vertical-offset="1960">
+              <caret line="24" column="8" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="8" />
               <folding>
-                <element signature="e#1377#1422#0" expanded="false" />
-                <element signature="e#1545#1596#0" expanded="false" />
-                <element signature="e#1715#1762#0" expanded="false" />
-                <element signature="e#1893#1964#0" expanded="false" />
-                <element signature="e#2102#2155#0" expanded="false" />
-                <element signature="e#2306#2447#0" expanded="false" />
-                <element signature="e#2601#2848#0" expanded="false" />
-                <element signature="e#2969#3543#0" expanded="false" />
+                <element signature="e#168#305#0" expanded="false" />
+                <element signature="e#815#884#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FirebaseService.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/js/services/firebase/FirebaseService.js">
+      <file leaf-file-name="MapController.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/js/controllers/MapController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1133" max-vertical-offset="1876">
-              <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="158" max-vertical-offset="784">
+              <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -141,7 +102,6 @@
         <option value="$PROJECT_DIR$/www/js/services/ionic/IonicLoadingService.js" />
         <option value="$PROJECT_DIR$/www/js/services/MapService.js" />
         <option value="$PROJECT_DIR$/www/css/animate.min.css" />
-        <option value="$PROJECT_DIR$/www/js/controllers/MapController.js" />
         <option value="$PROJECT_DIR$/www/views/home/modal/attachment.html" />
         <option value="$PROJECT_DIR$/www/views/map/index.html" />
         <option value="$PROJECT_DIR$/www/views/home/modal/incidentMap.html" />
@@ -161,7 +121,6 @@
         <option value="$PROJECT_DIR$/www/js/config.js" />
         <option value="$PROJECT_DIR$/www/views/home/index.html" />
         <option value="$PROJECT_DIR$/www/views/assignment/index.html" />
-        <option value="$PROJECT_DIR$/www/js/services/InternetService.js" />
         <option value="$PROJECT_DIR$/www/js/controllers/AssignmentController.js" />
         <option value="$PROJECT_DIR$/www/js/services/firebase/FirebaseService.js" />
         <option value="$PROJECT_DIR$/www/views/assignment/modal/notes.html" />
@@ -170,6 +129,8 @@
         <option value="$PROJECT_DIR$/www/js/services/ionic/IonicModalService.js" />
         <option value="$PROJECT_DIR$/www/js/app.js" />
         <option value="$PROJECT_DIR$/www/js/run.js" />
+        <option value="$PROJECT_DIR$/www/js/controllers/MapController.js" />
+        <option value="$PROJECT_DIR$/www/js/services/InternetService.js" />
       </list>
     </option>
   </component>
@@ -227,7 +188,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -274,7 +234,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
+              <option name="myItemId" value="js" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -292,16 +252,43 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
+              <option name="myItemId" value="js" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="angular-route" />
+              <option name="myItemId" value="services" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="icma-prototype" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="icma-prototype" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="services" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ionic" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -335,14 +322,6 @@
       <ConfigurationWrapper RunnerId="NodeJS.debug" />
       <method />
     </configuration>
-    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
-      <option name="VMOptions" />
-      <option name="arguments" />
-      <option name="filePath" />
-      <option name="scope" value="ALL" />
-      <option name="testName" />
-      <method />
-    </configuration>
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
       <option name="VMOptions" />
       <option name="arguments" />
@@ -353,14 +332,12 @@
       <option name="showConsoleOnStdOut" value="false" />
       <method />
     </configuration>
-    <configuration default="true" type="CucumberJavaScriptRunConfigurationType" factoryName="Cucumber.js">
-      <option name="cucumberJsArguments" />
-      <option name="executablePath" />
+    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
+      <option name="VMOptions" />
+      <option name="arguments" />
       <option name="filePath" />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" config-file="">
-      <envs />
+      <option name="scope" value="ALL" />
+      <option name="testName" />
       <method />
     </configuration>
     <configuration default="true" type="JSTestDriver:ConfigurationType" factoryName="JsTestDriver">
@@ -368,6 +345,16 @@
       <setting name="settingsFile" value="" />
       <setting name="serverType" value="INTERNAL" />
       <setting name="preferredDebugBrowser" value="Chrome" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" config-file="">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="CucumberJavaScriptRunConfigurationType" factoryName="Cucumber.js">
+      <option name="cucumberJsArguments" />
+      <option name="executablePath" />
+      <option name="filePath" />
       <method />
     </configuration>
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
@@ -414,11 +401,11 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32874617" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
     <layout-to-restore>
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -436,9 +423,9 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23984376" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -610,20 +597,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/controllers/MapController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44728434" vertical-offset="168" max-vertical-offset="1120">
-          <caret line="16" column="29" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/services/ionic/IonicLoadingService.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23217247" vertical-offset="0" max-vertical-offset="728">
-          <caret line="5" column="40" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/views/tabs.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.048442908" vertical-offset="0" max-vertical-offset="578">
@@ -635,13 +608,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.2951907" vertical-offset="2075" max-vertical-offset="3528">
           <caret line="102" column="35" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/services/GeolocationService.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.29519072" vertical-offset="1082" max-vertical-offset="1904">
-          <caret line="51" column="60" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -734,22 +700,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.37147596" vertical-offset="1400" max-vertical-offset="2632">
           <caret line="58" column="68" selection-start-line="58" selection-start-column="68" selection-end-line="58" selection-end-column="68" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/services/InternetService.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24875621" vertical-offset="802" max-vertical-offset="1932">
-          <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/services/firebase/FirebaseService.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1133" max-vertical-offset="1876">
-          <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -757,7 +707,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.27860695" vertical-offset="308" max-vertical-offset="1120">
           <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -765,7 +714,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.046589017" vertical-offset="476" max-vertical-offset="1316">
           <caret line="18" column="4" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -773,7 +721,55 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2733564" vertical-offset="206" max-vertical-offset="896">
           <caret line="13" column="98" selection-start-line="13" selection-start-column="98" selection-end-line="13" selection-end-column="98" />
-          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/services/IncidentsService.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6036484" vertical-offset="1680" max-vertical-offset="4648">
+          <caret line="127" column="59" selection-start-line="125" selection-start-column="11" selection-end-line="127" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3633218" vertical-offset="238" max-vertical-offset="2772">
+          <caret line="16" column="21" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/run.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.58208954" vertical-offset="545" max-vertical-offset="1176">
+          <caret line="32" column="12" selection-start-line="32" selection-start-column="12" selection-end-line="32" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/services/ionic/IonicModalService.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5737977" vertical-offset="2538" max-vertical-offset="3304">
+          <caret line="208" column="55" selection-start-line="208" selection-start-column="55" selection-end-line="208" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/services/OfficerService.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.402556" vertical-offset="662" max-vertical-offset="1792">
+          <caret line="96" column="0" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/services/firebase/FirebaseService.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.56070286" vertical-offset="1133" max-vertical-offset="1876">
+          <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.17891374" vertical-offset="0" max-vertical-offset="626">
+          <caret line="4" column="74" selection-start-line="4" selection-start-column="74" selection-end-line="4" selection-end-column="74" />
         </state>
       </provider>
     </entry>
@@ -785,119 +781,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/services/IncidentsService.js">
+    <entry file="file://$PROJECT_DIR$/www/js/controllers/MapController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6036484" vertical-offset="1680" max-vertical-offset="4648">
-          <caret line="127" column="59" selection-start-line="125" selection-start-column="11" selection-end-line="127" selection-end-column="59" />
-          <folding>
-            <element signature="e#162#300#0" expanded="false" />
-            <element signature="e#2259#2940#0" expanded="false" />
-            <element signature="e#2384#2916#0" expanded="false" />
-            <element signature="e#2573#2888#0" expanded="false" />
-            <element signature="e#2745#2852#0" expanded="false" />
-            <element signature="e#2986#3482#0" expanded="false" />
-            <element signature="e#3163#3458#0" expanded="false" />
-            <element signature="e#3327#3426#0" expanded="false" />
-            <element signature="e#3773#4120#0" expanded="false" />
-            <element signature="e#4381#4787#0" expanded="false" />
-            <element signature="e#5560#5699#0" expanded="false" />
-            <element signature="e#5891#6135#0" expanded="false" />
-            <element signature="e#6395#6567#0" expanded="false" />
-            <element signature="e#6769#10033#0" expanded="false" />
-            <element signature="e#7025#8303#0" expanded="false" />
-            <element signature="e#7056#7197#0" expanded="false" />
-            <element signature="e#7687#8114#0" expanded="false" />
-            <element signature="e#7917#8034#0" expanded="false" />
-            <element signature="e#8512#9001#0" expanded="false" />
-            <element signature="e#8652#8987#0" expanded="false" />
-            <element signature="e#8765#8958#0" expanded="false" />
-            <element signature="e#9014#9070#0" expanded="false" />
-            <element signature="e#9211#10023#0" expanded="false" />
-            <element signature="e#9477#9702#0" expanded="false" />
-            <element signature="e#9740#10009#0" expanded="false" />
-            <element signature="e#9837#9991#0" expanded="false" />
-            <element signature="e#10237#10538#0" expanded="false" />
-            <element signature="e#10357#10501#0" expanded="false" />
-            <element signature="e#10651#11503#0" expanded="false" />
-            <element signature="e#14477#14767#0" expanded="false" />
-            <element signature="e#14683#14755#0" expanded="false" />
-            <element signature="e#14896#15811#0" expanded="false" />
-            <element signature="e#14971#15672#0" expanded="false" />
-            <element signature="e#15139#15228#0" expanded="false" />
-            <element signature="e#15266#15656#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/services/OfficerService.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="662" max-vertical-offset="1792">
-          <caret line="96" column="0" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
-          <folding>
-            <element signature="e#1377#1422#0" expanded="false" />
-            <element signature="e#1545#1596#0" expanded="false" />
-            <element signature="e#1715#1762#0" expanded="false" />
-            <element signature="e#1893#1964#0" expanded="false" />
-            <element signature="e#2102#2155#0" expanded="false" />
-            <element signature="e#2306#2447#0" expanded="false" />
-            <element signature="e#2601#2848#0" expanded="false" />
-            <element signature="e#2969#3543#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3633218" vertical-offset="238" max-vertical-offset="2772">
-          <caret line="16" column="21" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="158" max-vertical-offset="784">
+          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/app.js">
+    <entry file="file://$PROJECT_DIR$/www/js/services/ionic/IonicLoadingService.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="420">
-          <caret line="4" column="74" selection-start-line="4" selection-start-column="74" selection-end-line="4" selection-end-column="74" />
+        <state vertical-scroll-proportion="0.46434495" vertical-offset="0" max-vertical-offset="728">
+          <caret line="10" column="40" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/run.js">
+    <entry file="file://$PROJECT_DIR$/www/js/services/GeolocationService.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.58208954" vertical-offset="545" max-vertical-offset="1176">
-          <caret line="32" column="12" selection-start-line="32" selection-start-column="12" selection-end-line="32" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/services/ionic/IonicModalService.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5737977" vertical-offset="2538" max-vertical-offset="3304">
-          <caret line="208" column="55" selection-start-line="208" selection-start-column="55" selection-end-line="208" selection-end-column="55" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="382" max-vertical-offset="1960">
+          <caret line="24" column="8" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="8" />
           <folding>
-            <element signature="e#146#406#0" expanded="false" />
-            <element signature="e#1246#1644#0" expanded="false" />
-            <element signature="e#1868#2551#0" expanded="false" />
-            <element signature="e#2027#2138#0" expanded="false" />
-            <element signature="e#2148#2207#0" expanded="false" />
-            <element signature="e#2342#2434#0" expanded="false" />
-            <element signature="e#2457#2539#0" expanded="false" />
-            <element signature="e#2713#3198#0" expanded="false" />
-            <element signature="e#2951#3043#0" expanded="false" />
-            <element signature="e#3066#3186#0" expanded="false" />
-            <element signature="e#3385#3768#0" expanded="false" />
-            <element signature="e#3522#3614#0" expanded="false" />
-            <element signature="e#3637#3756#0" expanded="false" />
-            <element signature="e#3917#4491#0" expanded="false" />
-            <element signature="e#4244#4336#0" expanded="false" />
-            <element signature="e#4359#4479#0" expanded="false" />
-            <element signature="e#4633#4997#0" expanded="false" />
-            <element signature="e#4750#4842#0" expanded="false" />
-            <element signature="e#4865#4985#0" expanded="false" />
-            <element signature="e#6662#6960#0" expanded="false" />
-            <element signature="e#6699#6819#0" expanded="false" />
-            <element signature="e#6825#6950#0" expanded="false" />
+            <element signature="e#168#305#0" expanded="false" />
+            <element signature="e#815#884#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/services/InternetService.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.28115" vertical-offset="0" max-vertical-offset="2016">
+          <caret line="57" column="11" selection-start-line="57" selection-start-column="11" selection-end-line="57" selection-end-column="11" />
+          <folding />
         </state>
       </provider>
     </entry>
