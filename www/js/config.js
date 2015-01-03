@@ -55,6 +55,9 @@
                             resolve: {
                                 assignment: function(OfficerService){
                                     return OfficerService.officer.assignment;
+                                },
+                                connection: function(InternetService){
+                                    return InternetService.connection;
                                 }
                             }
                         }

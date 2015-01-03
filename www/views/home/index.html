@@ -1,11 +1,11 @@
 <ion-view id="body" title="home" >
     <ion-content id="content" overflow-scroll="true" >
+        <div id="status" class="button button-full button-assertive animated slideInDown"
+             ng-class="{'button-balanced': connection.isOnline && connection.isConnected,
+                        'button-energized': connection.isOnline && !connection.isConnected}">
+            {{ (!connection.isOnline) ? 'Disconnected' : (!connection.isConnected ? 'Connecting...' : 'Connected')  }}
+        </div>
         <ion-scroll>
-            <div id="status" class="button button-full button-assertive animated slideInDown"
-                 ng-class="{'button-balanced': connection.isOnline && connection.isConnected,
-                            'button-energized': connection.isOnline && !connection.isConnected}">
-                {{ (!connection.isOnline) ? 'Disconnected' : (!connection.isConnected ? 'Connecting...' : 'Connected')  }}
-            </div>
 
             <div id="body" class="first-item">
                 <div class="list list-inset "

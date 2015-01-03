@@ -3,7 +3,7 @@
 
     angular
         .module('App')
-        .run(function($ionicPlatform, $window, $rootScope, $location) {
+        .run(function($ionicPlatform, $window, $rootScope, $state, $timeout) {
             $ionicPlatform.ready(function() {
                 // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
                 // for form inputs)
@@ -31,7 +31,7 @@
                 });
             }, false);
 
-            $location.path('/');
+            $timeout(function(){ $state.go('app.home'); });
         });
 
 })(window.angular);

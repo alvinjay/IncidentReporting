@@ -26,6 +26,7 @@
         vm.assignmentFirebaseObject = null;
 
         var services = {
+            assignment: vm.assignment,
             incident: vm.incident,
             incidents: vm.incidents,
             requests: vm.requests,
@@ -253,23 +254,87 @@
          * Submits a assignment request for an incident
          */
         function submitRequest(){
+            //Show Loading Modal (Submitting request...)
+            IonicLoadingService.show('Submitting request');
+
             var officer = OfficerService.officer;
             //retrieve new record of the incident from the array because vm.incident is not an exact copy from the array
             var incident = vm.incidentsFirebaseArray.$getRecord(vm.incident.$id);
-            //1.) Show Loading Modal (Submitting request...)
-            IonicLoadingService.show('Submitting request...');
-            //2.) Edit $scope.incident (add 'requests' node)
+
+            //Edit $scope.incident (add 'requests' node)
             //Check if requests has not been defined YET
             if (typeof incident.requests === 'undefined')
                 incident.requests = {};
             // Insert new request
             incident.requests[officer.id] =  true;
-            //3.) Do $scope.incidents($scope.incident).$save
+            //Do $scope.incidents($scope.incident).$save
             console.log('fin');
-            return FirebaseService.saveFirebaseArray(vm.incidentsFirebaseArray,incident);
+            FirebaseService.saveFirebaseArray(vm.incidentsFirebaseArray,incident);
         }
         function confirmAssignment(){
-            console.log('aw');
+            //Show Loading Modal (This may take a while...)
+            IonicLoadingService.show('This may take a while');
+
+            var q = $q.defer();
+            //retrieve officer
+            var officer = OfficerService.officer;
+            var count;
+
+            //retrieve firebase object for in the 'ongoing' node
+            var endpoint = '/'+ officer.areaCode + '/ongoing/' + officer.assignment.$id;
+            var ongoing = FirebaseService.getRef(endpoint);
+
+            //retrieve from 'recorded' node
+            endpoint = '/recorded/' + officer.assignment.$id;
+            var ref = FirebaseService.getRef(endpoint);
+            var record = FirebaseService.getObject(ref);
+
+            record.$loaded()
+                .then(function(){ //save record
+                    //copy officer.assignment to assignment
+                    ObjectHelper.copyObjectProperties(officer.assignment, record);
+                    //include officer.id and areaCode
+                    record['officerId'] = officer.id;
+                    record['areaCode'] = officer.areaCode;
+                    console.log(record);
+                    record.$save();
+                })
+                .then(function(){ //increment recorded count
+                    endpoint = '/recorded/count';
+                    ref = FirebaseService.getRef(endpoint);
+                    count = FirebaseService.getObject(ref);
+                    return count.$loaded();
+                },function(){
+                    q.reject("problem saving to 'recorded'");
+                })
+                .then(function(){
+                    ++count.$value;
+                    return count.$save();
+                })
+                .then(function(){ //remove object from ongoing
+                    var success = false;
+                    ongoing.remove(function(error){
+                        if (error) {
+                            q.reject('problem removing from ongoing');
+                        } else {
+                            console.log('removed');
+                            endpoint = '/' + officer.areaCode + '/ongoing/count';
+                            ref = FirebaseService.getRef(endpoint);
+                            count = FirebaseService.getObject(ref);
+                            count.$loaded()
+                                .then(function(){
+                                    --count.$value;
+                                    return count.$save();
+                                })
+                                .then(function(){
+                                   success = true;
+                                   q.resolve("success");
+                                });
+                        }
+                    });
+
+                });
+            return q.promise;
         }
         /**
          * Watcher: incidentsFirebaseArray

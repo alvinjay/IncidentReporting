@@ -35,7 +35,6 @@
          * @param newStatus - 'online' | 'offline'
          */
         function changeInternetStatus(newStatus){
-
             var firebaseConnection = FirebaseService.firebaseConnection;
             //record new status
             vm.connection.isOnline = newStatus;

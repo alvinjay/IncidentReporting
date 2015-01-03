@@ -127,6 +127,10 @@
                 vm.modal.show();
             });
         }
+
+        /**
+         * Opens a modal view for the officer's assignment for capturing paper documents as images
+         */
         function openDocumentsModal(){
             vm.scope.addDocument = function(){
                 try{
@@ -184,23 +188,26 @@
                         if ($state.current.name === 'app.home'){
                             IncidentsService.submitRequest()
                                 .then(function(ref){
-                                    //4.) Close Loading Modal
+                                    //Close Loading Modal
                                     IonicLoadingService.hide();
-                                    //5.) Close incident modal
+                                    //Close incident modal
                                     closeModal();
-                                    //6.) Show success Popup
+                                    //Show success Popup
                                     IonicPopupService.showSuccess('Request has been submitted');
                                 });
                         } else {
-                            IncidentsService.confirmAssignment();
-//                                .then(function(ref){
-//                                    //4.) Close Loading Modal
-//                                    IonicLoadingService.hide();
-//                                    //5.) Close incident modal
-//                                    closeModal();
-//                                    //6.) Show success Popup
-//                                    IonicPopupService.showSuccess('Request has been submitted');
-//                                });
+                            IncidentsService.confirmAssignment()
+                                .then(function(message){
+                                    if (message !== 'success')
+                                        console.log(message);
+                                    //Close Loading Modal
+                                    IonicLoadingService.hide();
+                                    //Remove all about assignment in local
+                                    OfficerService.removeAssignment();
+                                    //Show success Popup
+                                    IonicPopupService.showSuccess('Assignment has been recorded');
+                                    $state.go("app.home");
+                                });
                         }
 
                     }

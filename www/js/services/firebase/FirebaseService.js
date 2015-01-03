@@ -3,9 +3,9 @@
         .module('App')
         .service('FirebaseService', FirebaseService);
 
-    FirebaseService.$inject = ['$firebase', 'FIREBASE_URL', 'OFFICERS_URL'];
+    FirebaseService.$inject = ['$q', '$firebase', 'FIREBASE_URL', 'OFFICERS_URL'];
 
-    function FirebaseService($firebase, FIREBASE_URL, OFFICERS_URL){
+    function FirebaseService($q, $firebase, FIREBASE_URL, OFFICERS_URL){
         var vm = this;
 
         vm.firebaseConnection = null;
@@ -20,7 +20,9 @@
             getConnection: getConnection,
             checkConnection: checkConnection,
             getOfficerRef: getOfficerRef,
-            saveFirebaseArray: saveFirebaseArray
+            saveFirebaseArray: saveFirebaseArray,
+            incrementCount: incrementCount,
+            decrementCount: decrementCount
         };
 
         return services;
@@ -45,6 +47,16 @@
         }
         function saveFirebaseArray(array, record){
             return array.$save(record);
+        }
+        function incrementCount(count){
+            var q = $q.defer();
+            q.resolve(++count);
+            return q.promise;
+        }
+        function decrementCount(count){
+            var q = $q.defer();
+            q.resolve(--count);
+            return q.promise;
         }
     }
 })(window.angular);

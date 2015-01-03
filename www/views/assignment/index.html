@@ -1,14 +1,14 @@
 <ion-view id="body" title="Assignment" >
 
     <ion-content id="content" overflow-scroll="true" >
-        <ion-scroll>
-            <div>
+        <div id="status" class="button button-full button-assertive animated slideInDown"
+             ng-class="{'button-balanced': connection.isOnline && connection.isConnected,
+                            'button-energized': connection.isOnline && !connection.isConnected}">
+            {{ (!connection.isOnline) ? 'Disconnected' : (!connection.isConnected ? 'Connecting...' : 'Connected')  }}
+        </div>
+        <div id="body" class="first-item">
+            <ion-scroll>
                 <div class="list card" data-ng-hide="isObjectEmpty(assignment)">
-                    <div class="item">
-                        <button class="button button-full button-balanced"
-                                data-ng-click="confirmPassword()">Confirm as valid</button>
-                    </div>
-
                     <div class="item">
                         <!--<i class="icon ion-home"></i>-->
                         Incident Type: {{ assignment.type }}
@@ -41,8 +41,14 @@
                         <a class="button button-light icon ion-paperclip"
                            data-ng-click="openDocumentsModal()"></a>
                     </div>
+                    <div class="item">
+                        <button class="button button-full button-balanced"
+                                data-ng-disabled="!connection.isConnected"
+                                data-ng-click="confirmPassword()">Confirm as valid</button>
+                    </div>
+
                 </div>
-            </div>
-        </ion-scroll>
+            </ion-scroll>
+        </div>
     </ion-content>
 </ion-view>
