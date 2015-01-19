@@ -87,11 +87,11 @@
                 try{
                     return Object.keys(obj).length === 0;
                 } catch(e){
-                    return false;
+                    return true;
                 }
 
             }
-        }
+        };
 
         return services;
     }

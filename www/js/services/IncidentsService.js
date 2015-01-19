@@ -273,7 +273,7 @@
             incident.requests[officer.id] =  true;
             //Do $scope.incidents($scope.incident).$save
             console.log('fin');
-            FirebaseService.saveFirebaseArray(vm.incidentsFirebaseArray,incident);
+            return FirebaseService.saveFirebaseArray(vm.incidentsFirebaseArray,incident);
         }
         function confirmAssignment(){
             //Show Loading Modal (This may take a while...)

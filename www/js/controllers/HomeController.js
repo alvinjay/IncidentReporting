@@ -17,6 +17,7 @@
                             OfficerService, InternetService,
                             $cordovaSplashscreen, $cordovaDevice){
 
+
         //TODO retrieve id, name and password for
 //        window.localStorage.removeItem('assignment');
         window.localStorage.setItem("areaCode", '04');
@@ -29,6 +30,7 @@
 
         $scope.officer = officer;
         $scope.assignment = officer.assignment;
+        console.log($scope.assignment);
 
         $scope.location = location;
         $scope.map = map;
